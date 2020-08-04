@@ -16,7 +16,7 @@ class Curse extends Component {
                     <textarea className='curse-box'></textarea>
                     <button className='Void' onClick={this.handleClickEvent}>Send into Void</button>
                 </form>
-                <Link className="navlink" to='/login'>or login here</Link>
+                <Link className="" to='/login'>or login here</Link>
             </>
 
         )

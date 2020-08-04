@@ -15,7 +15,7 @@ class LandingPage extends Component {
                 <p>ENTERTAINMENT PURPOSES ONLY</p>
                 <p>If you are experiencing mental depression or other mental problems PLEASE GET PROFESSIONAL HELP</p>
 
-                <Link className="navlink" to='/curse'>Curse Anonymously</Link>
+                <Link className="" to='/curse'>Curse Anonymously</Link>
             </>
 
         )
