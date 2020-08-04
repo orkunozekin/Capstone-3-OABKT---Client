@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
 import { render } from 'react-dom'
 import "./Dashboard.css"
 
@@ -9,8 +8,6 @@ class Dashboard extends Component {
     render() {
         return (
             <>
-                <Header />
-
                 <p>Quote randomly pulled</p>
                 <p>-Source</p>
 
@@ -25,3 +22,5 @@ class Dashboard extends Component {
         )
     }
 }
+
+export default Dashboard;

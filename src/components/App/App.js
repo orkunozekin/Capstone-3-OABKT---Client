@@ -6,6 +6,10 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
 import './App.css';
+import LandingPage from '../LandingPage/LandingPage';
+import Dashboard from '../Dashboard/Dashboard';
+import Curse from '../Curse/Curse';
+import Bless from '../Bless/Bless';
 
 class App extends Component {
   render() {
@@ -21,6 +25,22 @@ class App extends Component {
             <PublicOnlyRoute
               path={'/login'}
               component={LoginRoute}
+            />
+            <PublicOnlyRoute
+               exact path={'/'}
+              component={LandingPage}
+            />
+            <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
+              exact path={'/dashboard'}
+              component={Dashboard}
+            />
+            <PublicOnlyRoute
+              exact path={'/curse'}
+              component={Curse}
+            />
+            <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
+              exact path={'/bless'}
+              component={Bless}
             />
           </Switch>
         </main>
