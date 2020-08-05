@@ -8,7 +8,7 @@ import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute'
 import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
 import Dashboard from '../Dashboard/Dashboard';
-import Curse from '../Curse/Curse';
+import CurseRoute from '../../routes/CurseRoute/CurseRoute';
 import Bless from '../Bless/Bless';
 
 class App extends Component {
@@ -36,7 +36,7 @@ class App extends Component {
             />
             <PublicOnlyRoute
               exact path={'/curse'}
-              component={Curse}
+              component={CurseRoute}
             />
             <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
               exact path={'/bless'}

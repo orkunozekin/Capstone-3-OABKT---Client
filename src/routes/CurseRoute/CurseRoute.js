@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import CurseForm from '../CurseForm/CurseForm.js';
+import CurseForm from '../../components/CurseForm/CurseForm.js';
 import { Link } from 'react-router-dom';
-import { render } from 'react-dom';
-import './Curse.css';
+import './CurseRoute.css';
 
-class Curse extends Component {
+class CurseRoute extends Component {
 
     handleClickEvent = (event) => {
         event.preventDefault();
@@ -23,4 +22,4 @@ class Curse extends Component {
     }
 }
 
-export default Curse;
+export default CurseRoute;
