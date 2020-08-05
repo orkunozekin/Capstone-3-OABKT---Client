@@ -15,7 +15,7 @@ class LandingPage extends Component {
 
                 <h2>Please note</h2>
                 <p>We ask that no racist or bigoted
-                    language be used
+                    language be used.
                 </p>
 
                 <h2 className="Important">IMPORTANT</h2>
