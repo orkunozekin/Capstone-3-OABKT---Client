@@ -7,7 +7,7 @@ class Curse extends Component {
     handleClickEvent = () => {
         // logic to send curse to void
     }
-
+    
     render() {
         return (
             <>
@@ -18,7 +18,6 @@ class Curse extends Component {
                 </form>
                 <Link className="" to='/login'>or login here</Link>
             </>
-
         )
     }
 }
