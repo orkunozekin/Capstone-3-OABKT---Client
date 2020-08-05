@@ -1,0 +1,27 @@
+.curse-form {
+    height: 40vh;
+    width: 90%;
+    background-color: darkgrey;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.curse-box {
+    width: 90%;
+    height: 80%;
+    border-radius: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    font-size: 1.5em;
+}
+
+.void-button {
+    height: 10%;
+    width: 80%;
+    background-color: darkslategray;
+    color: lightgray;
+    border-radius: 10px;
+    font-size: 1.1em;
+}
