@@ -24,6 +24,16 @@ const Header = () => {
                 <nav className={nav_class}>
                     <Link
                         className="navlink"
+                        to='/bless'>
+                        Bless
+                    </Link>
+                    <Link
+                        className="navlink"
+                        to='/dashboard'>
+                        Dashboard
+                    </Link>
+                    <Link
+                        className="navlink"
                         onClick={handleLogoutClick}
                         to='/login'>
                         Logout
@@ -47,6 +57,7 @@ const Header = () => {
             <header>
                 <nav>
                     <div className={nav_class}>
+                        <Link className="navlink" to='/curse'>Curse</Link>
                         <Link className="navlink" to='/login'>Login</Link>
                         {' '}
                         <Link className="navlink" to='/register'>Sign up</Link>

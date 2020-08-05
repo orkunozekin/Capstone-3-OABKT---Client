@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
 import { render } from 'react-dom'
 import "./Bless.css"
 
@@ -15,10 +14,8 @@ class Bless extends Component {
     render() {
         return (
             <>
-                <Header />
-
                 <h2>Random curse</h2>
-                <form onSubmit={}>
+                <form onSubmit={this.handleSubmitClick}>
                     <p>Random curse text. My life is awful, blah blah blah</p>
 
                     <p>Bless Emoji's drop down</p>
@@ -30,3 +27,5 @@ class Bless extends Component {
         )
     }
 }
+
+export default Bless;

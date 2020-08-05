@@ -1,5 +1,5 @@
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import Header from '../Header/Header'
 import { render } from 'react-dom'
 
 class Curse extends Component {
@@ -11,16 +11,16 @@ class Curse extends Component {
     render() {
         return (
             <>
-                <Header />
-                
                 <h2>Curse Here</h2>
                 <form>
                     <textarea className='curse-box'></textarea>
-                    <button className='Void' onClick={}>Send into Void</button>
+                    <button className='Void' onClick={this.handleClickEvent}>Send into Void</button>
                 </form>
-                <Link className="navlink" to='/login'>or login here</Link>
+                <Link className="" to='/login'>or login here</Link>
             </>
 
         )
     }
 }
+
+export default Curse;
