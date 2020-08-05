@@ -1,0 +1,11 @@
+.login-header-wrapper {
+    background-color: lightgray;
+    display: flex;
+    flex-flow: column wrap;
+    padding: 10px;
+}
+
+.login-header {
+    margin: 20px 0;
+    font-size: 2.5em;
+}
