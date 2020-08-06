@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { render } from 'react-dom'
 import config from '../../config';
 import TokenService from '../../services/token-service';
 import CurseForm from '../../components/CurseForm/CurseForm';
@@ -8,10 +7,10 @@ import './CurseRoute.css';
 
 class CurseRoute extends Component {
 
-
     handlePostCurses = (ev) => {
         ev.preventDefault()
         const { curseInput } = ev.target
+        console.log(curseInput.value)
         const curse = curseInput.value;
         fetch(`${config.API_ENDPOINT}/curses`, {
           method: 'POST',
@@ -19,8 +18,7 @@ class CurseRoute extends Component {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
             'content-type': 'application/json'
           },
-          body: JSON.stringify({
-            message: 'Curse sent annonymously',  
+          body: JSON.stringify({ 
             curse
           })
         })
@@ -38,7 +36,7 @@ class CurseRoute extends Component {
         return (
             <div className='curse-bless-field'>
                 <h2 className='curse-bless-title'>Perform a Curse</h2>
-                <CurseForm onSubmit={this.handlePostCurses}></CurseForm>
+                <CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
                 <Link className="link-login" to='/login'>...or login here</Link>
             </div>
         )

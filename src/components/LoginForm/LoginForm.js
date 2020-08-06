@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { Input, Label } from '../Form/Form';
-import AuthApiService from '../../services/auth-api-service'
-import UserContext from '../../contexts/UserContext'
-import Button from '../Button/Button'
-import { FaSpinner } from 'react-icons/fa'
-import './LoginForm.css'
+import AuthApiService from '../../services/auth-api-service';
+import UserContext from '../../contexts/UserContext';
+import Button from '../Button/Button';
+import { FaSpinner } from 'react-icons/fa';
+import './LoginForm.css';
 import TokenService from '../../services/token-service';
+import { withRouter } from 'react-router-dom';
 
 
 class LoginForm extends Component {
-  
 
-  static contextType = UserContext
+  static contextType = UserContext;
 
   state = { error: null, loading: false }
 
@@ -30,12 +30,15 @@ class LoginForm extends Component {
       .then(res => {
         username.value = ''
         password.value = ''
-        // this.context.processLogin(res.authToken)
         TokenService.saveAuthToken(res.authToken)
-        this.props.history.push('/')
+        // console.log(this.props.history);
+        this.props.onLoginSuccess();
+        // this.props.history.push('/')
+        // window.location.reload(true)
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
+        console.log(res)
       })
   }
 
@@ -86,4 +89,4 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm
+export default withRouter(LoginForm);
