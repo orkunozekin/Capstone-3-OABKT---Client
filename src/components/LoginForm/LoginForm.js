@@ -5,11 +5,11 @@ import UserContext from '../../contexts/UserContext'
 import Button from '../Button/Button'
 import { FaSpinner } from 'react-icons/fa'
 import './LoginForm.css'
+import TokenService from '../../services/token-service';
+
 
 class LoginForm extends Component {
-  static defaultProps = {
-    onLoginSuccess: () => { }
-  }
+  
 
   static contextType = UserContext
 
@@ -30,8 +30,9 @@ class LoginForm extends Component {
       .then(res => {
         username.value = ''
         password.value = ''
-        this.context.processLogin(res.authToken)
-        this.props.onLoginSuccess()
+        // this.context.processLogin(res.authToken)
+        TokenService.saveAuthToken(res.authToken)
+        this.props.history.push('/')
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
