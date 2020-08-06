@@ -9,7 +9,7 @@ import './App.css';
 import LandingPage from '../LandingPage/LandingPage';
 import Dashboard from '../../routes/Dashboard/DashboardRoute';
 import CurseRoute from '../../routes/CurseRoute/CurseRoute';
-import Bless from '../Bless/Bless';
+import BlessRoute from '../../routes/BlessRoute/BlessRoute';
 import config from '../../config';
 import TokenService from '../../services/token-service';
 import AppContext from '../../contexts/AppContext';
@@ -103,7 +103,7 @@ class App extends Component {
               />
               <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
                 exact path={'/bless'}
-                component={Bless}
+                component={BlessRoute}
               />
             </Switch>
           </main>

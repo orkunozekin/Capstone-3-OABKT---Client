@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { render } from 'react-dom'
 import config from '../../config';
 import TokenService from '../../services/token-service';
 
 class Curse extends Component {
-
 
 
     handlePostCurses = (ev) => {
@@ -18,8 +16,7 @@ class Curse extends Component {
             'authorization': `bearer ${TokenService.getAuthToken()}`,
             'content-type': 'application/json'
           },
-          body: JSON.stringify({
-            message: 'Curse sent annonymously',  
+          body: JSON.stringify({ 
             curse
           })
         })
@@ -31,7 +28,8 @@ class Curse extends Component {
             .then(json => {
                 console.log(json)
             })
-      }
+    }
+    
     
     render() {
         return (
