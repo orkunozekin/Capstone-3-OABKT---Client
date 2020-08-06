@@ -1,0 +1,55 @@
+.quote-box {
+    background-color: lightgrey;
+    padding: 10px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 10px auto;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4) inset;
+}
+
+.quote-block {
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    line-height: 1.4em;
+    font-size: 1.25em;
+}
+
+.quote-source {
+    text-align: right;
+}
+
+.shadow-box {
+    box-shadow: 0 10px 6px -6px;
+}
+
+.blessing-box {
+    background-color: grey;
+    margin: 20px auto;
+    line-height: 1.4em;
+}
+
+.blessing-box p { text-align: center; }
+.blessing-count {
+    font-size: 1.25em;
+}
+
+.button-box {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.curse-button, .bless-button {
+    width: 40vw;
+}
+
+.curse-button {
+    color: white;
+    background-color: darkslategrey;
+}
+
+.bless-button {
+    background-color: lightyellow;
+}
