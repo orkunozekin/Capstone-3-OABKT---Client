@@ -4,7 +4,9 @@ import AuthApiService from '../../services/auth-api-service'
 import UserContext from '../../contexts/UserContext'
 import Button from '../Button/Button'
 import { FaSpinner } from 'react-icons/fa'
+import './LoginForm.css'
 import TokenService from '../../services/token-service';
+
 
 class LoginForm extends Component {
   
@@ -46,7 +48,7 @@ class LoginForm extends Component {
     const loading = this.state.loading;
     return (
       <form
-        className='LoginForm'
+        className='main-form'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
