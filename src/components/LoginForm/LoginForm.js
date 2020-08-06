@@ -10,7 +10,6 @@ import { withRouter } from 'react-router-dom';
 
 
 class LoginForm extends Component {
-  
 
   static contextType = UserContext
 
@@ -32,13 +31,14 @@ class LoginForm extends Component {
         username.value = ''
         password.value = ''
         TokenService.saveAuthToken(res.authToken)
-        console.log(this.props.history);
+        // console.log(this.props.history);
         this.props.onLoginSuccess();
         // this.props.history.push('/')
         // window.location.reload(true)
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
+        console.log(res)
       })
   }
 

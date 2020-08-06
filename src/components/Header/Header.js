@@ -15,6 +15,7 @@ const Header = (props) => {
     function handleLogoutClick() {
         // context.processLogout()
         TokenService.clearAuthToken();
+        props.toggleLoggedIn();
         // window.location.reload(true)
     }
 
