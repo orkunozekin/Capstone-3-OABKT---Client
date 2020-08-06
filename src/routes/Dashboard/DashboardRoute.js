@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { render } from 'react-dom'
+import Button from '../../components/Button/Button'
 import "./Dashboard.css"
 import AppContext from '../../contexts/AppContext'
 
@@ -21,15 +22,23 @@ class Dashboard extends Component {
 
         return (
             <>
-                <p>{quote}</p>
-                <p>{source}</p>
+                <div className='quote-box shadow-box'>
+                    <h3 className='quote-block'>{quote}</h3>
+                    <h4 className='quote-source'>{source}</h4>
+                </div>
 
-                <p>You've given</p>
-                <p>{totalblessings}</p>
-                <p>blessings</p>
-            
-                <Link className="curselink linkage" to='/curse'>Curse</Link>
-                <Link className="blesslink linkage" to='/bless'>Bless</Link>
+                <div className='blessing-box'>
+                    <p>You've given <span className='blessing-count'>{totalblessings}</span> blessing{totalblessings = 1 && <span>s</span>}!</p>
+                </div>
+
+                <div className='button-box'>
+                    <Link className="curselink linkage" to='/curse'>
+                        <Button className='curse-button'>Curse</Button>
+                    </Link>
+                    <Link className="blesslink linkage" to='/bless'>
+                        <Button className='bless-button'>Bless</Button>
+                    </Link>
+                </div>
             </>
 
         )
