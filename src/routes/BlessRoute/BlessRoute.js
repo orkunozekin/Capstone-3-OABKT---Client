@@ -8,7 +8,8 @@ class Bless extends Component {
 
   state = {
     curse: {},
-    blessing: []
+    blessing: [],
+    blessingsCount: ''
   }
 
   handleGetCurse = () => { //Get a curse
@@ -34,6 +35,8 @@ class Bless extends Component {
     const { emojiInput } = ev.target;
     const blessing_id = emojiInput.value
     console.log(blessing_id)
+    const curseId = this.state.curse.curse_id
+    console.log(curseId)
     fetch(`${config.API_ENDPOINT}/curses`, {
       method: 'PATCH',
       headers: {
@@ -41,18 +44,23 @@ class Bless extends Component {
         'content-type': 'application/json',
       },
       body: JSON.stringify({
-        curse_id: this.state.curse.curse_id,
+        curse_id: curseId,
         blessing_id: blessing_id
       })
     })
       .then(res => {
-        if (res.ok) {
+        console.log(res)
           return res.json();
-        }
       })
       .then(json => {
         console.log(json)
+        this.setState({ blessingsCount: json })
+        if (json === `You're out of blessings`) {
+          alert(`You're out of blessings`)
+        }
       })
+      .catch(error => console.log(error)
+    )
   }
 
   handleGetBlessingOptions = () => {
@@ -67,7 +75,7 @@ class Bless extends Component {
         }
       })
       .then(json => {
-        this.setState({blessing: json})
+        this.setState({ blessing: json })
       })
   }
 
@@ -78,19 +86,19 @@ class Bless extends Component {
   }
 
 
-
-
   render() {
     const curse = this.state.curse.curse;
     console.log(this.state.curse)
     console.log(this.state.blessing)
+    console.log(this.state.blessingsCount)
+
     return (
       <>
         <h2>Bless A Curse</h2>
-        {this.state.curse.length !== 0 ? curse : <p>No curse available</p>}
+        {this.state.curse === 'No available curses' ? <p>No available curses</p> : curse}
         <form onSubmit={this.handleBlessCurse} className="bless-form">
           <select name="emojiInput" className="emoji-dropdown">
-              <option>Select an Emoji</option>
+            <option>Select an Emoji</option>
             {this.state.blessing.map(blessing =>
               <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
             )}

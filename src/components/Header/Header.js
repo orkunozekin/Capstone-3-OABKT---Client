@@ -18,6 +18,7 @@ const Header = (props) => {
         props.toggleLoggedIn();
         console.log('hello')
     }
+    console.log(context.user)
 
     const nav_class = `nav-links ${!show ? "hideMenu" : ""}`;
 
