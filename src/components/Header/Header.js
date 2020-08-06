@@ -12,7 +12,8 @@ const Header = () => {
     const context = useContext(UserContext)
 
     function handleLogoutClick() {
-        context.processLogout()
+        // context.processLogout()
+        TokenService.clearAuthToken();
     }
 
     const nav_class = `nav-links ${!show ? "hideMenu" : ""}`;
