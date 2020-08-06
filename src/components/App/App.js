@@ -20,7 +20,7 @@ class App extends Component {
     quotes: {},
     user: {},
     loggedIn: false
-  }
+  };
 
 
   handleGetQuote = () => {
@@ -35,14 +35,14 @@ class App extends Component {
         }
       })
       .then(json => {
-        this.setState({ quotes: json })
-      })
-  }
+        this.setState({ quotes: json });
+      });
+  };
 
   handleGetDashboardInfo = () => {
     fetch(`${config.API_ENDPOINT}/user`, {
       headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`, 
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       }
     })
       .then(res => {
@@ -51,21 +51,34 @@ class App extends Component {
         }
       })
       .then(json => {
-        this.setState({user: json})
-      })
-  }
+        this.setState({ user: json });
+      });
+  };
 
+  toggleLoggedIn = () => {
+    this.setState({ loggedIn: !this.state.loggedIn });
+  };
+
+<<<<<<< HEAD
 
 
   toddleLoggedIn = () => {
     this.setState({loggedIn: !this.state.loggedIn})
   }
   
+=======
+>>>>>>> c9172015161f43f655e30584d5321929be0de4ee
 
   componentDidMount() {
     this.handleGetQuote();
     this.handleGetDashboardInfo();
+<<<<<<< HEAD
     
+=======
+    if (TokenService.hasAuthToken()) {
+      this.toggleLoggedIn();
+    }
+>>>>>>> c9172015161f43f655e30584d5321929be0de4ee
   }
 
 
@@ -77,11 +90,15 @@ class App extends Component {
           user: this.state.user,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
+<<<<<<< HEAD
           toddleLoggedIn: this.toddleLoggedIn
+=======
+
+>>>>>>> c9172015161f43f655e30584d5321929be0de4ee
         }}
       >
         <div className="App">
-          <Header toddleLoggedIn={this.toddleLoggedIn} loggedIn={this.state.loggedIn} />
+          <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
           <main className="main">
             <Switch>
               <PublicOnlyRoute
@@ -91,6 +108,7 @@ class App extends Component {
               <PublicOnlyRoute
                 path={'/login'}
                 component={LoginRoute}
+                toggleLoggedIn={this.toggleLoggedIn}
               />
               <PublicOnlyRoute
                 exact path={'/'}

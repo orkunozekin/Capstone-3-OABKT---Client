@@ -17,6 +17,7 @@ class LoginRoute extends Component {
     const { location, history } = this.props
     const destination = (location.state || {}).from || '/'
     history.push(destination)
+    this.props.toggleLoggedIn()
   }
 
   render() {
