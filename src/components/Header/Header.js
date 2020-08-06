@@ -13,9 +13,10 @@ const Header = (props) => {
     const context = useContext(UserContext)
 
     function handleLogoutClick() {
-        // context.processLogout()
-        TokenService.clearAuthToken();
+        context.processLogout()
+        // TokenService.clearAuthToken();
         // window.location.reload(true)
+        console.log('hello')
     }
 
     const nav_class = `nav-links ${!show ? "hideMenu" : ""}`;
@@ -80,8 +81,7 @@ const Header = (props) => {
                     <h1>Curse & Bless</h1>
                 </Link>
             </h3>
-            {console.log(props.loggedIn)}
-            {props.loggedIn
+            {TokenService.hasAuthToken()
                 ? renderLogoutLink()
                 : renderLoginLink()}
         </header>

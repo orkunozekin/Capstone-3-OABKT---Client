@@ -55,26 +55,21 @@ class App extends Component {
       })
   }
 
+
+
   toddleLoggedIn = () => {
     this.setState({loggedIn: !this.state.loggedIn})
   }
   
 
-
-
   componentDidMount() {
     this.handleGetQuote();
     this.handleGetDashboardInfo();
-    if (TokenService.hasAuthToken()) {
-      this.toddleLoggedIn() 
-    } 
+    
   }
 
 
-
   render() {
-
-
     return (
       <AppContext.Provider
         value={{
@@ -82,7 +77,7 @@ class App extends Component {
           user: this.state.user,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
-          
+          toddleLoggedIn: this.toddleLoggedIn
         }}
       >
         <div className="App">
