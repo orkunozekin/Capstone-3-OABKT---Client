@@ -30,6 +30,7 @@ class LoginForm extends Component {
         password.value = ''
         // this.context.processLogin(res.authToken)
         TokenService.saveAuthToken(res.authToken)
+        console.log(this.props.history)
         this.props.history.push('/')
       })
       .catch(res => {
