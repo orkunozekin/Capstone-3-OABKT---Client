@@ -14,7 +14,7 @@ class Bless extends Component {
     render() {
         return (
             <>
-                <h2>Random curse</h2>
+                <h2 className='curse-bless-title'>Random curse</h2>
                 <form onSubmit={this.handleSubmitClick}>
                     <p>Random curse text. My life is awful, blah blah blah</p>
 
