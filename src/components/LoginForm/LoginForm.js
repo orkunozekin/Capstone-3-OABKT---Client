@@ -35,7 +35,7 @@ class LoginForm extends Component {
         console.log(this.props.history);
         this.props.onLoginSuccess();
         // this.props.history.push('/')
-
+        // window.location.reload(true)
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })

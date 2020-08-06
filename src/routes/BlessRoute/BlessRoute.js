@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { render } from 'react-dom';
 import "./Bless.css";
 import config from '../../config';
 import TokenService from '../../services/token-service';

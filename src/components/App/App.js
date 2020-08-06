@@ -18,7 +18,8 @@ class App extends Component {
 
   state = {
     quotes: {},
-    user: {}
+    user: {},
+    loggedIn: false
   }
 
 
@@ -54,13 +55,19 @@ class App extends Component {
       })
   }
 
-
+  toddleLoggedIn = () => {
+    this.setState({loggedIn: !this.state.loggedIn})
+  }
   
+
 
 
   componentDidMount() {
     this.handleGetQuote();
     this.handleGetDashboardInfo();
+    if (TokenService.hasAuthToken()) {
+      this.toddleLoggedIn() 
+    } 
   }
 
 
@@ -74,11 +81,12 @@ class App extends Component {
           quotes: this.state.quotes,
           user: this.state.user,
           handleGetQuote: this.handleGetQuote,
-          handleGetDashboardInfo: this.handleGetDashboardInfo
+          handleGetDashboardInfo: this.handleGetDashboardInfo,
+          
         }}
       >
         <div className="App">
-          <Header />
+          <Header toddleLoggedIn={this.toddleLoggedIn} loggedIn={this.state.loggedIn} />
           <main className="main">
             <Switch>
               <PublicOnlyRoute
