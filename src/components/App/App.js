@@ -18,8 +18,9 @@ class App extends Component {
 
   state = {
     quotes: {},
-    user: {}
-  }
+    user: {},
+    loggedIn: false
+  };
 
 
   handleGetQuote = () => {
@@ -34,14 +35,14 @@ class App extends Component {
         }
       })
       .then(json => {
-        this.setState({ quotes: json })
-      })
-  }
+        this.setState({ quotes: json });
+      });
+  };
 
   handleGetDashboardInfo = () => {
     fetch(`${config.API_ENDPOINT}/user`, {
       headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`, 
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       }
     })
       .then(res => {
@@ -50,35 +51,40 @@ class App extends Component {
         }
       })
       .then(json => {
-        this.setState({user: json})
-      })
-  }
+        this.setState({ user: json });
+      });
+  };
+
+  toggleLoggedIn = () => {
+    this.setState({ loggedIn: !this.state.loggedIn });
+  };
 
 
-  
 
 
   componentDidMount() {
     this.handleGetQuote();
     this.handleGetDashboardInfo();
+    if (TokenService.hasAuthToken()) {
+      this.toggleLoggedIn();
+    }
   }
 
 
 
   render() {
-
-
     return (
       <AppContext.Provider
         value={{
           quotes: this.state.quotes,
           user: this.state.user,
           handleGetQuote: this.handleGetQuote,
-          handleGetDashboardInfo: this.handleGetDashboardInfo
+          handleGetDashboardInfo: this.handleGetDashboardInfo,
+
         }}
       >
         <div className="App">
-          <Header />
+          <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
           <main className="main">
             <Switch>
               <PublicOnlyRoute
@@ -88,6 +94,7 @@ class App extends Component {
               <PublicOnlyRoute
                 path={'/login'}
                 component={LoginRoute}
+                toggleLoggedIn={this.toggleLoggedIn}
               />
               <PublicOnlyRoute
                 exact path={'/'}

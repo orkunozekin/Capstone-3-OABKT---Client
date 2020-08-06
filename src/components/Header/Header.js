@@ -6,14 +6,17 @@ import UserContext from '../../contexts/UserContext'
 import './Header.css'
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-const Header = () => {
+const Header = (props) => {
     const [show, setShow] = useState(false); //hook for conditionally controlling the navbar links depending on screen sizes.
+
 
     const context = useContext(UserContext)
 
     function handleLogoutClick() {
         // context.processLogout()
         TokenService.clearAuthToken();
+        props.toggleLoggedIn();
+        // window.location.reload(true)
     }
 
     const nav_class = `nav-links ${!show ? "hideMenu" : ""}`;
@@ -36,7 +39,7 @@ const Header = () => {
                     <Link
                         className="navlink"
                         onClick={handleLogoutClick}
-                        to='/login'>
+                        to='/'>
                         Logout
                     </Link>
                     <Link
@@ -78,7 +81,8 @@ const Header = () => {
                     <h1>Curse & Bless</h1>
                 </Link>
             </h3>
-            {TokenService.hasAuthToken()
+            {console.log(props.loggedIn)}
+            {props.loggedIn
                 ? renderLogoutLink()
                 : renderLoginLink()}
         </header>
