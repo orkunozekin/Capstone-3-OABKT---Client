@@ -5,9 +5,9 @@ export default class CurseForm extends Component {
 
     render() {
         return (
-            <form className='curse-form'>
-                <textarea className='curse-box'></textarea>
-                <button className='void-button' type='submit' onClick={this.props.onClick}>Send into Void</button>
+            <form onSubmit={this.props.handlePostCurses} className='curse-form'>
+                <textarea name='curseInput' className='curse-box'></textarea>
+                <button className='void-button' type='submit'>Send into Void</button>
             </form>
         )
     }

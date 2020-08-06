@@ -10,6 +10,7 @@ class CurseRoute extends Component {
     handlePostCurses = (ev) => {
         ev.preventDefault()
         const { curseInput } = ev.target
+        console.log(curseInput.value)
         const curse = curseInput.value;
         fetch(`${config.API_ENDPOINT}/curses`, {
           method: 'POST',
@@ -30,11 +31,12 @@ class CurseRoute extends Component {
                 console.log(json)
             })
     }
+
     render() {
         return (
             <div className='curse-bless-field'>
                 <h2 className='curse-bless-title'>Perform a Curse</h2>
-                <CurseForm onSubmit={this.handlePostCurses}></CurseForm>
+                <CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
                 <Link className="link-login" to='/login'>...or login here</Link>
             </div>
         )

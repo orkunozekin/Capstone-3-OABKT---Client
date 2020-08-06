@@ -59,26 +59,13 @@ class App extends Component {
     this.setState({ loggedIn: !this.state.loggedIn });
   };
 
-<<<<<<< HEAD
-
-
-  toddleLoggedIn = () => {
-    this.setState({loggedIn: !this.state.loggedIn})
-  }
-  
-=======
->>>>>>> c9172015161f43f655e30584d5321929be0de4ee
 
   componentDidMount() {
     this.handleGetQuote();
     this.handleGetDashboardInfo();
-<<<<<<< HEAD
-    
-=======
     if (TokenService.hasAuthToken()) {
       this.toggleLoggedIn();
     }
->>>>>>> c9172015161f43f655e30584d5321929be0de4ee
   }
 
 
@@ -90,11 +77,6 @@ class App extends Component {
           user: this.state.user,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
-<<<<<<< HEAD
-          toddleLoggedIn: this.toddleLoggedIn
-=======
-
->>>>>>> c9172015161f43f655e30584d5321929be0de4ee
         }}
       >
         <div className="App">
