@@ -13,10 +13,8 @@ const Header = (props) => {
     const context = useContext(UserContext)
 
     function handleLogoutClick() {
-        // context.processLogout()
-        TokenService.clearAuthToken();
+        context.processLogout()
         props.toggleLoggedIn();
-        console.log('hello')
     }
     console.log(context.user)
 
@@ -35,18 +33,13 @@ const Header = (props) => {
                     <Link
                         className="navlink"
                         to='/dashboard'>
-                        Dashboard
+                        {context.user.name}
                     </Link>
                     <Link
                         className="navlink"
                         onClick={handleLogoutClick}
                         to='/'>
                         Logout
-                    </Link>
-                    <Link
-                        className="navlink user-name"
-                        to="#">
-                        {context.user.name}
                     </Link>
                 </nav>
 

@@ -6,13 +6,14 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
 import './App.css';
-import LandingPage from '../LandingPage/LandingPage';
+import LandingPageRoute from '../../routes/LandingPageRoute/LandingPageRoute';
 import Dashboard from '../../routes/Dashboard/DashboardRoute';
 import CurseRoute from '../../routes/CurseRoute/CurseRoute';
 import BlessRoute from '../../routes/BlessRoute/BlessRoute';
 import config from '../../config';
 import TokenService from '../../services/token-service';
 import AppContext from '../../contexts/AppContext';
+import { UserProvider } from '../../contexts/UserContext';
 
 class App extends Component {
 
@@ -80,38 +81,40 @@ class App extends Component {
           handleGetDashboardInfo: this.handleGetDashboardInfo,
         }}
       >
-        <div className="App">
-          <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
-          <main className="main">
-            <Switch>
-              <PublicOnlyRoute
-                path={'/register'}
-                component={RegistrationRoute}
-              />
-              <PublicOnlyRoute
-                path={'/login'}
-                component={LoginRoute}
-                toggleLoggedIn={this.toggleLoggedIn}
-              />
-              <PublicOnlyRoute
-                exact path={'/'}
-                component={LandingPage}
-              />
-              <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
-                exact path={'/dashboard'}
-                component={Dashboard}
-              />
-              <PublicOnlyRoute
-                exact path={'/curse'}
-                component={CurseRoute}
-              />
-              <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
-                exact path={'/bless'}
-                component={BlessRoute}
-              />
-            </Switch>
-          </main>
-        </div>
+        <UserProvider>
+          <div className="App">
+            <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
+            <main className="main">
+              <Switch>
+                <PublicOnlyRoute
+                  path={'/register'}
+                  component={RegistrationRoute}
+                />
+                <PublicOnlyRoute
+                  path={'/login'}
+                  component={LoginRoute}
+                  toggleLoggedIn={this.toggleLoggedIn}
+                />
+                <PublicOnlyRoute
+                  exact path={'/'}
+                  component={LandingPageRoute}
+                />
+                <PrivateRoute // change it to PrivateRoute once the server is deployed
+                  exact path={'/dashboard'}
+                  component={Dashboard}
+                />
+                <PublicOnlyRoute
+                  exact path={'/curse'}
+                  component={CurseRoute}
+                />
+                <PrivateRoute // change it to PrivateRoute once the server is deployed
+                  exact path={'/bless'}
+                  component={BlessRoute}
+                />
+              </Switch>
+            </main>
+          </div>
+        </UserProvider>
       </AppContext.Provider>
     );
   }

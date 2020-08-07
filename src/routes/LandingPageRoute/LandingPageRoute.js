@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { render } from 'react-dom'
 import "./LandingPage.css"
 
-class LandingPage extends Component {
+class LandingPageRoute extends Component {
 
     render() {
         return (
@@ -31,4 +31,4 @@ class LandingPage extends Component {
     }
 }
 
-export default LandingPage;
+export default LandingPageRoute;

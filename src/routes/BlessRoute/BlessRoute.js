@@ -9,7 +9,7 @@ class Bless extends Component {
   state = {
     curse: {},
     blessing: [],
-    blessingsCount: ''
+    blessingsCount:''
   }
 
   handleGetCurse = () => { //Get a curse
@@ -50,17 +50,19 @@ class Bless extends Component {
     })
       .then(res => {
         console.log(res)
-          alert(`${res.message}`)
-          // pull up new to bless
-          // or go to Dashboard
+          if (res.message === !undefined){
+            alert(`${res.message}`)
+            // pull up new curse to bless
+            this.handleGetCurse()
+          }
           return res.json();
       })
       .then(json => {
         console.log(json)
         this.setState({ blessingsCount: json })
-        if (json === `You're out of blessings`) {
-          alert(`You're out of blessings`)
-        }
+        // if (json === `You're out of blessings`) {
+        //   alert(`You're out of blessings`)
+        // }
       })
       .catch(error => console.log(error)
     )
@@ -98,6 +100,7 @@ class Bless extends Component {
     return (
       <>
         <h2>Bless A Curse</h2>
+        {/* <div>{this.state.blessingsCount === `You're out of blessings` ? this.state.blessingsCount}</div> */}
         {this.state.curse === 'No available curses' ? <p>No available curses</p> : curse}
         <form onSubmit={this.handleBlessCurse} className="bless-form">
           <select name="emojiInput" className="emoji-dropdown">
