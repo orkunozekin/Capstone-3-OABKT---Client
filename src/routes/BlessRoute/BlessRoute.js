@@ -50,6 +50,9 @@ class Bless extends Component {
     })
       .then(res => {
         console.log(res)
+          alert(`${res.message}`)
+          // pull up new to bless
+          // or go to Dashboard
           return res.json();
       })
       .then(json => {

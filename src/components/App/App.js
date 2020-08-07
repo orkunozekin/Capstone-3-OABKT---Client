@@ -16,6 +16,7 @@ import AppContext from '../../contexts/AppContext';
 
 class App extends Component {
 
+  // Create the State
   state = {
     quotes: {},
     user: {},
