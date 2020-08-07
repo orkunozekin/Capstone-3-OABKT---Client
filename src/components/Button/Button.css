@@ -6,3 +6,24 @@ button {
     margin: 20px auto;
     cursor: pointer;
 }
+
+.load-icon {
+    animation: spin .75s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -82,7 +82,7 @@ class LoginForm extends Component {
           Login
         </Button>}
         {loading && <Button type='submit' disabled>
-        <FaSpinner />
+        <FaSpinner className='load-icon' />
         </Button>}
       </form>
     )
