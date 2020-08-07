@@ -6,7 +6,7 @@ import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
 import RegistrationRoute from '../../routes/RegistrationRoute/RegistrationRoute';
 import './App.css';
-import LandingPage from '../LandingPage/LandingPage';
+import LandingPageRoute from '../../routes/LandingPageRoute/LandingPageRoute';
 import Dashboard from '../../routes/Dashboard/DashboardRoute';
 import CurseRoute from '../../routes/CurseRoute/CurseRoute';
 import BlessRoute from '../../routes/BlessRoute/BlessRoute';
@@ -95,7 +95,7 @@ class App extends Component {
               />
               <PublicOnlyRoute
                 exact path={'/'}
-                component={LandingPage}
+                component={LandingPageRoute}
               />
               <PublicOnlyRoute // change it to PrivateRoute once the server is deployed
                 exact path={'/dashboard'}
