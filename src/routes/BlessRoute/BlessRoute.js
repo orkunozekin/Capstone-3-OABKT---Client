@@ -97,23 +97,31 @@ class Bless extends Component {
     console.log(this.state.blessing)
     console.log(this.state.blessingsCount)
 
-    return (
-      <>
-        <h2>Bless A Curse</h2>
-        {/* <div>{this.state.blessingsCount === `You're out of blessings` ? this.state.blessingsCount}</div> */}
-        {this.state.curse === 'No available curses' ? <p>No available curses</p> : curse}
-        <form onSubmit={this.handleBlessCurse} className="bless-form">
-          <select name="emojiInput" className="emoji-dropdown">
-            <option>Select an Emoji</option>
-            {this.state.blessing.map(blessing =>
-              <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
-            )}
-          </select>
-          <button type='submit'>Bless This Curse</button>
-        </form>
-      </>
-
-    )
+    if (this.state.blessingsCount === `You're out of blessings`) {
+      return (
+        <div>You are out of blessings</div>
+      )
+    }
+    else {
+      return (
+        <>
+          <h2>Bless A Curse</h2>
+          
+          {this.state.curse === 'No available curses' ? <p>No available curses</p> : curse}
+          <form onSubmit={this.handleBlessCurse} className="bless-form">
+            <select name="emojiInput" className="emoji-dropdown">
+              <option>Select an Emoji</option>
+              {this.state.blessing.map(blessing =>
+                <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
+              )}
+            </select>
+            <button type='submit'>Bless This Curse</button>
+          </form>
+        </>
+  
+      )
+    }
+    
   }
 }
 

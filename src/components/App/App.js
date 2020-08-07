@@ -14,6 +14,7 @@ import config from '../../config';
 import TokenService from '../../services/token-service';
 import AppContext from '../../contexts/AppContext';
 import { UserProvider } from '../../contexts/UserContext';
+import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 
 class App extends Component {
 
@@ -95,21 +96,25 @@ class App extends Component {
                   component={LoginRoute}
                   toggleLoggedIn={this.toggleLoggedIn}
                 />
-                <PublicOnlyRoute
+                <Route
                   exact path={'/'}
                   component={LandingPageRoute}
                 />
-                <PrivateRoute // change it to PrivateRoute once the server is deployed
+                <PrivateRoute
                   exact path={'/dashboard'}
                   component={Dashboard}
                 />
-                <PublicOnlyRoute
+                <Route
                   exact path={'/curse'}
                   component={CurseRoute}
                 />
-                <PrivateRoute // change it to PrivateRoute once the server is deployed
+                <PrivateRoute
                   exact path={'/bless'}
                   component={BlessRoute}
+                />
+                <Route
+                  exact path={'/notfound'}
+                  component={NotFoundRoute}
                 />
               </Switch>
             </main>

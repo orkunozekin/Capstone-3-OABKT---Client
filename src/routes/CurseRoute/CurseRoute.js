@@ -39,8 +39,10 @@ class CurseRoute extends Component {
         return (
             <div className='curse-bless-field'>
                 <h2 className='curse-bless-title'>Perform a Curse</h2>
-                <CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
-                <Link className="link-login" to='/login'>...or login here</Link>
+                {TokenService.hasAuthToken() ?
+                    <CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
+                    : <><CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
+                    <Link className="link-login" to='/login'>...or login here</Link></>}
             </div>
         )
     }
