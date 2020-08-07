@@ -50,9 +50,11 @@ class Bless extends Component {
     })
       .then(res => {
         console.log(res)
-          alert(`${res.message}`)
-          // pull up new to bless
-          // or go to Dashboard
+          if (res.message === !undefined){
+            alert(`${res.message}`)
+            // pull up new curse to bless
+            this.handleGetCurse()
+          }
           return res.json();
       })
       .then(json => {
