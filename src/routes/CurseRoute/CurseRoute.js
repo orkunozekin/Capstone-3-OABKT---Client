@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import config from '../../config';
 import TokenService from '../../services/token-service';
 import CurseForm from '../../components/CurseForm/CurseForm';
@@ -7,11 +7,13 @@ import './CurseRoute.css';
 
 class CurseRoute extends Component {
 
+   
+
     handlePostCurses = (ev) => {
         ev.preventDefault()
-        const { curseInput } = ev.target
-        console.log(curseInput.value)
-        const curse = curseInput.value;
+        const { curseInput } = ev.target;
+        console.log(curseInput.value);
+        let curse = curseInput.value;
         fetch(`${config.API_ENDPOINT}/curses`, {
           method: 'POST',
           headers: {
@@ -28,7 +30,8 @@ class CurseRoute extends Component {
                 }
             })
             .then(json => {
-                console.log(json)
+                alert(`${json.message}`)
+                curseInput.value = '';
             })
     }
 

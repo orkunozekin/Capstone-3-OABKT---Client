@@ -3,7 +3,7 @@
     width: 90%;
     background-color: darkgrey;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     align-items: center;
     justify-content: space-evenly;
 }
