@@ -10,7 +10,7 @@ const UserContext = React.createContext({
   clearError: () => {},
   setUser: () => {},
   processLogin: () => {console.log('hi')},
-  processLogout: () => {},
+  processLogout: () => {console.log('bye')},
 })
 
 export default UserContext;
@@ -33,14 +33,6 @@ export class UserProvider extends Component {
     IdleService.setIdleCallback(this.logoutBecauseIdle)
   }
 
-  componentDidMount() {
-    if (TokenService.hasAuthToken()) {
-      IdleService.regiserIdleTimerResets()
-      TokenService.queueCallbackBeforeExpiry(() => {
-        this.fetchRefreshToken()
-      })
-    }
-  }
 
   componentWillUnmount() {
     IdleService.unRegisterIdleResets()
@@ -69,13 +61,10 @@ export class UserProvider extends Component {
       name: jwtPayload.name,
       username: jwtPayload.sub,
     })
-    IdleService.regiserIdleTimerResets()
-    TokenService.queueCallbackBeforeExpiry(() => {
-      this.fetchRefreshToken()
-    })
   }
 
   processLogout = () => {
+    console.log('Goodbye')
     TokenService.clearAuthToken()
     TokenService.clearCallbackBeforeExpiry()
     IdleService.unRegisterIdleResets()
@@ -89,19 +78,7 @@ export class UserProvider extends Component {
     this.setUser({ idle: true })
   }
 
-  fetchRefreshToken = () => {
-    AuthApiService.refreshToken()
-      .then(res => {
-        TokenService.saveAuthToken(res.authToken)
-        TokenService.queueCallbackBeforeExpiry(() => {
-          this.fetchRefreshToken()
-        })
-      })
-      .catch(err => {
-        this.setError(err)
-      })
-  }
-
+  
   render() {
     const value = {
       user: this.state.user,

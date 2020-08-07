@@ -28,7 +28,7 @@ class Dashboard extends Component {
                 </div>
 
                 <div className='blessing-box'>
-                    <p>You've given <span className='blessing-count'>{totalblessings}</span> blessing{totalblessings = 1 && <span>s</span>}!</p>
+                    <p>You've given <span className='blessing-count'>{totalblessings}</span> blessing{totalblessings !== 1 && <span>s</span>}!</p>
                 </div>
 
                 <div className='button-box'>
