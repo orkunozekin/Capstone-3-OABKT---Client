@@ -34,9 +34,7 @@ class Bless extends Component {
     ev.preventDefault();
     const { emojiInput } = ev.target;
     const blessing_id = emojiInput.value
-    console.log(blessing_id)
     const curseId = this.state.curse.curse_id
-    console.log(curseId)
     fetch(`${config.API_ENDPOINT}/curses`, {
       method: 'PATCH',
       headers: {
@@ -49,7 +47,6 @@ class Bless extends Component {
       })
     })
       .then(res => {
-        console.log(res)
           if (res.message === !undefined){
             alert(`${res.message}`)
             // pull up new curse to bless
@@ -58,11 +55,7 @@ class Bless extends Component {
           return res.json();
       })
       .then(json => {
-        console.log(json)
         this.setState({ blessingsCount: json })
-        // if (json === `You're out of blessings`) {
-        //   alert(`You're out of blessings`)
-        // }
       })
       .catch(error => console.log(error)
     )
@@ -93,9 +86,6 @@ class Bless extends Component {
 
   render() {
     const curse = this.state.curse.curse;
-    console.log(this.state.curse)
-    console.log(this.state.blessing)
-    console.log(this.state.blessingsCount)
 
     if (this.state.blessingsCount === `You're out of blessings`) {
       return (

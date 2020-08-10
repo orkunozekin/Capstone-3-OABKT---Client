@@ -11,8 +11,7 @@ class CurseRoute extends Component {
 
     handlePostCurses = (ev) => {
         ev.preventDefault()
-        const { curseInput } = ev.target;
-        console.log(curseInput.value);
+        const { curseInput } = ev.target;\
         let curse = curseInput.value;
         fetch(`${config.API_ENDPOINT}/curses`, {
           method: 'POST',
