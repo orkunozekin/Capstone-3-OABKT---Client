@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../../components/Button/Button';
 import "./Bless.css";
 import config from '../../config';
 import TokenService from '../../services/token-service';
@@ -94,10 +95,10 @@ class Bless extends Component {
     }
     else {
       return (
-        <>
-          <h2>Bless A Curse</h2>
+        <div className='bless-container'>
+          <h2 className='curse-bless-title'>Bless A Curse</h2>
           
-          {this.state.curse === 'No available curses' ? <p>No available curses</p> : curse}
+          {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>curse</p>}
           <form onSubmit={this.handleBlessCurse} className="bless-form">
             <select name="emojiInput" className="emoji-dropdown">
               <option>Select an Emoji</option>
@@ -105,9 +106,9 @@ class Bless extends Component {
                 <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
               )}
             </select>
-            <button type='submit'>Bless This Curse</button>
+            <Button type='submit'>Bless This Curse</Button>
           </form>
-        </>
+        </div>
   
       )
     }
