@@ -48,7 +48,7 @@ class Bless extends Component {
       })
     })
       .then(res => {
-          if (res.message === !undefined){
+          if (res.message !== undefined){
             alert(`${res.message}`)
             // pull up new curse to bless
             this.handleGetCurse()
@@ -98,7 +98,7 @@ class Bless extends Component {
         <div className='bless-container'>
           <h2 className='curse-bless-title'>Bless A Curse</h2>
           
-          {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>curse</p>}
+          {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>{curse}</p>}
           <form onSubmit={this.handleBlessCurse} className="bless-form">
             <select name="emojiInput" className="emoji-dropdown">
               <option>Select an Emoji</option>
