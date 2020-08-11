@@ -1,0 +1,10 @@
+/* removeCookie() */
+
+
+.curseBlessWrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* remove Cookies and then add transitions on click on the button */
