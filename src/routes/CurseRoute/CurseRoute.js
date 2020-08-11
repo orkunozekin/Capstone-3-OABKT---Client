@@ -8,8 +8,30 @@ import './CurseRoute.css';
 class CurseRoute extends Component {
 
     state = {
-       curseSent: false
-   }
+        curseSent: false,
+        curseMessage: {
+            value: '',
+            touched: false
+        }
+    }
+    
+    newCurseMessage = (curseMessage) => {
+        this.setState({ curseMessage: { value: curseMessage, touched: true } })
+    }
+
+    validateCurseMessage = () => {
+        const curseMessage = this.state.curseMessage.value;
+        if (!curseMessage) {
+            return 'Curse should include characters'
+        }
+
+        // const folder = this.state.folderName.value;
+        // if (!folder) {
+        //     return 'Selecting a folder is required'
+        // }
+    }
+    
+
 
     handlePostCurses = (ev) => {
         ev.preventDefault()
@@ -31,6 +53,7 @@ class CurseRoute extends Component {
                 }
             })
             .then(json => {
+                console.log(json)
                 // alert(`${json.message}`)
                 this.setState({curseSent: true})
                 curseInput.value = '';
@@ -39,16 +62,29 @@ class CurseRoute extends Component {
 
     render() {
         const curseSent = this.state.curseSent;
-
+       
 
         return (
             <div className='curse-bless-field'>
                 <h2 className='curse-bless-title'>Perform a Curse</h2>
                 {TokenService.hasAuthToken() ?
-                    <><CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
+                    <>
+                        <CurseForm
+                            curseMessage={this.state.curseMessage}
+                            newCurseMessage={this.newCurseMessage}
+                            handlePostCurses={this.handlePostCurses}
+                            validateCurseMessage={this.validateCurseMessage}
+                        >
+                        </CurseForm>
                         {curseSent ? <div>Your curse was sent into the void.</div> : ''}
                     </>
-                    : <><CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
+                    : <><CurseForm
+                            curseMessage={this.state.curseMessage}
+                            newCurseMessage={this.newCurseMessage}
+                            handlePostCurses={this.handlePostCurses}
+                            validateCurseMessage={this.validateCurseMessage}
+                        >
+                        </CurseForm>
                         <Link className="link-login" to='/login'>...or login here</Link>
                         {curseSent ? <div>Your curse was sent into the void.</div> : ''}
                     </>}
