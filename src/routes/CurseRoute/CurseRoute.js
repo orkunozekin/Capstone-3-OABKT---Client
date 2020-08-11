@@ -29,8 +29,10 @@ class CurseRoute extends Component {
         if (curseMessage.length < 10) {
             return 'Curse should contain at least 10 characters'
         }
-        if (curseMessage.split(' ').length < 3) {
-            return 'Curse should contain at least 3 words'
+        let words = curseMessage.split(' ')
+        console.log(words)
+        if (words.length <= 3 || words[words.length - 1] === '') {
+            return 'Curse should contain more than 3 words'
         }
 
     }
@@ -41,6 +43,7 @@ class CurseRoute extends Component {
         ev.preventDefault()
         const { curseInput } = ev.target;
         let curse = curseInput.value;
+        let curseSent = false;
         fetch(`${config.API_ENDPOINT}/curses`, {
             method: 'POST',
             headers: {
@@ -53,6 +56,7 @@ class CurseRoute extends Component {
         })
             .then(res => {
                 if (res.ok) {
+                    curseSent = true;
                     this.setState({ curseSent: true })
                     curseInput.value = '';
                 }
@@ -60,8 +64,13 @@ class CurseRoute extends Component {
             })
             .then(json => {
                 console.log(json)
-                this.setState({ serverMessage: json })
-            
+                if (!curseSent) {
+                    this.setState({ serverMessage: json })
+                }
+                else {
+                    this.setState({serverMessage: ''})
+                }
+              
             })
             .catch(e => console.log(e.json()))
     }
