@@ -7,7 +7,9 @@ import './CurseRoute.css';
 
 class CurseRoute extends Component {
 
-   
+    state = {
+       curseSent: false
+   }
 
     handlePostCurses = (ev) => {
         ev.preventDefault()
@@ -29,17 +31,23 @@ class CurseRoute extends Component {
                 }
             })
             .then(json => {
-                alert(`${json.message}`)
+                // alert(`${json.message}`)
+                this.setState({curseSent: !this.state.curseSent})
                 curseInput.value = '';
             })
     }
 
     render() {
+        const curseSent = this.state.curseSent;
+
+
         return (
             <div className='curse-bless-field'>
                 <h2 className='curse-bless-title'>Perform a Curse</h2>
                 {TokenService.hasAuthToken() ?
-                    <CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
+                    <><CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
+                        {curseSent ? <div>Your curse was sent into the void.</div> : ''}
+                    </>
                     : <><CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
                     <Link className="link-login" to='/login'>...or login here</Link></>}
             </div>

@@ -15,7 +15,7 @@ class Dashboard extends Component {
         const source = this.context.quotes.source;
 
         let totalblessings = 0;
-
+    
         if (this.context.user.user) {
             totalblessings = this.context.user.user.totalblessings;
         }
