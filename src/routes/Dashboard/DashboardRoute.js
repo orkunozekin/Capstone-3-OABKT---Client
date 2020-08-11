@@ -9,11 +9,16 @@ class Dashboard extends Component {
 
     static contextType = AppContext;
 
+    componentDidMount() {
+        this.context.handleGetQuote();
+        this.context.handleGetDashboardInfo();
+    }
+
 
     render() {
         const quote = this.context.quotes.quote;
         const source = this.context.quotes.source;
-
+        // const handleGetQuote = this.context.handleGetQuote;
         let totalblessings = 0;
     
         if (this.context.user.user) {

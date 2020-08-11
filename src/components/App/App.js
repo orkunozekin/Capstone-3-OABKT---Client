@@ -64,8 +64,8 @@ class App extends Component {
 
 
   componentDidMount() {
-    this.handleGetQuote();
-    this.handleGetDashboardInfo();
+
+   
     if (TokenService.hasAuthToken()) {
       this.toggleLoggedIn();
     }
