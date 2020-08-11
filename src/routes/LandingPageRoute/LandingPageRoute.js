@@ -7,7 +7,7 @@ class LandingPageRoute extends Component {
 
     render() {
         return (
-            <>
+            <div className='alert-box'>
                 <h2>About the App</h2>
                 <p>Our app gives users a way to curse in a 
                     very anonymous way, curse while logged in, 
@@ -25,7 +25,7 @@ class LandingPageRoute extends Component {
                     PLEASE GET PROFESSIONAL HELP</p>
 
                 <Link className="" to='/curse'>Curse Anonymously</Link>
-            </>
+            </div>
 
         )
     }
