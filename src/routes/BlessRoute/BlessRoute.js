@@ -10,7 +10,8 @@ class Bless extends Component {
   state = {
     curse: {},
     blessing: [],
-    blessingsCount:''
+    blessingMessage: '',
+    blessingSent: false
   }
 
   handleGetCurse = () => { //Get a curse
@@ -48,15 +49,16 @@ class Bless extends Component {
       })
     })
       .then(res => {
+        console.log(res)
           if (res.message !== undefined){
-            alert(`${res.message}`)
-            // pull up new curse to bless
-            this.handleGetCurse()
           }
           return res.json();
       })
       .then(json => {
-        this.setState({ blessingsCount: json })
+        console.log(json)
+        this.handleGetCurse();
+        this.setState({ blessingMessage: json, blessingSent: true })
+       
       })
       .catch(error => console.log(error)
     )
@@ -87,8 +89,12 @@ class Bless extends Component {
 
   render() {
     const curse = this.state.curse.curse;
+    const blessingSent = this.state.blessingSent;
+    console.log(curse)
+    console.log(this.state.blessing)
+    console.log(this.state.blessingMessage)
 
-    if (this.state.blessingsCount === `You're out of blessings`) {
+    if (this.state.blessingMessage === `You're out of blessings`) {
       return (
         <div>You are out of blessings</div>
       )
@@ -100,14 +106,14 @@ class Bless extends Component {
           
           {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>{curse}</p>}
           <form onSubmit={this.handleBlessCurse} className="bless-form">
-            <select name="emojiInput" className="emoji-dropdown">
-              <option>Select an Emoji</option>
-              {this.state.blessing.map(blessing =>
+          {this.state.curse === 'No available curses' ? <select name="emojiInput" className="emoji-dropdown" disabled></select> : <select name="emojiInput" className="emoji-dropdown"><option>Select an Emoji</option> {this.state.blessing.map(blessing =>
                 <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
-              )}
-            </select>
-            <Button type='submit'>Bless This Curse</Button>
+              )}</select>}
+              
+             
+            {this.state.curse === 'No available curses' ? <Button type='submit' disabled>Bless This Curse</Button> : <Button type='submit'>Bless This Curse</Button>}
           </form>
+          {blessingSent ? <div>You have blessed this curse : {curse}</div> : ''}
         </div>
   
       )

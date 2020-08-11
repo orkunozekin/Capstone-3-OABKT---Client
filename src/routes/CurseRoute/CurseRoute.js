@@ -32,7 +32,7 @@ class CurseRoute extends Component {
             })
             .then(json => {
                 // alert(`${json.message}`)
-                this.setState({curseSent: !this.state.curseSent})
+                this.setState({curseSent: true})
                 curseInput.value = '';
             })
     }
@@ -49,7 +49,9 @@ class CurseRoute extends Component {
                         {curseSent ? <div>Your curse was sent into the void.</div> : ''}
                     </>
                     : <><CurseForm handlePostCurses={this.handlePostCurses}></CurseForm>
-                    <Link className="link-login" to='/login'>...or login here</Link></>}
+                        <Link className="link-login" to='/login'>...or login here</Link>
+                        {curseSent ? <div>Your curse was sent into the void.</div> : ''}
+                    </>}
             </div>
         )
     }
