@@ -3,8 +3,34 @@
 
 .curseBlessWrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   padding: 0;
+  justify-content: space-around;
+}
+
+.buttonHeader {
+  padding: 30vh 22vw;
+  border: none;
+  background-color: gray;
+  font-size: 8.5rem;
+  margin: 0;
+ }
+
+.bless-button {
+  background-color: lightyellow;
+  color: darkslategray;
+}
+
+.curse-button {
+  background-color: darkslategray;
+  color: lightyellow;
+}
+
+.landingLink {
+  padding: 0;
+  margin: 0;
+  width: 0;
+  height: 0;
 }
 
 /* remove Cookies and then add transitions on click on the button */

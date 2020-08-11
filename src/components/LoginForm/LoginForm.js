@@ -33,7 +33,7 @@ class LoginForm extends Component {
         console.log(res.authToken)
         this.context.processLogin(res.authToken)
         this.props.onLoginSuccess();
-        this.props.history.push('/dashboard')
+        this.props.history.push('/landingpage')
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
