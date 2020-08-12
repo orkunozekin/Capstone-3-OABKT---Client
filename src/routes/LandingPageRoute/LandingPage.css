@@ -6,15 +6,19 @@
   flex-direction: row;
   padding: 0;
   justify-content: space-around;
-  
+  margin: 0;
+  width: 100%;
+  height: 90vh;
 }
 
 .buttonHeader {
-  padding: 30vh 22vw;
+  height: 100%;
+  width: 100%;
   border: none;
   background-color: gray;
   font-size: 8.5rem;
   margin: 0;
+  padding: 0;
  }
 
 .bless-button {
@@ -30,8 +34,8 @@
 .landingLink {
   padding: 0;
   margin: 0;
-  width: 0;
-  height: 0;
+  width: 100%;
+  height: 100%;
 }
 
 /* remove Cookies and then add transitions on click on the button */

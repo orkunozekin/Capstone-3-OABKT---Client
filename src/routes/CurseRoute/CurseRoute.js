@@ -11,10 +11,12 @@ class CurseRoute extends Component {
        curseSent: false
    }
 
-    handlePostCurses = (ev) => {
-        ev.preventDefault()
-        const { curseInput } = ev.target;
-        let curse = curseInput.value;
+
+//    handleSpin = () => {
+       
+//    }
+
+    handlePostCurses = (curse) => {
         fetch(`${config.API_ENDPOINT}/curses`, {
           method: 'POST',
           headers: {
@@ -33,8 +35,9 @@ class CurseRoute extends Component {
             .then(json => {
                 // alert(`${json.message}`)
                 this.setState({curseSent: true})
-                curseInput.value = '';
+                
             })
+            // .then(handleSpin())
     }
 
     render() {

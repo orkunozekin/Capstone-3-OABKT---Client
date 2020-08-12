@@ -2,17 +2,21 @@
 
 .curse-form-wrapper {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: column nowrap;
 }
 
 .curse-form {
-    height: 40vh;
     width: 60vw;
     background-color: beige;
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: space-evenly;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%, 0%);
+    height: 80%;
+    transition: margin-top 2s ease-out;
 }
 
 .curse-box {
@@ -31,28 +35,35 @@
 }
 
 .pill {
-    margin: 0px;
+    margin: 0 auto;
     margin-bottom: -1rem;
     height: 3.5rem;
     width: 61vw;
     border-radius: 5rem;
     background-color: tan;
-    left: 1vw;
+    top: 80%; 
+    margin-left: -30.5vw;
+    z-index: 100;
+    position: fixed;
+    transition: margin-left 1s ease-in;
 }
 
 .scrollBottom {
-    width: 100%;
     height: 15rem;
-    z-index: 2;
+    width: 90vw;
+    position: fixed;
+    top: 80%;
+    transform: translate(-50%, 0);
+    z-index: 5;
+    background-color: lightgray;
 }
 
 .curse-spin {
-    animation: spin 2500ms ease-in;
+    animation: spin 1500ms ease-out;
 }
 
 .curse-left {
     transition: left 1s ease-in;
-    left: 100%;
 }
 
 @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(1080deg); } }
@@ -61,12 +72,3 @@
     outline: none;
 }
 
-.void-button {
-    margin-bottom: -.5rem;
-    height: 15%;
-    width: 100%;
-    background-color: rgb(228, 228, 197);
-    color:  black;
-    border-radius: 10px;
-    font-size: 1.1em;
-}

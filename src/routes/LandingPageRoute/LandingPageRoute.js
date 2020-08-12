@@ -18,7 +18,7 @@ class LandingPageRoute extends Component {
         if (this.context.user) {
             return <>
                <Link className='landingLink' to='/bless'>
-                   <Button className='buttonHeader'>
+                   <Button className='buttonHeader blessButton'>
                        <h2>Bless</h2>
                    </Button>
                </Link>
@@ -35,7 +35,7 @@ class LandingPageRoute extends Component {
             <>
             <div className='curseBlessWrapper'>
             <Link className='landingLink' to='/curse'>
-                <Button className='buttonHeader'><h2>Curse</h2>
+                <Button className='buttonHeader curseButton'><h2>Curse</h2>
                 </Button>
                 </Link>
             {this.loggedInBlessPart()}
