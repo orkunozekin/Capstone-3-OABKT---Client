@@ -11,7 +11,6 @@ const NewHeader = (props) => {
 
     const context = useContext(UserContext)
 
-    const nav_class = `header-links ${!show ? "hideHeader" : ""}`;
 
     function handleLogoutClick() {
         context.processLogout()
@@ -43,17 +42,3 @@ const NewHeader = (props) => {
 
 export default NewHeader;
 
-
-// return (
-//     <nav className="nav">
-//         <h2><a className="title" href="/">Atlas Chords</a></h2>
-//         <div className={nav_class}>
-//             <a className="Link" href="/submitNewChord">Submit Chords</a>
-//             <a className="Link" href="/">Guitar Chords</a>
-//             <a className="Link" href="/" onClick={handleLogOut}>Log Out</a>
-//         </div>
-//         <div className="icon">
-//             <GiHamburgerMenu onClick={(e) => setShow(!show)} />
-//         </div>
-//     </nav>
-// )
