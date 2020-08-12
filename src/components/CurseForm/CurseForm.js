@@ -13,12 +13,16 @@ export default class CurseForm extends Component {
         return (
             <>
             {/* <div className='inkBlots'></div> */}
-            
+            <div className='curse-form-wrapper'>
             <form onSubmit={this.props.handlePostCurses} className='curse-form'>
                 <textarea name='curseInput' className='curse-box' id='curseInput'></textarea>
-                <button className='void-button' type='submit'>Send into Void</button>
+                <button className='pill' type='submit'>Send into Void</button>
             </form>
             <div className='scrollBottom'></div>
+            </div>
+            
+            
+            
             </>
         )
     }
