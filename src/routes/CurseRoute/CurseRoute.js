@@ -31,7 +31,7 @@ class CurseRoute extends Component {
         }
         let words = curseMessage.split(' ')
         console.log(words)
-        if (words.length < 3 || words[words.length - 1] === '') {
+        if (words.length < 3) {
             return 'Curse should contain at least 3 words'
         }
 
