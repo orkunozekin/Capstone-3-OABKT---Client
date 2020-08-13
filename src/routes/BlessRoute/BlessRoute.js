@@ -12,7 +12,9 @@ class Bless extends Component {
     curse: {},
     blessing: [],
     blessingMessage: '',
-    blessingSent: false
+    blessingSent: false,
+    alertBox: false,
+    emojiSelected: false
   }
 
   handleGetCurse = () => { //Get a curse
@@ -58,7 +60,7 @@ class Bless extends Component {
       .then(json => {
         console.log(json)
         this.handleGetCurse();
-        this.setState({ blessingMessage: json, blessingSent: true })
+        this.setState({ blessingMessage: json, blessingSent: true, alertBox: true })
 
       })
       .catch(error => console.log(error)
@@ -108,11 +110,28 @@ class Bless extends Component {
       )
   }
 
+  handleBlessAnotherCurse = () => {
+    this.setState({ alertBox: false })
+    this.handleGetCurse();
+  }
+
   componentDidMount() {
     this.handleGetCurse();
     this.handleGetBlessingOptions();
   }
 
+  checkButton = () => {
+
+    if (this.state.emojiSelected && this.state.curse !== 'No available curses' && this.state.blessingSent === false) {
+      return <Button>Bless This Curse</Button>
+    }
+    else if (!this.state.emojiSelected) {
+      return <Button onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>
+    }
+    else {
+      return <Button disabled>Bless This Curse</Button>
+    }
+  }
 
   render() {
     const curse = this.state.curse.curse;
@@ -121,9 +140,17 @@ class Bless extends Component {
     console.log(this.state.blessing)
     console.log(this.state.blessingMessage)
 
+
+
+
     if (this.state.blessingMessage === `You're out of blessings`) {
       return (
-        <div>You are out of blessings</div>
+        <div>
+          <h2>You are out of blessings</h2>
+          <Link to="/dashboard">
+            <Button>Go back</Button>
+          </Link>
+        </div>
       )
     }
     else {
@@ -133,16 +160,18 @@ class Bless extends Component {
 
           {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>{curse}</p>}
           <form onSubmit={this.handleBlessCurse} className="bless-form">
-            {this.state.curse === 'No available curses' ? <select name="emojiInput" className="emoji-dropdown" disabled></select> :
-              <select name="emojiInput" className="emoji-dropdown"><option>Select an Emoji</option> {this.state.blessing.map(blessing =>
-              <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
-            )}</select>}
+            {this.state.curse === 'No available curses' ? <select id="emojiDropdown" name="emojiInput" className="emoji-dropdown" disabled></select> :
+              <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown">
+                <option>Select an Emoji</option>
+                {this.state.blessing.map(blessing =>
+                  <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
+                )}</select>}
 
-            {this.state.blessingSent ? <AlertBox curse={curse} /> : ''}
-            {this.state.curse === 'No available curses' ? <Button type='submit' disabled>Bless This Curse</Button> : <Button type='submit'>Bless This Curse</Button>}
+            {this.state.blessingSent && this.state.alertBox ? <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} /> : ''}
+            {/* { this.state.curse === 'No available curses' ? <Button type='submit' disabled>Bless This Curse</Button> : <Button type='submit'>Bless This Curse</Button> } */}
+            {this.checkButton()}
           </form>
           {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
-          {blessingSent ? <div>You have blessed this curse : {curse}</div> : ''}
         </div>
 
       )

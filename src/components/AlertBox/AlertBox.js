@@ -1,14 +1,23 @@
 import React from 'react';
 import './AlertBox.css';
+import Button from '../Button/Button';
+import { Link } from 'react-router-dom';
 
 const AlertBox = (props) => {
 
 
     return (
         <div className="alert-box">
-           <div>Your have blessed this curse :{props.curse}</div> 
+            <div>{props.message}</div>
+            <Link to='/dashboard' ><Button>Back to Dashboard</Button></Link>
+            <Button onClick={() => props.function()}>{props.link}</Button>
         </div>
     )
 }
 
 export default AlertBox;
+
+
+
+//on curse page, we want a box with two buttons: back to dashboards, and curse more. 
+//on bless page, we want a box with two buttons: back to dashboard, and more curse to bless.

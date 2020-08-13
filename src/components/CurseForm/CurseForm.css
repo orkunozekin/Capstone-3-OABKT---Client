@@ -24,4 +24,9 @@
     color: lightgray;
     border-radius: 10px;
     font-size: 1.1em;
+    
+}
+
+.void-button:disabled {
+    color: black;
 }
