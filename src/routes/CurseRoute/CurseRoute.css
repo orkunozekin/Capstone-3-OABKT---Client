@@ -16,3 +16,12 @@
     color: black;
     padding: 10px 0;
 }
+
+.curse-sent-box {
+    border: 2px black solid;
+    border-radius: 3px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

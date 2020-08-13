@@ -4,6 +4,7 @@
 
 .arrow {
     font-size: 30px;
+    cursor: pointer;
 }
 
 .header-links {
@@ -14,7 +15,7 @@
     height: 40px;
 }
 
-.header-link{
+.header-link {
     text-decoration: none;
     color: black;
     font-weight: 700;

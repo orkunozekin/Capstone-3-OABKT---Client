@@ -4,6 +4,7 @@ import Button from '../../components/Button/Button';
 import "./Bless.css";
 import config from '../../config';
 import TokenService from '../../services/token-service';
+import AlertBox from '../../components/AlertBox/AlertBox';
 
 class Bless extends Component {
 
@@ -64,7 +65,7 @@ class Bless extends Component {
       )
   }
 
-  handleGetBlessingOptions = () => {
+  handleGetBlessingOptions = () => { // emojis
     fetch(`${config.API_ENDPOINT}/blessings`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()},`
@@ -132,11 +133,12 @@ class Bless extends Component {
 
           {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>{curse}</p>}
           <form onSubmit={this.handleBlessCurse} className="bless-form">
-            {this.state.curse === 'No available curses' ? <select name="emojiInput" className="emoji-dropdown" disabled></select> : <select name="emojiInput" className="emoji-dropdown"><option>Select an Emoji</option> {this.state.blessing.map(blessing =>
+            {this.state.curse === 'No available curses' ? <select name="emojiInput" className="emoji-dropdown" disabled></select> :
+              <select name="emojiInput" className="emoji-dropdown"><option>Select an Emoji</option> {this.state.blessing.map(blessing =>
               <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
             )}</select>}
 
-
+            {this.state.blessingSent ? <AlertBox curse={curse} /> : ''}
             {this.state.curse === 'No available curses' ? <Button type='submit' disabled>Bless This Curse</Button> : <Button type='submit'>Bless This Curse</Button>}
           </form>
           {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}

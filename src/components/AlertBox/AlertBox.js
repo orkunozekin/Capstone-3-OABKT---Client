@@ -1,11 +1,14 @@
 import React from 'react';
+import './AlertBox.css';
 
 const AlertBox = (props) => {
 
 
     return (
         <div className="alert-box">
-            Your curse was sent! 
+           <div>Your have blessed this curse :{props.curse}</div> 
         </div>
     )
 }
+
+export default AlertBox;
