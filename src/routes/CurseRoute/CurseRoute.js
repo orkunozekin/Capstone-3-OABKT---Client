@@ -72,7 +72,7 @@ class CurseRoute extends Component {
                 }
               
             })
-            .catch(e => console.log(e.json()))
+            .catch(error => console.log(error))
     }
 
     render() {
