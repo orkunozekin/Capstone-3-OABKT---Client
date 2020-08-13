@@ -19,15 +19,16 @@ import NewHeader from '../NewHeader/NewHeader';
 
 class App extends Component {
 
-  // Create the State
+ 
   state = {
     quotes: {},
     user: {},
-    loggedIn: false
+    loggedIn: false,
+    curseBlessed : false
   };
 
 
-  handleGetQuote = () => {
+  handleGetQuote = () => { //to get random quotes from the server.
     fetch(`${config.API_ENDPOINT}/quotes`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -43,7 +44,7 @@ class App extends Component {
       });
   };
 
-  handleGetDashboardInfo = () => {
+  handleGetDashboardInfo = () => { // to get all the info needed to display on the user page (dashboard)
     fetch(`${config.API_ENDPOINT}/user`, {
       headers: {
         'authorization': `bearer ${TokenService.getAuthToken()}`,
@@ -55,11 +56,33 @@ class App extends Component {
         }
       })
       .then(json => {
-        this.setState({ user: json });
-      });
+        this.setState({ user: json, curseBlessed: true });
+      })
+      .catch(e => console.log(e)); 
   };
 
-  toggleLoggedIn = () => {
+  handleDeleteCurse = (curse_id) => { // to delete a curse from the server after it's been blessed and seen by the user. 
+    fetch(`${config.API_ENDPOINT}/curses`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+        'authorization' : `bearer ${TokenService.getAuthToken()}`
+      },
+      body : JSON.stringify({curse_id})
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error('not deleted')
+      })
+      .then(json => {
+        console.log(json);
+        window.location.reload(false); // reload the page (at least for now) to get the next curse after deletion
+      })
+  }
+
+  toggleLoggedIn = () => { 
     this.setState({ loggedIn: !this.state.loggedIn });
   };
 
@@ -79,8 +102,10 @@ class App extends Component {
         value={{
           quotes: this.state.quotes,
           user: this.state.user,
+          curseBlessed: this.state.curseBlessed,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
+          handleDeleteCurse: this.handleDeleteCurse
         }}
       >
         <UserProvider>
