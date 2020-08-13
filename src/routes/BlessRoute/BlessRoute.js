@@ -59,7 +59,6 @@ class Bless extends Component {
       })
       .then(json => {
         console.log(json)
-        this.handleGetCurse();
         this.setState({ blessingMessage: json, blessingSent: true, alertBox: true })
 
       })
@@ -111,7 +110,7 @@ class Bless extends Component {
   }
 
   handleBlessAnotherCurse = () => {
-    this.setState({ alertBox: false })
+    this.setState({ alertBox: false, blessingSent: false })
     this.handleGetCurse();
   }
 
@@ -150,6 +149,14 @@ class Bless extends Component {
           <Link to="/dashboard">
             <Button>Go back</Button>
           </Link>
+        </div>
+      )
+    }
+    else if (this.state.curse === 'No available curses') {
+      return (
+        <div>
+          <h2>No available curses at this time.</h2>
+          <Link to="/dashboard"><Button>Go back</Button></Link>
         </div>
       )
     }
