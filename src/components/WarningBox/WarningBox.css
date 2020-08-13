@@ -1,0 +1,9 @@
+.warning-box-icon {
+    font-size: 40px;
+}
+
+.warning-box-wrapper {
+    border: 1px solid black;
+    width: 200px;
+    height: 500px;
+}

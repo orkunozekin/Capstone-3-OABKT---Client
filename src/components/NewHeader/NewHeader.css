@@ -1,0 +1,21 @@
+.arrow-wrapper {
+    text-align: center;
+}
+
+.arrow {
+    font-size: 30px;
+}
+
+.header-links {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: antiquewhite;
+    height: 40px;
+}
+
+.header-link{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}

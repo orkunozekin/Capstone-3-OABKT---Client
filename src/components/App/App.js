@@ -15,6 +15,7 @@ import TokenService from '../../services/token-service';
 import AppContext from '../../contexts/AppContext';
 import { UserProvider } from '../../contexts/UserContext';
 import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
+import NewHeader from '../NewHeader/NewHeader';
 
 class App extends Component {
 
@@ -84,7 +85,8 @@ class App extends Component {
       >
         <UserProvider>
           <div className="App">
-            <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
+            {/* <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} /> */}
+            <NewHeader toggleLoggedIn={this.toggleLoggedIn}/>
             <main className="main">
               <Switch>
                 <PublicOnlyRoute
