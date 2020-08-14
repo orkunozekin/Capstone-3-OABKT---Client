@@ -32,7 +32,6 @@ class CurseRoute extends Component {
             return 'Curse should contain at least 10 characters'
         }
         let words = curseMessage.split(' ')
-        console.log(words)
         if (words.length <= 3) {
             return 'Curse should contain at least 3 words'
         }
@@ -41,7 +40,7 @@ class CurseRoute extends Component {
 
 
 
-    handlePostCurses = (ev) => {
+    handlePostCurses = (ev) => { // send a curse to the void
         ev.preventDefault()
         const { curseInput } = ev.target;
         let curse = curseInput.value;
@@ -65,7 +64,6 @@ class CurseRoute extends Component {
                 return res.json();
             })
             .then(json => {
-                console.log(json)
                 if (!curseSent) {
                     this.setState({ serverMessage: json })
                 }
@@ -77,14 +75,48 @@ class CurseRoute extends Component {
             .catch(error => console.log(error))
     }
 
+
+    handlePostCursesNonUser = (ev) => { // curse as a non-user without the authoken 
+        ev.preventDefault()
+        const { curseInput } = ev.target;
+        let curse = curseInput.value;
+        let curseSent = false;
+        fetch(`${config.API_ENDPOINT}/curses`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                curse
+            })
+        })
+            .then(res => {
+                if (res.ok) {
+                    curseSent = true;
+                    this.setState({ curseSent: true })
+                    curseInput.value = '';
+                }
+                return res.json();
+            })
+            .then(json => {
+                if (!curseSent) {
+                    this.setState({ serverMessage: json })
+                }
+                else {
+                    this.setState({serverMessage: ''})
+                }
+              
+            })
+            .catch(error => console.log(error))
+    }
+
+
     handleCurseAgain = () => {  
         this.setState({alertBox: false, curseSent: false})
     }
 
     render() {
         const { curseSent, serverMessage } = this.state;
-        const curseMessage = this.state.curseMessage.value;
-       
 
         if (!curseSent) {
             return (
@@ -106,7 +138,7 @@ class CurseRoute extends Component {
                             <CurseForm                      
                                 curseMessage={this.state.curseMessage}
                                 newCurseMessage={this.newCurseMessage}
-                                handlePostCurses={this.handlePostCurses}
+                                handlePostCurses={this.handlePostCursesNonUser}
                                 validateCurseMessage={this.validateCurseMessage}
                         >
                         </CurseForm>

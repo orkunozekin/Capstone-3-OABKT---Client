@@ -30,14 +30,14 @@ class LoginForm extends Component {
       .then(res => {
         username.value = ''
         password.value = ''
-        console.log(res.authToken)
+
         this.context.processLogin(res.authToken)
         this.props.onLoginSuccess();
         this.props.history.push('/dashboard')
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
-        console.log(res)
+
       })
   }
 
@@ -48,7 +48,6 @@ class LoginForm extends Component {
   render() {
     const { error } = this.state
     const loading = this.state.loading;
-    console.log(this.context.user)
     return (
       <form
         className='main-form'
