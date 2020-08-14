@@ -1,6 +1,5 @@
 .curse-bless-field {
-    height: 80vh;
-    background-color: grey;
+    height: 90vh;
     display: flex;
     flex-flow: column wrap;
     padding: 0 20px;

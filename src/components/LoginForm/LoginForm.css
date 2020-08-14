@@ -2,12 +2,13 @@
 .main-form {
     width: 90%;
     margin: 0 auto;
-    background: rgb(255,255,255);
-    background: linear-gradient(173deg, rgba(255,255,255,1) 0%, rgba(228,228,228,1) 100%);
-    border: 3px solid #4a4a4a;
+    background: var(--color-background-neutral);
+    border: none;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
+    color: black;
+    padding: 10px;
 }
 
 .alert p {
@@ -26,6 +27,9 @@
 .Label {
     margin: 10px;
     margin-bottom: 5px;
+    width: 88%;
+    margin: 0 auto;
+    padding-bottom: 5px;
 }
 
 .Input {
@@ -34,7 +38,7 @@
     font-size: 16px;
     width: 90%;
     padding: 5px 0 5px 5px;
-    margin: 0 5px;
+    margin: 0 auto;
     border-radius: 5px;
     margin-bottom: 10px;
 }
@@ -60,8 +64,8 @@
 }
 
 @media screen and (min-width: 768px) {
-    .main-form {
-        max-width: 50%;
+    .Label {
+        width: 90%;
     }
 }
 

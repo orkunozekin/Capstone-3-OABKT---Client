@@ -4,6 +4,7 @@
 
 .page-transitions {
     position: absolute;
+    width: 100%;
 }
 
 .page-transitions-enter {

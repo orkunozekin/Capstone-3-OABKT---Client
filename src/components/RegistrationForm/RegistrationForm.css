@@ -3,3 +3,21 @@
     flex-flow: column nowrap;
     align-items: center;
 }
+
+
+.sign-up-form {
+    width: 90%;
+    margin: 0 auto;
+    background: var(--color-background-neutral);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    padding: 10px;
+}
+
+.login-link {
+    text-decoration: none;
+}
+

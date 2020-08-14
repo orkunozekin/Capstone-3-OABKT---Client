@@ -90,7 +90,7 @@ class RegistrationForm extends Component {
           <FaSpinner />
           </Button>}
           {' '}
-          <Link to='/login'>Already have an account?</Link>
+          <Link to='/login'><h3 className='login-link'>Already have an account?</h3></Link>
         </footer>
       </form>
     )
