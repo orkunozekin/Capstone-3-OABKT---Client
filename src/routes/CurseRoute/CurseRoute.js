@@ -26,7 +26,7 @@ class CurseRoute extends Component {
     validateCurseMessage = () => {
         const curseMessage = this.state.curseMessage.value;
         if (curseMessage.length === 0) {
-            return ''
+            return 'Input a Curse, mortal.'
         }
         if (curseMessage.length < 10) {
             return 'Curse should contain at least 10 characters'
