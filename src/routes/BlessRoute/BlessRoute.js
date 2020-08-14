@@ -97,7 +97,6 @@ class Bless extends Component {
         return res.json();
       })
       .then(json => {
-        console.log(json)
         this.handleGetCurse();
 
       })
@@ -168,7 +167,6 @@ class Bless extends Component {
                 )}</select>}
 
             {this.state.blessingSent && this.state.alertBox ? <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} /> : ''}
-            {/* { this.state.curse === 'No available curses' ? <Button type='submit' disabled>Bless This Curse</Button> : <Button type='submit'>Bless This Curse</Button> } */}
             {this.checkButton()}
           </form>
           {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
