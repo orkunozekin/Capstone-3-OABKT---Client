@@ -1,5 +1,6 @@
 .quote-box {
-    background-color: lightgrey;
+    background-color: var(--color-highlight-text);
+    color: black;
     padding: 10px;
     border-radius: 10px;
     width: 80%;
@@ -24,8 +25,11 @@
 }
 
 .blessing-box {
-    background-color: grey;
+    width: 30%;
+    background-color: var(--color-bless-darken-one);
+    color: var(--color-background-main);
     margin: 20px auto;
+    border-radius: 5px;
     line-height: 1.4em;
 }
 
@@ -51,5 +55,5 @@
 }
 
 .bless-button {
-    background-color: lightyellow;
+    background-color: var(--color-bless-background-main);
 }

@@ -2,6 +2,12 @@
   --color-background-main: #343434;
   --color-highlight-text: #9E9E9D;
   --color-background-neutral: #6C6C6C;
+
+  --color-bless-background-main: #FFF3B1;
+  --color-bless-highlight-one: #FFFCEE;
+  --color-bless-highlight-two: #FFF8D2;
+  --color-bless-darken-one: #F7E588;
+  --color-bless-darken-two: #CDB951;
 }
 
 
