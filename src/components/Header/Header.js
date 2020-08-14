@@ -16,7 +16,7 @@ const Header = (props) => {
         context.processLogout()
         props.toggleLoggedIn();
     }
-    console.log(context.user)
+  
 
     const nav_class = `nav-links ${!show ? "hideMenu" : ""}`;
 

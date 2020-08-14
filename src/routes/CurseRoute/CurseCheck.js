@@ -5,7 +5,6 @@ import AlertBox from '../../components/AlertBox/AlertBox';
 function CurseCheck(props) {
     const curseSent = props.curseSent;
     const serverMessage = props.serverMessage;
-    console.log(serverMessage)
    
 
     if (curseSent || !props.alertBox) {

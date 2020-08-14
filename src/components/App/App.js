@@ -77,7 +77,6 @@ class App extends Component {
         throw new Error('not deleted')
       })
       .then(json => {
-        console.log(json);
         window.location.reload(false); // reload the page (at least for now) to get the next curse after deletion
       })
   }

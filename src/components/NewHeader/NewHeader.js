@@ -10,11 +10,11 @@ const NewHeader = (props) => {
     const [show, setShow] = useState(false);
 
 
-    const context = useContext(UserContext)
+    const context = useContext(UserContext); 
 
 
     function handleLogoutClick() {
-        context.processLogout()
+        context.processLogout();
         props.toggleLoggedIn();
     }
 
@@ -30,7 +30,7 @@ const NewHeader = (props) => {
             <div onMouseLeave={() => setShow(false)} className="">
                 <nav className="header-links">
                     <Link className="header-link" to='/dashboard'>{context.user.name}</Link>
-                    <Link to="/bless" className="header-link">Bless</Link>
+                   {TokenService.hasAuthToken() ? <Link to="/bless" className="header-link">Bless</Link> : <Link className="header-link" to='/register'>Sign Up</Link>} 
                     <Link className="header-link" to="/"><h1>Curse&Bless</h1></Link>
                   {TokenService.hasAuthToken() ? <Link to="/" className="header-link" onClick={handleLogoutClick}>Logout</Link> : <Link to="login" className="header-link" >Login</Link>}  
                 </nav>

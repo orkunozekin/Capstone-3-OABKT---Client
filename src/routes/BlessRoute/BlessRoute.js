@@ -29,7 +29,6 @@ class Bless extends Component {
         }
       })
       .then(json => {
-        console.log(json)
         this.setState({ curse: json })
       })
   }
@@ -52,13 +51,11 @@ class Bless extends Component {
       })
     })
       .then(res => {
-        console.log(res)
         if (res.message !== undefined) {
         }
         return res.json();
       })
       .then(json => {
-        console.log(json)
         this.setState({ blessingMessage: json, blessingSent: true, alertBox: true })
 
       })
@@ -95,7 +92,6 @@ class Bless extends Component {
       })
     })
       .then(res => {
-        console.log(res)
         if (res.message !== undefined) {
         }
         return res.json();
@@ -135,9 +131,6 @@ class Bless extends Component {
   render() {
     const curse = this.state.curse.curse;
     const blessingSent = this.state.blessingSent;
-    console.log(curse)
-    console.log(this.state.blessing)
-    console.log(this.state.blessingMessage)
 
 
 
