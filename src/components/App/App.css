@@ -1,3 +1,25 @@
 .main {
     margin-top: 20px;
 }
+
+.page-transitions {
+    position: absolute;
+}
+
+.page-transitions-enter {
+    opacity: 0;
+}
+
+.page-transitions-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+
+.page-transitions-exit {
+    opacity: 1;
+}
+
+.page-transitions-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}
