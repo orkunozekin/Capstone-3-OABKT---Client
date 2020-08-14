@@ -1,0 +1,12 @@
+.landing-page-wrapper {
+  width: 90%;
+  background-color: var(--color-background-neutral);
+  color: black;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.curse-anon-link {
+
+}

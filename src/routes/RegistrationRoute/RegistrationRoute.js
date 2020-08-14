@@ -19,7 +19,7 @@ class RegistrationRoute extends Component {
     return (
       <>
         <section className="sign-up-wrapper">
-          <h2>Sign up</h2>
+          <h2 className='login-header'>Sign up</h2>
           <RegistrationForm
             onRegistrationSuccess={this.handleRegistrationSuccess}
           />

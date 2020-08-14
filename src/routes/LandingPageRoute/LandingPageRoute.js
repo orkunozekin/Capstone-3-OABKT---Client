@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import "./LandingPage.css"
 import WarningBox from '../../components/WarningBox/WarningBox'
+import Button from '../../components/Button/Button'
 
 class LandingPageRoute extends Component {
 
@@ -25,7 +26,8 @@ class LandingPageRoute extends Component {
                     other mental problems
                     PLEASE GET PROFESSIONAL HELP</p>
 
-                    <Link className="" to='/curse'>Curse Anonymously</Link>
+                    <Link className="curse-anon-link" to='/curse'>Curse Anonymously</Link>
+                    <Button className='curse-anon-button'>Curse Anon</Button>
                 </section>
                 <section>
                     <WarningBox />
