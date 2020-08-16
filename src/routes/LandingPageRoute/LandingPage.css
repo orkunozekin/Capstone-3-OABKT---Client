@@ -4,9 +4,41 @@
   color: black;
   margin: 0 auto;
   padding: 1rem;
+  margin: 1rem auto;
   border-radius: 10px;
+}
+
+.information-page {
+  background-color: var(--color-highlight-text);
+  padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.information-block {
+  padding: 20px 0;
+}
+
+.information-block h2 {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.information-block p {
+  width: 90%;
+  margin: 10px auto;
+  line-height: 1.4rem;
+}
+
+.important-notice {
+  font-size: 1.5rem;
 }
 
 .curse-anon-link {
 
+}
+
+.curse-anon-button {
+  background-color: var(--color-background-neutral);
+  color: gainsboro;
 }

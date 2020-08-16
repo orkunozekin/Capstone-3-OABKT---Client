@@ -136,19 +136,19 @@ class Bless extends Component {
 
     if (this.state.blessingMessage === `You're out of blessings`) {
       return (
-        <div>
+        <div className='bless-container'>
           <h2>You are out of blessings</h2>
           <Link to="/dashboard">
-            <Button>Go back</Button>
+            <Button className='bless-return'>Go back</Button>
           </Link>
         </div>
       )
     }
     else if (this.state.curse === 'No available curses') {
       return (
-        <div>
+        <div className='bless-container'>
           <h2>No available curses at this time.</h2>
-          <Link to="/dashboard"><Button>Go back</Button></Link>
+          <Link to="/dashboard"><Button className='bless-return'>Go back</Button></Link>
         </div>
       )
     }
