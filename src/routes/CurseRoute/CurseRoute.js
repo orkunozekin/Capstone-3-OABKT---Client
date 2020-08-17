@@ -35,6 +35,7 @@ class CurseRoute extends Component {
         if (words.length <= 3) {
             return 'Curse should contain at least 4 words'
         }
+        return '';
 
     }
 
