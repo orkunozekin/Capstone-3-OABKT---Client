@@ -29,12 +29,18 @@ const NewHeader = (props) => {
         return (
             <div onMouseLeave={() => setShow(false)} className="">
                 <nav className="header-links">
-                    <Link className="header-link" to='/dashboard'>{context.user.name}</Link>
-                   {TokenService.hasAuthToken() ? <Link to="/bless" className="header-link">Bless</Link> : <Link className="header-link" to='/register'>Sign Up</Link>} 
-                    <Link className="header-link" to="/"><h1>Curse&Bless</h1></Link>
-                  {TokenService.hasAuthToken() ? <Link to="/" className="header-link" onClick={handleLogoutClick}>Logout</Link> : <Link to="login" className="header-link" >Login</Link>}  
+                    {/* <Link className="header-link" to='/dashboard'>{context.user.name}</Link> */}
+                    {TokenService.hasAuthToken() ? <>
+                        <Link to="/bless" className="header-link">Bless</Link>
+                        <Link className="header-link" to="/dashboard"><h1>Curse&Bless</h1></Link>
+                        <Link to="/" className="header-link" onClick={handleLogoutClick}>Logout</Link>
+                    </> : <>
+                        <Link className="header-link" to='/register'>Sign Up</Link>
+                        <Link className="header-link" to="/"><h1>Curse&Bless</h1></Link>
+                        <Link to="login" className="header-link" >Login</Link>
+                        </>} 
                 </nav>
-            
+                <div className="transparent-div"></div>
             </div>
         )
     }

@@ -30,9 +30,8 @@ class LoginForm extends Component {
         username.value = ''
         password.value = ''
         this.context.processLogin(res.authToken);
-        // this.props.onLoginSuccess();
+        this.props.onLoginSuccess();
         console.log('logged in');
-        this.props.history.push('/dashboard')
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
