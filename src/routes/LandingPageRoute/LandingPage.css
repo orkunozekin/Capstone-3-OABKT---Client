@@ -41,4 +41,6 @@
 .curse-anon-button {
   background-color: var(--color-background-neutral);
   color: gainsboro;
+  font-family: 'IM Fell English', serif;
+  font-size: 2rem;
 }

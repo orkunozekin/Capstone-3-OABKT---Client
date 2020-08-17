@@ -14,6 +14,7 @@
     padding: 10px;
     line-height: 1.4em;
     font-size: 1.25em;
+    font-family: 'IM Fell English', serif;
 }
 
 .quote-source {
@@ -91,8 +92,12 @@
 .curse-button {
     color: white;
     background-color: var(--color-background-neutral);
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
 }
 
 .bless-button {
     background-color: var(--color-bless-background-main);
+    font-family: 'Antic Didone', serif;
+    font-size: 2rem;
 }

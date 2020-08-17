@@ -11,7 +11,7 @@
 .curse-box {
     width: 90%;
     height: 40vh;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'IM Fell English', serif;
     font-size: 1.5em;
     background-color: var(--color-highlight-text);
     padding: 5px;
@@ -25,7 +25,9 @@
 
 .curse-input-error {
     padding: 10px 20px;
-    color: white;
+    color: var(--color-background-main);
+    font-size: 1rem;
+    background-color: gainsboro;
 
 }
 
