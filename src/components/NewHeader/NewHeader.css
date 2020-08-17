@@ -5,6 +5,7 @@
 .arrow {
     font-size: 30px;
     cursor: pointer;
+    width: 100vw;
 }
 
 .header-links {

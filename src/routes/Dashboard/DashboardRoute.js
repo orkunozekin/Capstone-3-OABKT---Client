@@ -22,6 +22,7 @@ class Dashboard extends Component {
 
 
     render() {
+        console.log(this.context.blessedCurse);
         const { quote, source } = this.context.quotes;
         const curseBlessed = this.context.curseBlessed; // to check if we currently are displaying a blessed curse.
 
@@ -32,8 +33,7 @@ class Dashboard extends Component {
 
         if (this.context.user.user && this.context.user.blessedCurses.length !== 0) { //if the user exists and blessedCursed array isn't empty
             totalblessings = this.context.user.user.totalblessings;
-
-            blessedCurse = this.context.user.blessedCurses[0].curse; // set the blessedCurse to the first curse in the blessedCurse array from the server.
+            blessedCurse = this.context.blessedCurse; // set the blessedCurse to the first curse in the blessedCurse array from the server.
             emoji = this.context.user.blessedCurses[0].blessing; //supposed to be a UNICODE but comes back as an integer
 
 
@@ -55,7 +55,7 @@ class Dashboard extends Component {
                                 <h4><b>{blessedCurse}</b></h4>
                             </div>
                             <p>was answered with {emoji}</p>
-                            <Button className='next-blessed' onClick={() => this.deleteCurse(this.context.user.blessedCurses[0].curse_id)}>See another blessed curse</Button>
+                            <Button className='next-blessed' onClick={() => this.deleteCurse(this.context.curse_id)}>See another blessed curse</Button>
                         </div> 
                     
                     </> }

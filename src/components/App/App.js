@@ -25,7 +25,10 @@ class App extends Component {
     quotes: {},
     user: {},
     loggedIn: false,
-    curseBlessed: false
+    curseBlessed: false,
+    blessedCurse: '',
+    curse_id: '',
+    curseIndex: 0
   };
 
 
@@ -57,7 +60,14 @@ class App extends Component {
         }
       })
       .then(json => {
-        this.setState({ user: json, curseBlessed: true });
+        console.log(json)
+        this.setState({ user: json })
+        if (this.state.user.blessedCurses.length > 0) {
+          this.setState({ blessedCurse: json.blessedCurses[0].curse, curse_id: json.blessedCurses[0].curse_id })
+        }
+        else {
+          this.setState({ blessedCurse: '', curse_id: '' })
+        }
       })
       .catch(e => console.log(e));
   };
@@ -75,11 +85,20 @@ class App extends Component {
         if (res.ok) {
           return res.json();
         }
-        throw new Error('not deleted')
       })
-      .then(json => {
-        window.location.reload(false); // reload the page (at least for now) to get the next curse after deletion
+      .then(async json => {
+        console.log(json)
+        if (this.state.curseIndex !== this.state.user.blessedCurses.length - 1) {
+          this.setState({curseIndex: this.state.curseIndex + 1})
+          this.setState({ blessedCurse: this.state.user.blessedCurses[this.state.curseIndex].curse, curse_id: this.state.user.blessedCurses[this.state.curseIndex].curse_id })
+          console.log(this.state.user.blessedCurses)
+        }
+        else {
+          this.setState({user: {user: this.state.user.user, blessedCurses: []}, curseIndex: 0})
+        }
+        // window.location.reload(false); // reload the page (at least for now) to get the next curse after deletion
       })
+      .catch(e => console.log(e))
   }
 
   toggleLoggedIn = () => {
@@ -87,9 +106,10 @@ class App extends Component {
   };
 
 
+
+
   componentDidMount() {
-
-
+    // this.setBlessedCurse();
     if (TokenService.hasAuthToken()) {
       this.toggleLoggedIn();
     }
@@ -97,15 +117,20 @@ class App extends Component {
 
 
   render() {
+    console.log(this.state.blessedCurse)
+    console.log(this.state.user)
+    console.log(this.state.curse_id)
     return (
       <AppContext.Provider
         value={{
           quotes: this.state.quotes,
           user: this.state.user,
           curseBlessed: this.state.curseBlessed,
+          blessedCurse: this.state.blessedCurse,
+          curse_id: this.state.curse_id,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
-          handleDeleteCurse: this.handleDeleteCurse
+          handleDeleteCurse: this.handleDeleteCurse,
         }}
       >
         <UserProvider>
