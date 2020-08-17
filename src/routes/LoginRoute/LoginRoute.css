@@ -1,5 +1,4 @@
 .login-header-wrapper {
-    background-color: lightgray;
     display: flex;
     flex-flow: column wrap;
     padding: 10px;

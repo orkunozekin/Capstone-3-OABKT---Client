@@ -53,7 +53,6 @@ export class UserProvider extends Component {
   }
 
   processLogin = authToken => {
-    console.log('logging in')
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
     this.setUser({
@@ -64,7 +63,6 @@ export class UserProvider extends Component {
   }
 
   processLogout = () => {
-    console.log('Goodbye')
     TokenService.clearAuthToken()
     TokenService.clearCallbackBeforeExpiry()
     IdleService.unRegisterIdleResets()

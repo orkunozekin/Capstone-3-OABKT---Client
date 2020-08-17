@@ -1,5 +1,6 @@
 .quote-box {
-    background-color: lightgrey;
+    background-color: var(--color-highlight-text);
+    color: black;
     padding: 10px;
     border-radius: 10px;
     width: 80%;
@@ -24,8 +25,12 @@
 }
 
 .blessing-box {
-    background-color: grey;
+    width: 80vw;
+    background-color: var(--color-bless-darken-one);
+    color: var(--color-background-main);
     margin: 20px auto;
+    padding: .75rem;
+    border-radius: 5px;
     line-height: 1.4em;
 }
 
@@ -33,6 +38,44 @@
 .blessing-count {
     font-size: 1.25em;
 }
+
+.blessing-recieved {
+    margin: 10px auto;
+    padding: 1rem;
+    background-color: var(--color-bless-background-main);
+    color: var(--color-background-main);
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    animation: bless-pulse 3s infinite;
+}
+
+@keyframes bless-pulse {
+    from {
+        background-color: var(--color-bless-background-main);
+    }
+
+    50% {
+        background-color: var(--color-bless-darken-one);
+    }
+
+    to {
+        background-color: var(--color-bless-background-main);
+    }
+}
+
+.curse-blessed {
+    text-align: center;    
+    margin: 10px auto;
+}
+
+.next-blessed {
+    margin: 20px 0 0 0;
+    background-color: var(--color-bless-darken-two);
+    color: var(--color-bless-background-main)
+}
+
 
 .button-box {
     display: flex;
@@ -47,9 +90,9 @@
 
 .curse-button {
     color: white;
-    background-color: darkslategrey;
+    background-color: var(--color-background-neutral);
 }
 
 .bless-button {
-    background-color: lightyellow;
+    background-color: var(--color-bless-background-main);
 }

@@ -43,46 +43,56 @@ class Dashboard extends Component {
                         <h3 className='quote-block'>{quote}</h3>
                         <h4 className='quote-source'>{source}</h4>
                     </div>
-    
+
                     <div className='blessing-box'>
                         <p>You've given <span className='blessing-count'>{totalblessings}</span> blessing{totalblessings !== 1 && <span>s</span>}!</p>
                     </div>
-                    {blessedCurse.length !== 0 ? <div>Your curse: <b>{blessedCurse}</b> was answered with {emoji}</div>: ''} 
-                    <Button onClick={() => this.deleteCurse(this.context.user.blessedCurses[0].curse_id)}>See another blessed curse</Button> 
-                    <div className='button-box'>
-                        <Link className="curselink linkage" to='/curse'>
-                            <Button className='curse-button'>Curse</Button>
-                        </Link>
-                        <Link className="blesslink linkage" to='/bless'>
-                            <Button className='bless-button'>Bless</Button>
-                        </Link>
-                    </div>
+                    {blessedCurse.length !== 0 &&
+                    <>
+                        <div className='blessing-recieved'>
+                            <h3>You've recieved a blessing!</h3>
+                            <div className='curse-blessed'>
+                                <h4><b>{blessedCurse}</b></h4>
+                            </div>
+                            <p>was answered with {emoji}</p>
+                            <Button className='next-blessed' onClick={() => this.deleteCurse(this.context.user.blessedCurses[0].curse_id)}>See another blessed curse</Button>
+                        </div> 
+                    
+                    </> }
+                            <div className='button-box'>
+                                <Link className="curselink linkage" to='/curse'>
+                                    <Button className='curse-button'>Curse</Button>
+                                </Link>
+                                <Link className="blesslink linkage" to='/bless'>
+                                    <Button className='bless-button'>Bless</Button>
+                                </Link>
+                            </div>
                 </>
-    
+
             )
         }
-        
+
         else { // if blessedCurses array is empty
-            
+
             return ( // without the blessed curses
-                <>
-                    <div className='quote-box shadow-box'>
-                        <h3 className='quote-block'>{quote}</h3>
-                        <h4 className='quote-source'>{source}</h4>
-                    </div>
-    
-                    <div className='blessing-box'>
-                        <p>You've given <span className='blessing-count'>{totalblessings}</span> blessing{totalblessings !== 1 && <span>s</span>}!</p>
-                    </div>
-                    <div className='button-box'>
-                        <Link className="curselink linkage" to='/curse'>
-                            <Button className='curse-button'>Curse</Button>
-                        </Link>
-                        <Link className="blesslink linkage" to='/bless'>
-                            <Button className='bless-button'>Bless</Button>
-                        </Link>
-                    </div>
-                </>
+                    <>
+                        <div className='quote-box shadow-box'>
+                            <h3 className='quote-block'>{quote}</h3>
+                            <h4 className='quote-source'>{source}</h4>
+                        </div>
+
+                        <div className='blessing-box'>
+                            <p>You've given <span className='blessing-count'>{totalblessings}</span> blessing{totalblessings !== 1 && <span>s</span>}!</p>
+                        </div>
+                        <div className='button-box'>
+                            <Link className="curselink linkage" to='/curse'>
+                                <Button className='curse-button'>Curse</Button>
+                            </Link>
+                            <Link className="blesslink linkage" to='/bless'>
+                                <Button className='bless-button'>Bless</Button>
+                            </Link>
+                        </div>
+                    </>
     
             )
         }

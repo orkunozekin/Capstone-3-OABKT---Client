@@ -1,7 +1,24 @@
+:root {
+  --color-background-main: #343434;
+  --color-highlight-text: #9E9E9D;
+  --color-background-neutral: #6C6C6C;
+
+  --color-bless-background-main: #FFF3B1;
+  --color-bless-highlight-one: #FFFCEE;
+  --color-bless-highlight-two: #FFF8D2;
+  --color-bless-darken-one: #F7E588;
+  --color-bless-darken-two: #CDB951;
+}
+
+
+
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
+
+
 
 body {
   margin: 0;
@@ -10,7 +27,20 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  min-width: 100vw;
+  background-color: var(--color-background-main);
+  color: var(--color-highlight-text);
+
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

@@ -97,7 +97,6 @@ class Bless extends Component {
         return res.json();
       })
       .then(json => {
-        console.log(json)
         this.handleGetCurse();
 
       })
@@ -137,19 +136,19 @@ class Bless extends Component {
 
     if (this.state.blessingMessage === `You're out of blessings`) {
       return (
-        <div>
+        <div className='bless-container'>
           <h2>You are out of blessings</h2>
           <Link to="/dashboard">
-            <Button>Go back</Button>
+            <Button className='bless-return'>Go back</Button>
           </Link>
         </div>
       )
     }
     else if (this.state.curse === 'No available curses') {
       return (
-        <div>
+        <div className='bless-container'>
           <h2>No available curses at this time.</h2>
-          <Link to="/dashboard"><Button>Go back</Button></Link>
+          <Link to="/dashboard"><Button className='bless-return'>Go back</Button></Link>
         </div>
       )
     }
@@ -168,7 +167,6 @@ class Bless extends Component {
                 )}</select>}
 
             {this.state.blessingSent && this.state.alertBox ? <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} /> : ''}
-            {/* { this.state.curse === 'No available curses' ? <Button type='submit' disabled>Bless This Curse</Button> : <Button type='submit'>Bless This Curse</Button> } */}
             {this.checkButton()}
           </form>
           {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
