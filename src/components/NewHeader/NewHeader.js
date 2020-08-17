@@ -31,7 +31,7 @@ const NewHeader = (props) => {
                 <nav className="header-links">
                     {/* <Link className="header-link" to='/dashboard'>{context.user.name}</Link> */}
                     {TokenService.hasAuthToken() ? <>
-                        <Link to="/bless" className="header-link">Bless</Link>
+                        <div>{context.user.name}</div>
                         <Link className="header-link" to="/dashboard"><h1>Curse&Bless</h1></Link>
                         <Link to="/" className="header-link" onClick={handleLogoutClick}>Logout</Link>
                     </> : <>
