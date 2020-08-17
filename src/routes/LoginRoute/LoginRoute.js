@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import LoginForm from '../../components/LoginForm/LoginForm'
 import './LoginRoute.css';
 import Appcontext from '../../contexts/AppContext';
+import { withRouter } from 'react-router-dom';
 
 class LoginRoute extends Component {
   static defaultProps = {
@@ -15,7 +16,7 @@ class LoginRoute extends Component {
 
   handleLoginSuccess = () => {
     const { location, history } = this.props
-    const destination = (location.state || {}).from || '/'
+    const destination = (location.state || {}).from || '/dashboard'
     history.push(destination)
     this.props.toggleLoggedIn()
   }
@@ -26,7 +27,7 @@ class LoginRoute extends Component {
       <section className="login-header-wrapper">
         <h2 className="login-header">Login</h2>
         <LoginForm
-          loggedIn = {loggedIn}
+          loggedIn={loggedIn}
           onLoginSuccess={this.handleLoginSuccess}
         />
       </section>
@@ -34,4 +35,4 @@ class LoginRoute extends Component {
   }
 }
 
-export default LoginRoute
+export default withRouter(LoginRoute)

@@ -64,6 +64,7 @@ const Header = (props) => {
                         {!show ? <GiHamburgerMenu onClick={(e) => setShow(!show)} /> : <div onClick={(e) => setShow(!show)}>X</div>}
                     </div>
                 </nav>
+               
             </header>
         )
     }
@@ -79,6 +80,7 @@ const Header = (props) => {
                 ? renderLogoutLink()
                 : renderLoginLink()}
         </header>
+        
     );
 }
 

@@ -5,7 +5,6 @@ import UserContext from '../../contexts/UserContext';
 import Button from '../Button/Button';
 import { FaSpinner } from 'react-icons/fa';
 import './LoginForm.css';
-import TokenService from '../../services/token-service';
 import { withRouter } from 'react-router-dom';
 
 
@@ -30,10 +29,9 @@ class LoginForm extends Component {
       .then(res => {
         username.value = ''
         password.value = ''
-
-        this.context.processLogin(res.authToken)
+        this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
-        this.props.history.push('/dashboard')
+        console.log('logged in');
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false })
