@@ -27,7 +27,7 @@ const NewHeader = (props) => {
 
     else {
         return (
-            <div onMouseLeave={() => setShow(false)} className="">
+            <div onMouseLeave={() => setShow(false)} className="navbar-wrapper">
                 <nav className="header-links">
                     {/* <Link className="header-link" to='/dashboard'>{context.user.name}</Link> */}
                     {TokenService.hasAuthToken() ? <>
@@ -40,7 +40,7 @@ const NewHeader = (props) => {
                         <Link to="login" className="header-link" >Login</Link>
                         </>} 
                 </nav>
-                <div className="transparent-div"></div>
+                {/* <div className="transparent-div"></div> */}
             </div>
         )
     }

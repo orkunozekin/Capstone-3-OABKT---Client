@@ -1,5 +1,8 @@
 .arrow-wrapper {
     text-align: center;
+    position: absolute;
+    top: 0;
+
 }
 
 .arrow {
@@ -9,11 +12,12 @@
 }
 
 .header-links {
+ 
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: antiquewhite;
-    height: 40px;
+    
 }
 
 .header-link {
@@ -24,5 +28,14 @@
 
 .transparent-div {
     height: 50px;
+}
+
+.navbar-wrapper {
+    height: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    display: inline-block;
 }
 
