@@ -12,9 +12,10 @@ export default class CurseForm extends Component {
             <form onSubmit={ev => handlePostCurses(ev)} className='curse-form'>
                 <textarea onChange={ev => newCurseMessage(ev.target.value)} name='curseInput' className='curse-box'></textarea>
                 <button disabled={validateCurseMessage()} className='void-button' type='submit'>Send into Void</button>
-                <p className="curse-input-error">{curseMessage.touched &&
-                                    validateCurseMessage()
-                                }</p>
+                {curseMessage.touched &&
+                                    <p className="curse-input-error">
+                                    {validateCurseMessage()}
+                                    </p>}
             </form>
         )
     }
