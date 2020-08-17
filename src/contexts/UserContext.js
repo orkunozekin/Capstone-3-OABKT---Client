@@ -53,7 +53,7 @@ export class UserProvider extends Component {
   }
 
   processLogin = authToken => {
-    console.log('hello')
+    console.log('logging in')
     TokenService.saveAuthToken(authToken)
     const jwtPayload = TokenService.parseAuthToken()
     this.setUser({

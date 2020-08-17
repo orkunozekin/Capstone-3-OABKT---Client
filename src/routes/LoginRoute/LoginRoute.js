@@ -26,7 +26,7 @@ class LoginRoute extends Component {
       <section className="login-header-wrapper">
         <h2 className="login-header">Login</h2>
         <LoginForm
-          loggedIn = {loggedIn}
+          loggedIn={loggedIn}
           onLoginSuccess={this.handleLoginSuccess}
         />
       </section>
