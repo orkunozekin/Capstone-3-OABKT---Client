@@ -36,7 +36,7 @@ class Dashboard extends Component {
 
 
             return ( 
-                <>
+                <div className="dashboard-wrapper">
                     <div className='quote-box shadow-box'>
                         <h3 className='quote-block'>{quote}</h3>
                         <h4 className='quote-source'>{source}</h4>
@@ -65,7 +65,7 @@ class Dashboard extends Component {
                                     <Button className='bless-button'>Bless</Button>
                                 </Link>
                             </div>
-                </>
+                </div>
 
             )
         }

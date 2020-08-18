@@ -3,6 +3,7 @@
     position: absolute;
     top: 0;
     z-index: 300;
+    color: transparent;
 }
 
 .arrow {
@@ -40,5 +41,13 @@
     width: 100vw;
     display: inline-block;
     z-index: 300;
+    color: transparent;
 }
 
+.user-name {
+    font-weight: 700;
+    overflow: hidden;
+    max-height: 42px;
+    max-width: 53px;
+    color: black;
+}

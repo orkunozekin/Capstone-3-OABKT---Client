@@ -1,0 +1,13 @@
+
+.sign-up-header {
+    margin-bottom: 15px;
+    margin-left: 30px;
+}
+
+
+@media screen and (min-width: 768px) {
+    .sign-up-header {
+        text-align: center;
+        margin-left: 0;
+    }
+}
