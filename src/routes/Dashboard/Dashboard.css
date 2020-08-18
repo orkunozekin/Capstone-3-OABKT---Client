@@ -33,9 +33,11 @@
     padding: .75rem;
     border-radius: 5px;
     line-height: 1.4em;
+    font-family: 'Antic Didone', serif;
+    font-weight: bold;
 }
 
-.blessing-box p { text-align: center; }
+.blessing-box p { text-align: center;}
 .blessing-count {
     font-size: 1.25em;
 }
@@ -50,6 +52,7 @@
     justify-content: center;
     align-items: center;
     animation: bless-pulse 3s infinite;
+    font-family: 'Antic Didone', serif;
 }
 
 @keyframes bless-pulse {
@@ -69,6 +72,7 @@
 .curse-blessed {
     text-align: center;    
     margin: 10px auto;
+    font-family: 'IM Fell English', serif;
 }
 
 .next-blessed {

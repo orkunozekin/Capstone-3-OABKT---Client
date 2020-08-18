@@ -1,0 +1,52 @@
+.pic {
+  flex: 1 1 512px;
+  flex: 0 1 512px;
+  margin: 5px;
+  background-size: 10rem 10rem;
+  background-repeat: no-repeat;
+  min-height: 200px;
+}
+/*super clean*/
+/*
+ background-size: 10rem 10rem;
+  background-repeat: no-repeat;
+  height: 10rem;
+  width: 10rem;  
+*/
+
+
+#keith {
+  background-image: url(keith.png)
+}
+
+#thomas {
+  background-image: url(thomas.png)
+}
+
+#brian {
+  background-image: url(brian.png)
+}
+
+#orkun {
+  background-image: url(orkun.png)
+}
+
+#adam {
+  background-image: url(adam.png)
+}
+
+#luke {
+  background-image: url(luke.png)
+}
+
+#fired {
+  background-image: url(nowHiring.png)
+}
+
+.errorWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5rem;
+  height: 40vh;
+}
