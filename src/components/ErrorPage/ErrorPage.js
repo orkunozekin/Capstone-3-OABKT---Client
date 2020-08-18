@@ -4,7 +4,7 @@ import './keith.png'
 import './adam.png'
 import './thomas.png'
 import './brian.png'
-import './luke.png'
+import './mike.png'
 import './orkun.png'
 import './ErrorPage.css'
 import './nowHiring.png'
@@ -39,7 +39,7 @@ export default class ErrorPage extends Component {
       <div onClick={this.handleFire} id='brian' className='pic'></div>
       <div onClick={this.handleFire} id='adam' className='pic'></div>
       <div onClick={this.handleFire} id='orkun' className='pic'></div>
-      <div onClick={this.handleFire} id='luke' className='pic'></div>
+      <div onClick={this.handleFire} id='mike' className='pic'></div>
       
       
       </div>
