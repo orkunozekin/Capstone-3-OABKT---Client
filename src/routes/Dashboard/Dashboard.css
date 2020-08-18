@@ -98,7 +98,7 @@
 }
 
 .curse-button {
-    color: white;
+    color: gainsboro;
     background-color: var(--color-background-neutral);
     font-family: 'IM Fell English', serif;
     font-size: 2rem;

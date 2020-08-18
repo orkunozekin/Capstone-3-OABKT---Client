@@ -135,6 +135,7 @@ class App extends Component {
           <div className="App">
             <NewHeader toggleLoggedIn={this.toggleLoggedIn} />
             <main className="main">
+              <Switch>
               <PublicOnlyRoute exact path={'/register'}>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
@@ -192,7 +193,7 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </PrivateRoute>
-              <Route exact path={'/notfound'}>
+              <Route exact path={'*'}>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
@@ -201,6 +202,7 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </Route>
+              </Switch>
             </main>
           </div>
         </UserProvider>
