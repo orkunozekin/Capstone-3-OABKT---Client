@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { render } from 'react-dom'
 import Button from '../../components/Button/Button'
 import "./Dashboard.css"
 import AppContext from '../../contexts/AppContext'
@@ -24,7 +23,6 @@ class Dashboard extends Component {
     render() {
         console.log(this.context.blessedCurse);
         const { quote, source } = this.context.quotes;
-        const curseBlessed = this.context.curseBlessed; // to check if we currently are displaying a blessed curse.
 
 
         let blessedCurse; // the first curse in the array of blessed curses of the user's. 

@@ -2,6 +2,7 @@ import React from 'react';
 import './AlertBox.css';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
 
 const AlertBox = (props) => {
 
@@ -9,7 +10,7 @@ const AlertBox = (props) => {
     return (
         <div className="alert-box">
             <div>{props.message}</div>
-            <Link to='/dashboard' ><Button>Back to Dashboard</Button></Link>
+            {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button>Back to Dashboard</Button></Link> : ''}
             <Button onClick={() => props.function()}>{props.link}</Button>
         </div>
     )

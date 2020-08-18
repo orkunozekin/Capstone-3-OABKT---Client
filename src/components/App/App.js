@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import Header from '../Header/Header';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
@@ -25,7 +24,6 @@ class App extends Component {
     quotes: {},
     user: {},
     loggedIn: false,
-    curseBlessed: false,
     blessedCurse: '',
     curse_id: '',
     curseIndex: 0
@@ -135,7 +133,6 @@ class App extends Component {
       >
         <UserProvider>
           <div className="App">
-            {/* <Header toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} /> */}
             <NewHeader toggleLoggedIn={this.toggleLoggedIn} />
             <main className="main">
               <PublicOnlyRoute exact path={'/register'}>

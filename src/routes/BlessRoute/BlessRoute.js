@@ -129,9 +129,6 @@ class Bless extends Component {
 
   render() {
     const curse = this.state.curse.curse;
-    const blessingSent = this.state.blessingSent;
-
-
 
 
     if (this.state.blessingMessage === `You're out of blessings`) {
@@ -144,6 +141,7 @@ class Bless extends Component {
         </div>
       )
     }
+
     else if (this.state.curse === 'No available curses') {
       return (
         <div className='bless-container'>
@@ -152,6 +150,11 @@ class Bless extends Component {
         </div>
       )
     }
+      
+    else if (this.state.blessingSent && this.state.alertBox) { // if the alert box is being displayed, display nothing else.
+      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} />
+    }
+      
     else {
       return (
         <div className='bless-container'>
@@ -166,7 +169,6 @@ class Bless extends Component {
                   <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
                 )}</select>}
 
-            {this.state.blessingSent && this.state.alertBox ? <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} /> : ''}
             {this.checkButton()}
           </form>
           {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
