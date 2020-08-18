@@ -15,7 +15,7 @@ class Bless extends Component {
     blessingSent: false,
     alertBox: false,
     emojiSelected: false
-  }
+  };
 
   handleGetCurse = () => { //Get a curse
     fetch(`${config.API_ENDPOINT}/curses`, {
@@ -29,16 +29,16 @@ class Bless extends Component {
         }
       })
       .then(json => {
-        this.setState({ curse: json })
-      })
-  }
+        this.setState({ curse: json });
+      });
+  };
 
 
   handleBlessCurse = (ev) => { //Bless a curse
     ev.preventDefault();
     const { emojiInput } = ev.target;
-    const blessing_id = emojiInput.value
-    const curseId = this.state.curse.curse_id
+    const blessing_id = emojiInput.value;
+    const curseId = this.state.curse.curse_id;
     fetch(`${config.API_ENDPOINT}/curses`, {
       method: 'PATCH',
       headers: {
@@ -56,12 +56,12 @@ class Bless extends Component {
         return res.json();
       })
       .then(json => {
-        this.setState({ blessingMessage: json, blessingSent: true, alertBox: true })
+        this.setState({ blessingMessage: json, blessingSent: true, alertBox: true });
 
       })
       .catch(error => console.log(error)
-      )
-  }
+      );
+  };
 
   handleGetBlessingOptions = () => { // emojis
     fetch(`${config.API_ENDPOINT}/blessings`, {
@@ -71,16 +71,16 @@ class Bless extends Component {
     })
       .then(res => {
         if (res.ok) {
-          return res.json()
+          return res.json();
         }
       })
       .then(json => {
-        this.setState({ blessing: json })
-      })
-  }
+        this.setState({ blessing: json });
+      });
+  };
 
   handleBlockUser = () => {
-    const curseId = this.state.curse.curse_id
+    const curseId = this.state.curse.curse_id;
     fetch(`${config.API_ENDPOINT}/user`, {
       method: 'PATCH',
       headers: {
@@ -101,13 +101,13 @@ class Bless extends Component {
 
       })
       .catch(error => console.log(error)
-      )
-  }
+      );
+  };
 
   handleBlessAnotherCurse = () => {
-    this.setState({ alertBox: false, blessingSent: false })
+    this.setState({ alertBox: false, blessingSent: false });
     this.handleGetCurse();
-  }
+  };
 
   componentDidMount() {
     this.handleGetCurse();
@@ -117,15 +117,15 @@ class Bless extends Component {
   checkButton = () => {
 
     if (this.state.emojiSelected && this.state.curse !== 'No available curses' && this.state.blessingSent === false) {
-      return <Button>Bless This Curse</Button>
+      return <Button>Bless This Curse</Button>;
     }
     else if (!this.state.emojiSelected) {
-      return <Button onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>
+      return <Button onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>;
     }
     else {
-      return <Button disabled>Bless This Curse</Button>
+      return <Button disabled>Bless This Curse</Button>;
     }
-  }
+  };
 
   render() {
     const curse = this.state.curse.curse;
@@ -139,7 +139,7 @@ class Bless extends Component {
             <Button className='bless-return'>Go back</Button>
           </Link>
         </div>
-      )
+      );
     }
 
     else if (this.state.curse === 'No available curses') {
@@ -148,13 +148,13 @@ class Bless extends Component {
           <h2>No available curses at this time.</h2>
           <Link to="/dashboard"><Button className='bless-return'>Go back</Button></Link>
         </div>
-      )
+      );
     }
-      
+
     else if (this.state.blessingSent && this.state.alertBox) { // if the alert box is being displayed, display nothing else.
-      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} />
+      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} />;
     }
-      
+
     else {
       return (
         <div className='bless-container'>
@@ -166,7 +166,7 @@ class Bless extends Component {
               <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown">
                 <option>Select an Emoji</option>
                 {this.state.blessing.map(blessing =>
-                  <option key={blessing.blessing_id} value={blessing.blessing_id}>{blessing.blessing}</option>
+                  <option key={blessing.blessing_id} value={blessing.blessing_id}>{String.fromCodePoint(parseInt(blessing.blessing.slice(2),16))}</option>
                 )}</select>}
 
             {this.checkButton()}
@@ -174,7 +174,7 @@ class Bless extends Component {
           {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
         </div>
 
-      )
+      );
     }
 
   }
