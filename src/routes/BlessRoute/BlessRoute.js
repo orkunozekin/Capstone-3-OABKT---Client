@@ -166,7 +166,7 @@ class Bless extends Component {
               <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown">
                 <option>Select an Emoji</option>
                 {this.state.blessing.map(blessing =>
-                  <option key={blessing.blessing_id} value={blessing.blessing_id}>&#129311;</option>
+                  <option key={blessing.blessing_id} value={blessing.blessing_id}>{blessing.blessing}</option>
                 )}</select>}
 
             {this.checkButton()}
