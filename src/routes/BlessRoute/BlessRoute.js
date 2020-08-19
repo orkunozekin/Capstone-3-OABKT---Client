@@ -152,7 +152,7 @@ class Bless extends Component {
     }
 
     else if (this.state.blessingSent && this.state.alertBox) { // if the alert box is being displayed, display nothing else.
-      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} />;
+      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `}  flag={'blessy'} />;
     }
 
     else {
