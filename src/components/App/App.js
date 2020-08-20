@@ -17,6 +17,20 @@ import NotFoundRoute from '../../routes/NotFoundRoute/NotFoundRoute';
 import NewHeader from '../NewHeader/NewHeader';
 import { CSSTransition } from 'react-transition-group';
 
+
+const privateRoutes = [
+  '/dashboard',
+  '/bless',
+  '/'
+]
+
+const publicRoutes = [
+  '/curse',
+  '/login',
+  '/register',
+  '/'
+]
+
 class App extends Component {
 
 
@@ -30,6 +44,12 @@ class App extends Component {
     emoji: []
   };
 
+  //(loggedin ? private : public).includes(URL)
+
+  switchCheck = (match) => {
+    console.log(match)
+    return !(this.state.loggedIn ? privateRoutes : publicRoutes).includes(match.url)
+  }
 
   handleGetQuote = () => { //to get random quotes from the server.
     fetch(`${config.API_ENDPOINT}/quotes`, {
@@ -88,12 +108,12 @@ class App extends Component {
       .then(async json => {
         console.log(json)
         if (this.state.curseIndex !== this.state.user.blessedCurses.length - 1) {
-          this.setState({curseIndex: this.state.curseIndex + 1})
+          this.setState({ curseIndex: this.state.curseIndex + 1 })
           this.setState({ blessedCurse: this.state.user.blessedCurses[this.state.curseIndex].curse, curse_id: this.state.user.blessedCurses[this.state.curseIndex].curse_id })
           console.log(this.state.user.blessedCurses)
         }
         else {
-          this.setState({user: {user: this.state.user.user, blessedCurses: []}, curseIndex: 0})
+          this.setState({ user: { user: this.state.user.user, blessedCurses: [] }, curseIndex: 0 })
         }
         // window.location.reload(false); // reload the page (at least for now) to get the next curse after deletion
       })
@@ -120,9 +140,6 @@ class App extends Component {
   toggleLoggedIn = () => {
     this.setState({ loggedIn: !this.state.loggedIn });
   };
-
-
-
 
   componentDidMount() {
     // this.setBlessedCurse();
@@ -155,8 +172,8 @@ class App extends Component {
           <div className="App">
             <NewHeader toggleLoggedIn={this.toggleLoggedIn} />
             <main className="main">
-              
-              <PublicOnlyRoute exact path={'/register'}>
+
+              <PublicOnlyRoute exact path='/register'>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
@@ -166,7 +183,7 @@ class App extends Component {
                 )}
               </PublicOnlyRoute>
               <PublicOnlyRoute
-                exact path={'/login'}
+                exact path='/login'
                 toggleLoggedIn={this.toggleLoggedIn}>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
@@ -176,7 +193,7 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </PublicOnlyRoute>
-              <Route exact path={'/'}>
+              <Route exact path='/'>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
@@ -186,16 +203,16 @@ class App extends Component {
                 )}
               </Route>
               <PrivateRoute
-                exact path={'/dashboard'}>
+                exact path='/dashboard'>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                        {!this.state.loggedIn ? <NotFoundRoute /> : <Dashboard />}
+                      <Dashboard />
                     </div>
                   </CSSTransition>
                 )}
               </PrivateRoute>
-              <Route exact path={'/curse'}>
+              <Route exact path='/curse'>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
@@ -204,26 +221,25 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </Route>
-              <PrivateRoute exact path={'/bless'}>
+              <PrivateRoute exact path='/bless'>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                    {!this.state.loggedIn ? <NotFoundRoute /> : <BlessRoute />}
+                      <BlessRoute />
                     </div>
                   </CSSTransition>
                 )}
               </PrivateRoute>
-              <Route path="/404">
+              <Route path="/*">
                 {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+                  <CSSTransition in={this.switchCheck(match)} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                        <NotFoundRoute />
+                      <NotFoundRoute />
                     </div>
                   </CSSTransition>
                 )}
               </Route>
-              <Redirect from='*' to='/404' />
-              
+
             </main>
           </div>
         </UserProvider>
