@@ -208,11 +208,13 @@ class App extends Component {
               <PrivateRoute
                 exact path='/dashboard'>
                 {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <Dashboard />
-                    </div>
-                  </CSSTransition>
+                  this.state.loggedIn ?
+                    <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+                      <div className='page-transitions'>
+                        <Dashboard />
+                      </div>
+                    </CSSTransition>
+                    : null
                 )}
               </PrivateRoute>
               <Route exact path='/curse'>
@@ -226,17 +228,19 @@ class App extends Component {
               </Route>
               <PrivateRoute exact path='/bless'>
                 {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <BlessRoute />
-                    </div>
-                  </CSSTransition>
+                  this.state.loggedIn ?
+                    <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+                      <div className='page-transitions'>
+                        <BlessRoute />
+                      </div>
+                    </CSSTransition>
+                    : null
                 )}
               </PrivateRoute>
               <Route path="/*">
                 {({ match }) => (
-                  <CSSTransition in={this.switchCheck(match)} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
+                  <CSSTransition in={this.switchCheck(match)} timeout={1000} classNames='error-page-transitions' unmountOnExit>
+                    <div className='error-page-transitions '>
                       <NotFoundRoute />
                     </div>
                   </CSSTransition>
