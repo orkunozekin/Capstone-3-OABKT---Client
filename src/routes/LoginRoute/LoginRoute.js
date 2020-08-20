@@ -18,7 +18,6 @@ class LoginRoute extends Component {
     console.log(this.props);
     const { location, history } = this.props;
     const destination = (location.state || {}).from || '/dashboard';
-    this.context.handleGetDashboardInfo();
     history.push(destination);
     this.props.toggleLoggedIn();
   };
