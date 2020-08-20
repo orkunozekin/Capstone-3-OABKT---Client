@@ -1,7 +1,7 @@
 .curse-bless-field {
     height: 90vh;
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     padding: 0 20px;
     align-items: center;
 }
