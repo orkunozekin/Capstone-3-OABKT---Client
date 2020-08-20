@@ -44,3 +44,9 @@
   font-family: 'IM Fell English', serif;
   font-size: 2rem;
 }
+
+.curse-anon-button:hover {
+  transition: all .3s ease;
+  background-color: gainsboro;
+  color: var(--color-background-main);
+}
