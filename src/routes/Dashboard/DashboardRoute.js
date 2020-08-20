@@ -61,10 +61,10 @@ class Dashboard extends Component {
                         </>}
                     <div className='button-box'>
                         <Link className="curselink linkage" to='/curse'>
-                            <Button className='curse-button'>Curse</Button>
+                            <Button className='curse-now-button curse-button'>Curse</Button>
                         </Link>
                         <Link className="blesslink linkage" to='/bless'>
-                            <Button className='bless-button'>Bless</Button>
+                            <Button className='bless-button bless-now-button'>Bless</Button>
                         </Link>
                     </div>
                 </div>

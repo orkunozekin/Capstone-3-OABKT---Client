@@ -38,14 +38,14 @@
   text-align: center;
 }
 
-.curse-anon-button {
+.curse-now-button {
   background-color: var(--color-background-neutral);
   color: gainsboro;
   font-family: 'IM Fell English', serif;
   font-size: 2rem;
 }
 
-.curse-anon-button:hover {
+.curse-now-button:hover {
   transition: all .3s ease;
   background-color: gainsboro;
   color: var(--color-background-main);

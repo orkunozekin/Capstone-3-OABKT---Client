@@ -81,10 +81,17 @@
 
 .next-blessed {
     margin: 20px 0 0 0;
+    padding: .5rem;
+    width: 60vw;
     background-color: var(--color-bless-darken-two);
-    color: var(--color-bless-background-main)
+    color: var(--color-background-main)
 }
 
+.next-blessed:hover {
+    transition: all .3s ease;
+    background-color: var(--color-bless-background-main);
+    color: var(--color-background-main);
+}
 
 .button-box {
     display: flex;
@@ -108,4 +115,11 @@
     background-color: var(--color-bless-background-main);
     font-family: 'Antic Didone', serif;
     font-size: 2rem;
+}
+
+  
+.bless-now-button:hover {
+    transition: all .3s ease;
+    background-color: var(--color-bless-darken-two);
+    color: var(--color-background-main);
 }
