@@ -31,28 +31,25 @@
     color: var(--color-background-main);
     font-size: 1rem;
     background-color: gainsboro;
-
 }
-
-
 
 .void-button {
     height: 10%;
     width: 80%;
     padding: 0;
     margin: 0;
-    background-color: darkslategray;
-    color: lightgray;
+    background-color: var(--color-highlight-text);
+    color: black;
     border-radius: 10px;
     font-size: 1.1em;
-    transition: background-color .5s ease;
+    transition: all .3s ease;
 }
 
 .void-button:disabled {
-    color: black;
+    color: var(--color-highlight-text);
     background-color: var(--color-background-neutral);
 }
 
 .void-button:hover {
-    background-color: var(--color-background-neutral);
+    background-color: gainsboro;
 }

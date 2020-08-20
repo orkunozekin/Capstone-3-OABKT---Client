@@ -8,12 +8,17 @@
 
 .curse-bless-title {
     padding: 20px 0;
+    font-family: 'IM Fell English', serif;
 }
 
 .link-login {
     text-decoration: none;
-    color: black;
+    color: var(--color-highlight-text);
     padding: 10px 0;
+}
+
+.link-login:hover {
+    color: gainsboro;
 }
 
 .curse-sent-box {

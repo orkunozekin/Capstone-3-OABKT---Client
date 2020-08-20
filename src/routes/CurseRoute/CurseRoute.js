@@ -6,6 +6,18 @@ import CurseForm from '../../components/CurseForm/CurseForm';
 import './CurseRoute.css';
 import CurseCheck from './CurseCheck';
 import AlertBox from '../../components/AlertBox/AlertBox';
+import { CSSTransition } from 'react-transition-group';
+
+const cursePromptsArray = [
+    'What ails you?',
+    'Tell me your frustrations.',
+    'Curious, how are you feeling?',
+    'Allow you vents to steam onto here.',
+    'Write unto me your anger.',
+    'Give me a reason to exist, tell me why you are upset.',
+    'You deserve to be heard.',
+    'I will gladly listen to your angers.'
+]
 
 class CurseRoute extends Component {
 
@@ -16,11 +28,16 @@ class CurseRoute extends Component {
             touched: false
         },
         serverMessage: '',
+        cursePrompt: '',
         alertBox: false
     }
 
+    cursePrompt = () => {
+        return cursePromptsArray[Math.floor(Math.random() * cursePromptsArray.length)]
+    }
+
     newCurseMessage = (curseMessage) => {
-        this.setState({curseSent:false, curseMessage: { value: curseMessage, touched: true } })
+        this.setState({ curseSent: false, curseMessage: { value: curseMessage, touched: true } })
     }
 
     validateCurseMessage = () => {
@@ -69,9 +86,9 @@ class CurseRoute extends Component {
                     this.setState({ serverMessage: json })
                 }
                 else {
-                    this.setState({serverMessage: ''})
+                    this.setState({ serverMessage: '' })
                 }
-              
+
             })
             .catch(error => console.log(error))
     }
@@ -104,29 +121,36 @@ class CurseRoute extends Component {
                     this.setState({ serverMessage: json })
                 }
                 else {
-                    this.setState({serverMessage: ''})
+                    this.setState({ serverMessage: '' })
                 }
-              
+
             })
             .catch(error => console.log(error))
     }
 
 
-    handleCurseAgain = () => {  
-        this.setState({alertBox: false, curseSent: false})
+    handleCurseAgain = () => {
+        this.setState({ alertBox: false, curseSent: false })
+    }
+
+    componentDidMount = () => {
+        let cursePromptMessage = this.cursePrompt();
+        this.setState({
+            cursePrompt: cursePromptMessage
+        })
     }
 
     render() {
         const { curseSent, serverMessage } = this.state;
-
+        
         if (!curseSent) {
             return (
                 <div className='curse-bless-field'>
-                    <h2 className='curse-bless-title'>Perform a Curse</h2>
+                    <h2 className='curse-bless-title'>{this.state.cursePrompt}</h2>
                     {TokenService.hasAuthToken() ?
-                        <>  
-                            
-                            <CurseForm                          
+                        <>
+
+                            <CurseForm
                                 curseMessage={this.state.curseMessage}
                                 newCurseMessage={this.newCurseMessage}
                                 handlePostCurses={this.handlePostCurses}
@@ -136,23 +160,24 @@ class CurseRoute extends Component {
                             {serverMessage}
                         </>
                         : <>
-                            <CurseForm                      
+                            <CurseForm
                                 curseMessage={this.state.curseMessage}
                                 newCurseMessage={this.newCurseMessage}
                                 handlePostCurses={this.handlePostCursesNonUser}
                                 validateCurseMessage={this.validateCurseMessage}
-                        >
-                        </CurseForm>
-                        {serverMessage}
+                            >
+                            </CurseForm>
+                            {serverMessage}
                             <Link className="link-login" to='/login'>...or login here</Link>
                         </>}
                 </div>
             )
         }
         else {
-           return <div><CurseCheck alertBox={this.state.alertBox} serverMessage={this.state.serverMessage} curseSent={this.state.curseSent} handleCurseAgain={this.handleCurseAgain} /></div>
+            return <div>
+                <CurseCheck alertBox={this.state.alertBox} serverMessage={this.state.serverMessage} curseSent={this.state.curseSent} handleCurseAgain={this.handleCurseAgain} /></div>
         }
-       
+
     }
 }
 
