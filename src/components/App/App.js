@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Redirect, Switch, withRouter } from 'react-router-dom';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute';
 import LoginRoute from '../../routes/LoginRoute/LoginRoute';
@@ -155,7 +155,7 @@ class App extends Component {
           <div className="App">
             <NewHeader toggleLoggedIn={this.toggleLoggedIn} />
             <main className="main">
-              <Switch>
+              
               <PublicOnlyRoute exact path={'/register'}>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
@@ -213,7 +213,7 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </PrivateRoute>
-              <Route exact path={'*'}>
+              <Route path="/404">
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
@@ -222,7 +222,8 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </Route>
-              </Switch>
+              <Redirect from='*' to='/404' />
+              
             </main>
           </div>
         </UserProvider>
