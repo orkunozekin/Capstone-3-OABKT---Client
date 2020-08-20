@@ -34,8 +34,8 @@ class LandingPageRoute extends Component {
                         <p>If you are suffering from any mental issues or are struggling to cope with your mental health, we recommend you seek professional help.</p>
                     </div>
 
-                    <Link className="curse-anon-link" to='/curse'>Curse Anonymously</Link>
-                    {button}
+                    <Link className="curse-anon-link" to='/curse'>{button}</Link>
+                    
                 </section>
             </div>
         )
