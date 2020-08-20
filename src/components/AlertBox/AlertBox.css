@@ -1,6 +1,6 @@
 .alert-box {
     border: 3px solid var(--color-background-neutral);
-    height: 50vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@
     display: flex;
     justify-content: center;
     font-family: 'IM Fell English', serif;
-    font-size: 2rem;
+    font-size: 1rem;
     margin: 1rem;
     text-align: center;
     color: black;
@@ -25,10 +25,10 @@
 
 .alertButton {
     min-width: 35vw;
-    min-height: 10vh;
+    min-height: 8vh;
     font-size: 1.5rem;
     width: 50vw;
-    height: 10vh;
+    height: 5vh;
 }
 
 .curseAgainButton {
@@ -36,11 +36,41 @@
     color: gainsboro;
     background-color: var(--color-background-neutral);
     font-family: 'IM Fell English', serif;
-    font-size: 2rem;
+    font-size: 1rem;
     
+}
+
+.back-to-dashboard {
+    transition: all .3s ease;
+    color: var(--color-background-main);
+    background-color: var(--color-bless-background-main);
+    font-family: 'Antic Didone', serif;
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.back-to-dashboard:hover {
+    transition: all .3s ease;
+
 }
 
 .curseAgainButton:hover {
     background-color: gainsboro;
     color: var(--color-background-main);
+}
+
+@media screen and (min-width: 768px) {
+    .curseAgainButton, .alertMessage {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .alertButton {
+        min-height: 10vh;
+    }
+
+    .alertMessage, .curseAgainButton, .back-to-dashboard {
+        font-size: 2rem;
+    }
 }

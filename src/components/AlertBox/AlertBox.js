@@ -12,7 +12,7 @@ const AlertBox = (props) => {
             <div className='alertWrapper'>
             <div className="alert-box">
             <div className='alertMessage'>{props.message}</div>
-            {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className='alertButton'>Back to Dashboard</Button></Link> : ''}
+            {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className='alertButton back-to-dashboard'>Back to Dashboard</Button></Link> : ''}
             <Button className='alertButton curseAgainButton' onClick={() => props.function()}>{props.link}</Button>
         </div>
         </div>

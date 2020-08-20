@@ -12,9 +12,11 @@
 }
 
 .curse-message {
-    border-radius: 10px;
+    width: 80vw;
     background-color: lightgrey;
-    padding: 20px;
+    padding: 1rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 1.25rem;
 }
 
 .bless-form {
@@ -34,10 +36,15 @@
     background-color: grey;
     padding: 10px;
     border-radius: 10px;
-    font-size: 1rem;
+    font-size: 1.25rem;
+    font-family: 'Antic Didone', serif;
 }
 
 .emoji-dropdown option {
     font-size: 2rem;
+}
+
+.block-button {
+    background-color: lightcoral;
 }
 
