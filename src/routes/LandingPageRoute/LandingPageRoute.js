@@ -11,9 +11,9 @@ class LandingPageRoute extends Component {
     render() {
         let button;
         if (!this.context.loggedIn) {
-            button = <Link className="curse-anon-link" to="/curse"><Button className='curse-anon-button'>Curse Anonymously</Button></Link>;
+            button = <Link className="curse-anon-link" to="/curse"><Button className='curse-now-button'>Curse Anonymously</Button></Link>;
         } else {
-            button = <Button className='curse-anon-button'>Curse now!</Button>;
+            button = <Button className='curse-now-button'>Curse now!</Button>;
         }
         return (
             <div className="landing-page-wrapper">

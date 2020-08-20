@@ -159,7 +159,7 @@ class Bless extends Component {
 
             {this.checkButton()}
           </form>
-          {this.state.curse === 'No available curses' ? <button className='blockbutton' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
+          {this.state.curse === 'No available curses' ? <button className='block-button' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
         </div>
 
       );
