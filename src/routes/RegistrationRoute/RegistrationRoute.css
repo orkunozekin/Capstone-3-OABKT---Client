@@ -9,6 +9,7 @@
 .sign-up-header {
     margin: 20px 0;
     font-size: 2.5em;
+    font-family: 'IM Fell English', serif;
 }
 
 @media screen and (min-width: 768px) {
