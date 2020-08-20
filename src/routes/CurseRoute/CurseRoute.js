@@ -5,8 +5,8 @@ import TokenService from '../../services/token-service';
 import CurseForm from '../../components/CurseForm/CurseForm';
 import './CurseRoute.css';
 import CurseCheck from './CurseCheck';
-import AlertBox from '../../components/AlertBox/AlertBox';
-import { CSSTransition } from 'react-transition-group';
+// import AlertBox from '../../components/AlertBox/AlertBox';
+// import { CSSTransition } from 'react-transition-group';
 
 const cursePromptsArray = [
     'What ails you?',

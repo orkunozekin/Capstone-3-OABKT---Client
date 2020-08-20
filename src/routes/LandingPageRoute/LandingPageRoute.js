@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import "./LandingPage.css"
-import WarningBox from '../../components/WarningBox/WarningBox'
+// import WarningBox from '../../components/WarningBox/WarningBox'
 import Button from '../../components/Button/Button'
 import AppContext from '../../contexts/AppContext'
 

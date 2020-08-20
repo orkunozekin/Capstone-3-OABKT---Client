@@ -33,12 +33,6 @@ export class UserProvider extends Component {
     IdleService.setIdleCallback(this.logoutBecauseIdle)
   }
 
-
-  componentWillUnmount() {
-    IdleService.unRegisterIdleResets()
-    TokenService.clearCallbackBeforeExpiry()
-  }
-
   setError = error => {
     console.error(error)
     this.setState({ error })

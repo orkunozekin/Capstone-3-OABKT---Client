@@ -100,7 +100,6 @@ class Bless extends Component {
 
   componentDidMount() {
     this.handleGetCurse();
-    this.context.handleGetBlessingOptions();
   }
 
   checkButton = () => {

@@ -21,15 +21,16 @@ import { CSSTransition } from 'react-transition-group';
 const privateRoutes = [
   '/dashboard',
   '/bless',
+  '/curse',
   '/'
-]
+];
 
 const publicRoutes = [
   '/curse',
   '/login',
   '/register',
   '/'
-]
+];
 
 class App extends Component {
 
@@ -47,9 +48,9 @@ class App extends Component {
   //(loggedin ? private : public).includes(URL)
 
   switchCheck = (match) => {
-    console.log(match)
-    return !(this.state.loggedIn ? privateRoutes : publicRoutes).includes(match.url)
-  }
+    console.log(match);
+    return !(this.state.loggedIn ? privateRoutes : publicRoutes).includes(match.url);
+  };
 
   handleGetQuote = () => { //to get random quotes from the server.
     fetch(`${config.API_ENDPOINT}/quotes`, {
@@ -79,13 +80,13 @@ class App extends Component {
         }
       })
       .then(json => {
-        console.log(json)
-        this.setState({ user: json })
+        console.log(json);
+        this.setState({ user: json });
         if (this.state.user.blessedCurses.length > 0) {
-          this.setState({ blessedCurse: json.blessedCurses[0].curse, curse_id: json.blessedCurses[0].curse_id })
+          this.setState({ blessedCurse: json.blessedCurses[0].curse, curse_id: json.blessedCurses[0].curse_id });
         }
         else {
-          this.setState({ blessedCurse: '', curse_id: '' })
+          this.setState({ blessedCurse: '', curse_id: '' });
         }
       })
       .catch(e => console.log(e));
@@ -106,19 +107,19 @@ class App extends Component {
         }
       })
       .then(async json => {
-        console.log(json)
+        console.log(json);
         if (this.state.curseIndex !== this.state.user.blessedCurses.length - 1) {
-          this.setState({ curseIndex: this.state.curseIndex + 1 })
-          this.setState({ blessedCurse: this.state.user.blessedCurses[this.state.curseIndex].curse, curse_id: this.state.user.blessedCurses[this.state.curseIndex].curse_id })
-          console.log(this.state.user.blessedCurses)
+          this.setState({ curseIndex: this.state.curseIndex + 1 });
+          this.setState({ blessedCurse: this.state.user.blessedCurses[this.state.curseIndex].curse, curse_id: this.state.user.blessedCurses[this.state.curseIndex].curse_id });
+          console.log(this.state.user.blessedCurses);
         }
         else {
-          this.setState({ user: { user: this.state.user.user, blessedCurses: [] }, curseIndex: 0 })
+          this.setState({ user: { user: this.state.user.user, blessedCurses: [] }, curseIndex: 0 });
         }
         // window.location.reload(false); // reload the page (at least for now) to get the next curse after deletion
       })
-      .catch(e => console.log(e))
-  }
+      .catch(e => console.log(e));
+  };
 
   handleGetBlessingOptions = () => { // emojis
     fetch(`${config.API_ENDPOINT}/blessings`, {
@@ -132,7 +133,7 @@ class App extends Component {
         }
       })
       .then(json => {
-        console.log(json)
+        console.log(json);
         this.setState({ emoji: json });
       });
   };
@@ -141,18 +142,21 @@ class App extends Component {
     this.setState({ loggedIn: !this.state.loggedIn });
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     // this.setBlessedCurse();
+    await this.handleGetBlessingOptions();
+    await this.handleGetQuote();
+    await this.handleGetDashboardInfo();
     if (TokenService.hasAuthToken()) {
-      this.toggleLoggedIn();
+      await this.toggleLoggedIn();
     }
   }
 
 
   render() {
-    console.log(this.state.blessedCurse)
-    console.log(this.state.user)
-    console.log(this.state.curse_id)
+    console.log(this.state.blessedCurse);
+    console.log(this.state.user);
+    console.log(this.state.curse_id);
     return (
       <AppContext.Provider
         value={{
@@ -239,7 +243,6 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </Route>
-
             </main>
           </div>
         </UserProvider>

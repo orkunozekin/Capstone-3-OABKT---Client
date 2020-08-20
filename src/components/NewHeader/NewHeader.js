@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { TiArrowSortedDown, TiArrowSortedUp, TiHome } from "react-icons/ti";
+import { TiArrowSortedDown } from "react-icons/ti";
 import UserContext from "../../contexts/UserContext"
 import { Link } from "react-router-dom";
 import "./NewHeader.css";

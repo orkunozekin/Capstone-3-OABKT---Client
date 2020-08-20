@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './CurseForm.css'
+import './CurseForm.css';
 
 export default class CurseForm extends Component {
 
@@ -13,10 +13,10 @@ export default class CurseForm extends Component {
                 <textarea onChange={ev => newCurseMessage(ev.target.value)} name='curseInput' className='curse-box'></textarea>
                 <button disabled={validateCurseMessage()} className='void-button' type='submit'>Send into Void</button>
                 {validateCurseMessage() &&
-                                    <p className="curse-input-error">
-                                    {validateCurseMessage()}
-                                    </p>}
+                    <p className="curse-input-error">
+                        {validateCurseMessage()}
+                    </p>}
             </form>
-        )
+        );
     }
 }
