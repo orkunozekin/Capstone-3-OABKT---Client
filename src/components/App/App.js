@@ -153,6 +153,8 @@ class App extends Component {
     console.log(this.state.blessedCurse)
     console.log(this.state.user)
     console.log(this.state.curse_id)
+
+
     return (
       <AppContext.Provider
         value={{
@@ -170,76 +172,39 @@ class App extends Component {
       >
         <UserProvider>
           <div className="App">
-            <NewHeader toggleLoggedIn={this.toggleLoggedIn} />
+            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn}/>
             <main className="main">
-
-              <PublicOnlyRoute exact path='/register'>
-                {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <RegistrationRoute />
-                    </div>
-                  </CSSTransition>
-                )}
-              </PublicOnlyRoute>
-              <PublicOnlyRoute
-                exact path='/login'
-                toggleLoggedIn={this.toggleLoggedIn}>
-                {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <LoginRoute />
-                    </div>
-                  </CSSTransition>
-                )}
-              </PublicOnlyRoute>
-              <Route exact path='/'>
-                {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <LandingPageRoute />
-                    </div>
-                  </CSSTransition>
-                )}
-              </Route>
-              <PrivateRoute
-                exact path='/dashboard'>
-                {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <Dashboard />
-                    </div>
-                  </CSSTransition>
-                )}
-              </PrivateRoute>
-              <Route exact path='/curse'>
-                {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <CurseRoute />
-                    </div>
-                  </CSSTransition>
-                )}
-              </Route>
-              <PrivateRoute exact path='/bless'>
-                {({ match }) => (
-                  <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <BlessRoute />
-                    </div>
-                  </CSSTransition>
-                )}
-              </PrivateRoute>
-              <Route path="/*">
-                {({ match }) => (
-                  <CSSTransition in={this.switchCheck(match)} timeout={500} classNames='page-transitions' unmountOnExit>
-                    <div className='page-transitions'>
-                      <NotFoundRoute />
-                    </div>
-                  </CSSTransition>
-                )}
-              </Route>
-
+              <Switch>
+                <PublicOnlyRoute
+                  path={'/register'}
+                  component={RegistrationRoute}
+                />
+                <PublicOnlyRoute
+                  path={'/login'}
+                  component={LoginRoute}
+                  toggleLoggedIn={this.toggleLoggedIn}
+                />
+                <Route
+                  exact path={'/'}
+                  component={LandingPageRoute}
+                />
+                <PrivateRoute
+                  exact path={'/dashboard'}
+                  component={Dashboard}
+                />
+                <Route
+                  exact path={'/curse'}
+                  component={CurseRoute}
+                />
+                <PrivateRoute // change it to PrivateRoute once the server is deployed
+                  exact path={'/bless'}
+                  component={BlessRoute}
+                />
+                <Route
+                  path={'/*'}
+                  component={NotFoundRoute}
+                />
+              </Switch>
             </main>
           </div>
         </UserProvider>
@@ -249,3 +214,99 @@ class App extends Component {
 }
 
 export default App;
+
+
+
+
+ // return (
+    //   <AppContext.Provider
+    //     value={{
+    //       quotes: this.state.quotes,
+    //       user: this.state.user,
+    //       curseBlessed: this.state.curseBlessed,
+    //       blessedCurse: this.state.blessedCurse,
+    //       curse_id: this.state.curse_id,
+    //       emoji: this.state.emoji,
+    //       handleGetQuote: this.handleGetQuote,
+    //       handleGetDashboardInfo: this.handleGetDashboardInfo,
+    //       handleDeleteCurse: this.handleDeleteCurse,
+    //       handleGetBlessingOptions: this.handleGetBlessingOptions
+    //     }}
+    //   >
+    //     <UserProvider>
+    //       <div className="App">
+    //         <NewHeader toggleLoggedIn={this.toggleLoggedIn} />
+    //         <main className="main">
+
+    //           <PublicOnlyRoute exact path='/register'>
+    //             {({ match }) => (
+    //               <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <RegistrationRoute />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </PublicOnlyRoute>
+    //           <PublicOnlyRoute
+    //             exact path='/login'
+    //             toggleLoggedIn={this.toggleLoggedIn}>
+    //             {({ match }) => (
+    //               <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <LoginRoute />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </PublicOnlyRoute>
+    //           <Route exact path='/'>
+    //             {({ match }) => (
+    //               <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <LandingPageRoute />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </Route>
+    //           <PrivateRoute
+    //             exact path='/dashboard'>
+    //             {({ match }) => (
+    //               <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <Dashboard />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </PrivateRoute>
+    //           <Route exact path='/curse'>
+    //             {({ match }) => (
+    //               <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <CurseRoute />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </Route>
+    //           <PrivateRoute exact path='/bless'>
+    //             {({ match }) => (
+    //               <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <BlessRoute />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </PrivateRoute>
+    //           <Route path="/*">
+    //             {({ match }) => (
+    //               <CSSTransition in={this.switchCheck(match)} timeout={500} classNames='page-transitions' unmountOnExit>
+    //                 <div className='page-transitions'>
+    //                   <NotFoundRoute />
+    //                 </div>
+    //               </CSSTransition>
+    //             )}
+    //           </Route>
+
+    //         </main>
+    //       </div>
+    //     </UserProvider>
+    //   </AppContext.Provider>
+    // );
