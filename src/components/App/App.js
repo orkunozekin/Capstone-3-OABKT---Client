@@ -166,6 +166,7 @@ class App extends Component {
           blessedCurse: this.state.blessedCurse,
           curse_id: this.state.curse_id,
           emoji: this.state.emoji,
+          loggedIn: this.state.loggedIn,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
           handleDeleteCurse: this.handleDeleteCurse,
@@ -174,7 +175,7 @@ class App extends Component {
       >
         <UserProvider>
           <div className="App">
-            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn}/>
+            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
             <main className="main">
 
               <PublicOnlyRoute exact path='/register'>
@@ -186,13 +187,11 @@ class App extends Component {
                   </CSSTransition>
                 )}
               </PublicOnlyRoute>
-              <PublicOnlyRoute
-                exact path='/login'
-                toggleLoggedIn={this.toggleLoggedIn}>
+              <PublicOnlyRoute exact path='/login'>
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                      <LoginRoute />
+                      <LoginRoute toggleLoggedIn={this.toggleLoggedIn} />
                     </div>
                   </CSSTransition>
                 )}
