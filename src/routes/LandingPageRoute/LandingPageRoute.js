@@ -33,8 +33,7 @@ class LandingPageRoute extends Component {
                         <p>Cursr is an App for <strong><span className='important-notice'>entertainment purposes only.</span></strong></p>
                         <p>If you are suffering from any mental issues or are struggling to cope with your mental health, we recommend you seek professional help.</p>
                     </div>
-
-                    <Link className="curse-anon-link" to='/curse'>{button}</Link>
+                  {button}
                     
                 </section>
             </div>

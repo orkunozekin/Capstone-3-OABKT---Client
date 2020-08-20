@@ -24,7 +24,7 @@ class LoginRoute extends Component {
   render() {
     let loggedIn = this.context.loggedIn;
     return (
-      <section className="login-header-wrapper">
+      <section className="login-wrapper">
         <h2 className="login-header">Login</h2>
         <LoginForm
           loggedIn={loggedIn}

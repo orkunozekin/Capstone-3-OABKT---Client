@@ -26,7 +26,8 @@ class App extends Component {
     loggedIn: false,
     blessedCurse: '',
     curse_id: '',
-    curseIndex: 0
+    curseIndex: 0,
+    emoji: []
   };
 
 
@@ -99,6 +100,23 @@ class App extends Component {
       .catch(e => console.log(e))
   }
 
+  handleGetBlessingOptions = () => { // emojis
+    fetch(`${config.API_ENDPOINT}/blessings`, {
+      headers: {
+        'authorization': `bearer ${TokenService.getAuthToken()},`
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+      })
+      .then(json => {
+        console.log(json)
+        this.setState({ emoji: json });
+      });
+  };
+
   toggleLoggedIn = () => {
     this.setState({ loggedIn: !this.state.loggedIn });
   };
@@ -126,9 +144,11 @@ class App extends Component {
           curseBlessed: this.state.curseBlessed,
           blessedCurse: this.state.blessedCurse,
           curse_id: this.state.curse_id,
+          emoji: this.state.emoji,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
           handleDeleteCurse: this.handleDeleteCurse,
+          handleGetBlessingOptions: this.handleGetBlessingOptions
         }}
       >
         <UserProvider>
@@ -170,7 +190,7 @@ class App extends Component {
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                      <Dashboard />
+                        {!this.state.loggedIn ? <NotFoundRoute /> : <Dashboard />}
                     </div>
                   </CSSTransition>
                 )}
@@ -188,7 +208,7 @@ class App extends Component {
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                      <BlessRoute />
+                    {!this.state.loggedIn ? <NotFoundRoute /> : <BlessRoute />}
                     </div>
                   </CSSTransition>
                 )}
@@ -197,7 +217,7 @@ class App extends Component {
                 {({ match }) => (
                   <CSSTransition in={match != null} timeout={500} classNames='page-transitions' unmountOnExit>
                     <div className='page-transitions'>
-                      <NotFoundRoute />
+                        <NotFoundRoute />
                     </div>
                   </CSSTransition>
                 )}

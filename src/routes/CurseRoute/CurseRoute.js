@@ -31,9 +31,9 @@ class CurseRoute extends Component {
         if (curseMessage.length < 10) {
             return 'Curse should contain at least 10 characters'
         }
-        let words = curseMessage.split(' ')
-        if (words.length <= 3) {
-            return 'Curse should contain at least 4 words'
+        let words = curseMessage.trim().split(' ')
+        if (words.length <= 2) {
+            return 'Curse should contain at least 3 words'
         }
         return '';
 

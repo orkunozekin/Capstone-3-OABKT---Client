@@ -5,6 +5,7 @@ import "./Bless.css";
 import config from '../../config';
 import TokenService from '../../services/token-service';
 import AlertBox from '../../components/AlertBox/AlertBox';
+import AppContext from '../../contexts/AppContext';
 
 class Bless extends Component {
 
@@ -16,6 +17,8 @@ class Bless extends Component {
     alertBox: false,
     emojiSelected: false
   };
+
+  static contextType = AppContext;
 
   handleGetCurse = () => { //Get a curse
     fetch(`${config.API_ENDPOINT}/curses`, {
@@ -63,21 +66,7 @@ class Bless extends Component {
       );
   };
 
-  handleGetBlessingOptions = () => { // emojis
-    fetch(`${config.API_ENDPOINT}/blessings`, {
-      headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()},`
-      }
-    })
-      .then(res => {
-        if (res.ok) {
-          return res.json();
-        }
-      })
-      .then(json => {
-        this.setState({ blessing: json });
-      });
-  };
+  
 
   handleBlockUser = () => {
     const curseId = this.state.curse.curse_id;
@@ -111,7 +100,7 @@ class Bless extends Component {
 
   componentDidMount() {
     this.handleGetCurse();
-    this.handleGetBlessingOptions();
+    this.context.handleGetBlessingOptions();
   }
 
   checkButton = () => {
@@ -129,7 +118,7 @@ class Bless extends Component {
 
   render() {
     const curse = this.state.curse.curse;
-
+    console.log(this.context.emoji)
 
     if (this.state.blessingMessage === `You're out of blessings`) {
       return (
@@ -165,7 +154,7 @@ class Bless extends Component {
             {this.state.curse === 'No available curses' ? <select id="emojiDropdown" name="emojiInput" className="emoji-dropdown" disabled></select> :
               <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown">
                 <option>Select an Emoji</option>
-                {this.state.blessing.map(blessing =>
+                {this.context.emoji.map(blessing =>
                   <option key={blessing.blessing_id} value={blessing.blessing_id}>{String.fromCodePoint(parseInt(blessing.blessing.slice(2),16))}</option>
                 )}</select>}
 
