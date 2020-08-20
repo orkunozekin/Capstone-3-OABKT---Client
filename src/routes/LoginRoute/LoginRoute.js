@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import LoginForm from '../../components/LoginForm/LoginForm'
+import React, { Component } from 'react';
+import LoginForm from '../../components/LoginForm/LoginForm';
 import './LoginRoute.css';
 import Appcontext from '../../contexts/AppContext';
 import { withRouter } from 'react-router-dom';
@@ -10,16 +10,18 @@ class LoginRoute extends Component {
     history: {
       push: () => { },
     },
-  }
+  };
 
   static contextType = Appcontext;
 
   handleLoginSuccess = () => {
-    const { location, history } = this.props
-    const destination = (location.state || {}).from || '/dashboard'
-    history.push(destination)
-    this.props.toggleLoggedIn()
-  }
+    console.log(this.props);
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || '/dashboard';
+    this.context.handleGetDashboardInfo();
+    history.push(destination);
+    this.props.toggleLoggedIn();
+  };
 
   render() {
     let loggedIn = this.context.loggedIn;
@@ -35,4 +37,4 @@ class LoginRoute extends Component {
   }
 }
 
-export default withRouter(LoginRoute)
+export default withRouter(LoginRoute);
