@@ -10,8 +10,8 @@ class Dashboard extends Component {
 
     static contextType = AppContext;
 
-    componentDidMount() {
-        this.context.handleGetDashboardInfo();
+    async componentDidMount() {
+        await this.context.handleGetDashboardInfo();
     }
 
     deleteCurse = (curse_id) => {
