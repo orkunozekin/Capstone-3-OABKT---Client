@@ -5,7 +5,9 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: start;
+    padding: 1.5rem;
+    gap: 1rem;
 }
 
 .curse-box {
@@ -43,9 +45,14 @@
     color: lightgray;
     border-radius: 10px;
     font-size: 1.1em;
+    transition: background-color .5s ease;
 }
 
 .void-button:disabled {
     color: black;
+    background-color: var(--color-background-neutral);
+}
+
+.void-button:hover {
     background-color: var(--color-background-neutral);
 }
