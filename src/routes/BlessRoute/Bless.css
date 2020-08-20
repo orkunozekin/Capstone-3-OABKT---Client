@@ -34,5 +34,10 @@
     background-color: grey;
     padding: 10px;
     border-radius: 10px;
+    font-size: 1rem;
+}
+
+.emoji-dropdown option {
+    font-size: 2rem;
 }
 
