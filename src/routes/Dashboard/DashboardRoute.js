@@ -13,6 +13,7 @@ class Dashboard extends Component {
     componentDidMount() {
         this.context.handleGetQuote();
         this.context.handleGetDashboardInfo();
+        this.context.handleGetBlessingOptions();
     }
 
     deleteCurse = (curse_id) => {
@@ -33,7 +34,10 @@ class Dashboard extends Component {
         if (this.context.user.user && this.context.user.blessedCurses.length !== 0) { //if the user exists and blessedCursed array isn't empty
             totalblessings = this.context.user.user.totalblessings;
             blessedCurse = this.context.blessedCurse; // set the blessedCurse to the first curse in the blessedCurse array from the server.
-            emoji = emojis[this.context.user.blessedCurses[0].blessing].blessing; //supposed to be a UNICODE but comes back as an integer
+            console.log(this.context.user)
+            console.log(emojis)
+            emoji = this.context.user.blessedCurses.length>0 ? emojis[this.context.user.blessedCurses[0].blessing - 1].blessing : 'ab3'
+             //supposed to be a UNICODE but comes back as an integer
             emoji = String.fromCodePoint(parseInt(emoji.slice(2),16))
 
             return ( 
