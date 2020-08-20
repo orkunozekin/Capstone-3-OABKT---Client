@@ -6,14 +6,6 @@
   background-repeat: no-repeat;
   min-height: 200px;
 }
-/*super clean*/
-/*
- background-size: 10rem 10rem;
-  background-repeat: no-repeat;
-  height: 10rem;
-  width: 10rem;  
-*/
-
 
 #keith {
   background-image: url(keith.png)
@@ -35,8 +27,8 @@
   background-image: url(adam.png)
 }
 
-#luke {
-  background-image: url(luke.png)
+#mike {
+  background-image: url(mike.png)
 }
 
 #fired {

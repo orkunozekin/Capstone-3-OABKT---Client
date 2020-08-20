@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
+import './RegistrationRoute.css'
 
 
 
@@ -19,7 +20,7 @@ class RegistrationRoute extends Component {
     return (
       <>
         <section className="sign-up-wrapper">
-          <h2 className='login-header'>Sign up</h2>
+          <h2 className='sign-up-header'>Sign up</h2>
           <RegistrationForm
             onRegistrationSuccess={this.handleRegistrationSuccess}
           />

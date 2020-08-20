@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { render } from 'react-dom'
 import Button from '../../components/Button/Button'
 import "./Dashboard.css"
 import AppContext from '../../contexts/AppContext'
@@ -24,7 +23,6 @@ class Dashboard extends Component {
     render() {
         console.log(this.context.blessedCurse);
         const { quote, source } = this.context.quotes;
-        const curseBlessed = this.context.curseBlessed; // to check if we currently are displaying a blessed curse.
 
 
         let blessedCurse; // the first curse in the array of blessed curses of the user's. 
@@ -38,7 +36,7 @@ class Dashboard extends Component {
 
 
             return ( 
-                <>
+                <div className="dashboard-wrapper">
                     <div className='quote-box shadow-box'>
                         <h3 className='quote-block'>{quote}</h3>
                         <h4 className='quote-source'>{source}</h4>
@@ -67,7 +65,7 @@ class Dashboard extends Component {
                                     <Button className='bless-button'>Bless</Button>
                                 </Link>
                             </div>
-                </>
+                </div>
 
             )
         }

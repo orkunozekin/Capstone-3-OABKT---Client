@@ -1,8 +1,38 @@
 .alert-box {
-    border: 3px solid black;
-    height: 150px;
+    border: 3px solid var(--color-background-neutral);
+    height: 50vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
+}
+
+.alertMessage {
+    display: flex;
+    justify-content: center;
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
+
+.alertWrapper {
+    margin: 2rem;
     
+}
+
+.alertButton {
+    min-width: 35vw;
+    min-height: 10vh;
+    font-size: 1.5rem;
+    width: 50vw;
+    height: 10vh;
+}
+
+.curseAgainButton {
+    color: gainsboro;
+    background-color: var(--color-background-neutral);
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
 }

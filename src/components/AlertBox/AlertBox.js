@@ -2,16 +2,21 @@ import React from 'react';
 import './AlertBox.css';
 import Button from '../Button/Button';
 import { Link } from 'react-router-dom';
+import TokenService from '../../services/token-service';
 
 const AlertBox = (props) => {
 
 
     return (
-        <div className="alert-box">
-            <div>{props.message}</div>
-            <Link to='/dashboard' ><Button>Back to Dashboard</Button></Link>
-            <Button onClick={() => props.function()}>{props.link}</Button>
+        <>
+            <div className='alertWrapper'>
+            <div className='alertMessage'>{props.message}</div>
+            <div className="alert-box">
+            {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className='alertButton'>Back to Dashboard</Button></Link> : ''}
+            <Button className='alertButton curseAgainButton' onClick={() => props.function()}>{props.link}</Button>
         </div>
+        </div>
+        </>
     )
 }
 
