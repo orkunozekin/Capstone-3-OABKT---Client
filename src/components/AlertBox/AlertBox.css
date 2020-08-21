@@ -24,7 +24,7 @@
     display: flex;
     justify-content: center;
     font-family: 'IM Fell English', serif;
-    font-size: 1rem;
+    font-size: 1.75rem;
     margin: 1rem;
     text-align: center;
     color: black;
@@ -97,7 +97,11 @@
 }
 
 @media screen and (min-width: 768px) {
-    .curseAgainButton, .back-to-dashboard, .alertMessage {
+    .alertMessage {
+        font-size: 2rem;
+    }
+
+    .curseAgainButton, .back-to-dashboard {
         font-size: 1.5rem;
     }
 }
@@ -107,7 +111,11 @@
         min-height: 10vh;
     }
 
-    .alertMessage, .curseAgainButton, .back-to-dashboard {
+    .alertMessage {
+        font-size: 2.5rem;
+    }
+
+    .curseAgainButton, .back-to-dashboard {
         font-size: 2rem;
     }
 }
