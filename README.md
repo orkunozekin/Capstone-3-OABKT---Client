@@ -9,7 +9,7 @@ Developed by:
 [Brian Charles](https://github.com/bcharles41078),
 [Keith Freitag](https://github.com/keithmoo),
 [Orkun Ozekin](https://github.com/orkunozekin), and 
-[Thomas Davis](https://github.com/thomasDavis)
+[Thomas Davis](https://github.com/thomasDavisA)
 
 TA Handler:
 [Mike Stowe](https://github.com/mikeStowe)
