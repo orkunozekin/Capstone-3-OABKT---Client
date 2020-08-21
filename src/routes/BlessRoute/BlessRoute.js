@@ -105,13 +105,13 @@ class Bless extends Component {
   checkButton = () => {
 
     if (this.state.emojiSelected && this.state.curse !== 'No available curses' && this.state.blessingSent === false) {
-      return <Button>Bless This Curse</Button>;
+      return <Button className='bless-a-curse-button bless-button-ready'>Bless This Curse</Button>;
     }
     else if (!this.state.emojiSelected) {
-      return <Button onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>;
+      return <Button className='bless-a-curse-button bless-button-ready' onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>;
     }
     else {
-      return <Button disabled>Bless This Curse</Button>;
+      return <Button className='bless-a-curse-button' disabled>Bless This Curse</Button>;
     }
   };
 
@@ -158,7 +158,7 @@ class Bless extends Component {
 
             {this.checkButton()}
           </form>
-          {this.state.curse === 'No available curses' ? <button className='block-button' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='blockbutton' onClick={this.handleBlockUser}>No more from this user</button>}
+          {this.state.curse === 'No available curses' ? <button className='block-button' onClick={this.handleBlockUser} disabled>No more from this user</button> : <button className='block-button' onClick={this.handleBlockUser}>No more from this user</button>}
         </div>
 
       );

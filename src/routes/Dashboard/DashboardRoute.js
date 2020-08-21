@@ -37,7 +37,7 @@ class Dashboard extends Component {
             return (
                 <div className="dashboard-wrapper">
                     <div className='quote-box shadow-box'>
-                        <h3 className='quote-block'>{quote}</h3>
+                        <blockquote className='quote-block'><p>{quote}</p></blockquote>
                         <h4 className='quote-source'>{source}</h4>
                     </div>
 
@@ -51,7 +51,8 @@ class Dashboard extends Component {
                                 <div className='curse-blessed'>
                                     <h4><b>{blessedCurse}</b></h4>
                                 </div>
-                                <p>was answered with {emoji}</p>
+                                <p>was answered with: </p>
+                                <div className='emoji-text'>{emoji}</div>
                                 <Button className='next-blessed' onClick={() => this.deleteCurse(this.context.curse_id)}>See another blessed curse</Button>
                             </div>
 

@@ -2,12 +2,16 @@
     height: 90vh;
     display: flex;
     flex-flow: column nowrap;
-    padding: 0 20px;
+    padding: 0;
     align-items: center;
+    margin: 0 auto;
+    max-width: 90%;
+    width: 90%;
 }
 
 .curse-bless-title {
     padding: 20px 0;
+    text-align: center;
     font-family: 'IM Fell English', serif;
 }
 

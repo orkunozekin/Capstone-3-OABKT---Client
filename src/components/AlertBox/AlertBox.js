@@ -5,15 +5,20 @@ import { Link } from 'react-router-dom';
 import TokenService from '../../services/token-service';
 
 const AlertBox = (props) => {
-
+    let buttonReturn = 'alertButton back-to-dashboard';
+    let buttonAgain = 'alertButton curseAgainButton';
+    if (props.flag === 'blessy') {
+        buttonReturn += ' blessy-back-to-dashboard';
+        buttonAgain += ' bless-again-button';
+    }
 
     return (
         <>
-            <div className='alertWrapper'>
-                <div className="alert-box">
+            <div className={props.flag === 'blessy' ? 'alertWrapper blessy-background' : 'alertWrapper'}>
+                <div className={props.flag === 'blessy' ? 'alert-box blessy-form' : 'alert-box'}>
                     <div className='alertMessage'>{props.message}</div>
-                    {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className='alertButton back-to-dashboard'>Back to Dashboard</Button></Link> : ''}
-                    <Button className='alertButton curseAgainButton' onClick={() => props.function()}>{props.link}</Button>
+                    {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className={buttonReturn}>Back to Dashboard</Button></Link> : ''}
+                    <Button className={buttonAgain} onClick={() => props.function()}>{props.link}</Button>
                 </div>
             </div>
         </>

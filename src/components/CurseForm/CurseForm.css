@@ -54,7 +54,3 @@
 .void-button-ready:hover {
     background-color: gainsboro;
 }
-
-.disable-button, .disable-button:hover {
-    transition: none;
-}

@@ -77,14 +77,27 @@
     text-align: center;    
     margin: 10px auto;
     font-family: 'IM Fell English', serif;
+    font-size: 1.5rem;
+}
+
+.emoji-text {
+    margin: .5rem;
+    font-size: 4rem;
+}
+
+.blessing-recieved p {
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .next-blessed {
-    margin: 20px 0 0 0;
+    margin: .5rem;
     padding: .5rem;
     width: 60vw;
     background-color: var(--color-bless-darken-two);
-    color: var(--color-background-main)
+    color: var(--color-background-main);
+    font-family: 'Antic Didone', serif;
+    font-weight: 600;
 }
 
 .next-blessed:hover {

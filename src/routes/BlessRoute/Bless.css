@@ -33,18 +33,53 @@
 }
 
 .emoji-dropdown {
-    background-color: grey;
-    padding: 10px;
-    border-radius: 10px;
+    background-color: var(--color-background-main);
+    color: var(--color-highlight-text);
+    padding: .75rem;
+    margin: 2rem auto;
+    border-radius: 5px;
     font-size: 1.25rem;
     font-family: 'Antic Didone', serif;
+    font-weight: 800;
 }
 
 .emoji-dropdown option {
-    font-size: 2rem;
+    text-align: center;
+    font-size: 1.75rem;
+}
+
+.bless-a-curse-button {
+    background-color: var(--color-bless-darken-one);
+    font-family: 'Antic Didone', serif;
+    font-weight: 800;
+    width: 80%;
+    padding: 1rem;
+    margin: 1rem auto;
+    transition: transform none;
+}
+
+.bless-a-curse-button:disabled {
+    color: var(--color-highlight-text);
+    background-color: var(--color-bless-darken-two);
+    cursor: auto;
+}
+
+.bless-button-ready:hover {
+    background-color: var(--color-bless-background-main);
+}
+
+.bless-button-ready:active {
+    background-color: var(--color-bless-darken-two);
+    transform: scale(.97);
 }
 
 .block-button {
+    padding: .75rem;
+    width: 50vw;
     background-color: lightcoral;
+    font-family: 'IM Fell English', serif;
 }
 
+.block-button:hover {
+    background-color: red;
+}
