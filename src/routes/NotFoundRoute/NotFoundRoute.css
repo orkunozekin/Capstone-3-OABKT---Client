@@ -1,6 +1,32 @@
+*{
+  max-width:100vw;
+  overflow:none;
+}
+
+.error-page-transitions {
+  width: 90%;
+  background-color: var(--color-background-neutral);
+  color: black;
+  margin: 0;
+  padding: 1rem;
+  margin: 1rem auto;
+  border-radius: 10px;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
+
+
+
+.main {
+  display:flex;
+  justify-content: center;
+}
 
 .errorlink {
-  color: gainsboro;
+  color: var(--color-bless-darken-two);
   font-size: 2rem;
   margin-left: 1rem;
   text-decoration: underline;
@@ -9,6 +35,7 @@
 .errorh2 {
   font-size: 2.5rem;
   margin-left: 1rem;
+  margin-bottom: 1rem;
 }
 
 .ofCourse {
@@ -17,5 +44,25 @@
   font-size: 2rem;
   padding-top: 3rem;
   margin: 1rem;
+  margin-top:0;
   text-align: center;
+  width:80%;
+}
+
+.errorWrapper {
+  margin:0;
+  width:100%;
+  height: 500px;
+  display:flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+
+.pic {
+  flex-shrink:1;
+  background-position: center;
+  border: 3px solid var(--color-background-main);
 }
