@@ -22,8 +22,8 @@ const AlertBox = (props) => {
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
 export default AlertBox;
 

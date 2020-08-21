@@ -15,7 +15,6 @@ class LoginRoute extends Component {
   static contextType = Appcontext;
 
   handleLoginSuccess = () => {
-    console.log(this.props);
     const { location, history } = this.props;
     const destination = (location.state || {}).from || '/dashboard';
     history.push(destination);

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import "./LandingPage.css"
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import "./LandingPage.css";
 // import WarningBox from '../../components/WarningBox/WarningBox'
-import Button from '../../components/Button/Button'
-import AppContext from '../../contexts/AppContext'
+import Button from '../../components/Button/Button';
+import AppContext from '../../contexts/AppContext';
 
 class LandingPageRoute extends Component {
     static contextType = AppContext;
@@ -13,7 +13,7 @@ class LandingPageRoute extends Component {
         if (!this.context.loggedIn) {
             button = <Link className="curse-anon-link" to="/curse"><Button className='curse-now-button'>Curse Anonymously</Button></Link>;
         } else {
-            button = <Button className='curse-now-button'>Curse now!</Button>;
+            button = <Link className="curse-anon-link" to="/curse"><Button className='curse-now-button'>Curse now!</Button></Link>;
         }
         return (
             <div className="landing-page-wrapper">
@@ -33,11 +33,11 @@ class LandingPageRoute extends Component {
                         <p>Cursr is an App for <strong><span className='important-notice'>entertainment purposes only.</span></strong></p>
                         <p>If you are suffering from any mental issues or are struggling to cope with your mental health, we recommend you seek professional help.</p>
                     </div>
-                  {button}
-                    
+                    {button}
+
                 </section>
             </div>
-        )
+        );
     }
 }
 

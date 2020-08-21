@@ -10,17 +10,17 @@ const WarningBox = (props) => {
     if (!show) {
         return (
             <div className="warning-box">
-                <AiOutlineWarning className="warning-box-icon" onMouseOver={() => setShow(true)}/>
+                <AiOutlineWarning className="warning-box-icon" onMouseOver={() => setShow(true)} />
             </div>
-        )
+        );
     }
-    
+
     return (
         <div className="warning-box-wrapper" onMouseLeave={() => setShow(false)}>
             <h3>Warning!</h3>
         </div>
-    )
- 
-}
+    );
+
+};
 
 export default WarningBox;

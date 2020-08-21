@@ -29,7 +29,7 @@ class RegistrationForm extends Component {
       password: password.value,
     })
       .then(async user => {
-        await this.props.onRegistrationSuccess(username,password);
+        await this.props.onRegistrationSuccess(username, password);
         name.value = '';
         username.value = '';
         password.value = '';

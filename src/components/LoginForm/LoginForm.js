@@ -12,39 +12,38 @@ class LoginForm extends Component {
 
   static contextType = UserContext;
 
-  state = { error: null, loading: false }
+  state = { error: null, loading: false };
 
-  firstInput = React.createRef()
+  firstInput = React.createRef();
 
   handleSubmit = ev => {
-    ev.preventDefault()
-    const { username, password } = ev.target
+    ev.preventDefault();
+    const { username, password } = ev.target;
 
-    this.setState({ error: null, loading: true })
+    this.setState({ error: null, loading: true });
 
     AuthApiService.postLogin({
       username: username.value,
       password: password.value,
     })
       .then(res => {
-        username.value = ''
-        password.value = ''
+        username.value = '';
+        password.value = '';
         this.context.processLogin(res.authToken);
         this.props.onLoginSuccess();
-        console.log('logged in');
       })
       .catch(res => {
-        this.setState({ error: res.error, loading: false })
+        this.setState({ error: res.error, loading: false });
 
-      })
-  }
+      });
+  };
 
   componentDidMount() {
-    this.firstInput.current.focus()
+    this.firstInput.current.focus();
   }
 
   render() {
-    const { error } = this.state
+    const { error } = this.state;
     const loading = this.state.loading;
     return (
       <form
@@ -55,34 +54,34 @@ class LoginForm extends Component {
           {error && <p>{error}</p>}
         </div>
 
-          <Label htmlFor='login-username-input'>
-            Username
+        <Label htmlFor='login-username-input'>
+          Username
           </Label>
-          <Input
-            ref={this.firstInput}
-            id='login-username-input'
-            name='username'
-            required
+        <Input
+          ref={this.firstInput}
+          id='login-username-input'
+          name='username'
+          required
         />
 
-          <Label htmlFor='login-password-input'>
-            Password
+        <Label htmlFor='login-password-input'>
+          Password
           </Label>
-          <Input
-            id='login-password-input'
-            name='password'
-            type='password'
-            required
-          />
+        <Input
+          id='login-password-input'
+          name='password'
+          type='password'
+          required
+        />
 
         {!loading && <Button type='submit'>
           Login
         </Button>}
         {loading && <Button type='submit' disabled>
-        <FaSpinner className='load-icon' />
+          <FaSpinner className='load-icon' />
         </Button>}
       </form>
-    )
+    );
   }
 }
 
