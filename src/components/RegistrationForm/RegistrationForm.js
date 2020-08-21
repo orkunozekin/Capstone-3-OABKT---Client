@@ -5,7 +5,6 @@ import AuthApiService from '../../services/auth-api-service';
 import Button from '../Button/Button';
 import { FaSpinner } from 'react-icons/fa';
 import AppContext from '../../contexts/AppContext';
-import TokenService from '../../services/token-service';
 import './RegistrationForm.css';
 
 
@@ -20,21 +19,6 @@ class RegistrationForm extends Component {
 
   firstInput = React.createRef();
 
-  loginUser = (username, password) => {
-    console.log('1', username);
-    AuthApiService.postLogin({
-      username: username,
-      password: password,
-    })
-      .then(res => {
-        TokenService.saveAuthToken(res.authToken);
-        this.context.toggleLoggedIn()
-      })
-      .catch(res => {
-        this.setState({ error: res.error, loading: false });
-      });
-  };
-
   handleSubmit = ev => {
     this.setState({ loading: true });
     ev.preventDefault();
@@ -45,11 +29,10 @@ class RegistrationForm extends Component {
       password: password.value,
     })
       .then(async user => {
-        await this.loginUser(username.value, password.value);
+        await this.props.onRegistrationSuccess(username,password);
         name.value = '';
         username.value = '';
         password.value = '';
-        this.props.onRegistrationSuccess()
       })
       .catch(res => {
         this.setState({ error: res.error, loading: false });
