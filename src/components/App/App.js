@@ -168,7 +168,7 @@ class App extends Component {
       >
         <UserProvider>
           <div className="App">
-            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} />
+            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} name={this.state.user.user?this.state.user.user.name:''} />
             <main className="main">
 
               <PublicOnlyRoute exact path='/register'>

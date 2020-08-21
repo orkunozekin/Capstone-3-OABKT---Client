@@ -32,8 +32,8 @@ const NewHeader = (props) => {
         return (
             <div onMouseLeave={() => setShow(false)} className="navbar-wrapper">
                 <nav className={nav_class}>
-                    {TokenService.hasAuthToken() ? <>
-                        <div className="header-link user-name">{context.user.name}</div>
+                    {props.loggedIn ? <>
+                        <div className="header-link user-name">{props.name}</div>
                         <Link className="header-link" to="/dashboard"><h1>Cursr</h1></Link>
                         <Link to="/" className="header-link" onClick={handleLogoutClick}><h2>Logout</h2></Link>
                     </> : <>
