@@ -37,7 +37,7 @@ class App extends Component {
 
   state = {
     quotes: {},
-    user: {},
+    user: { user: { limiter: 0, totalblessings: 0 }, blessedCurses: [] },
     loggedIn: false,
     blessedCurse: '',
     curse_id: '',
@@ -147,6 +147,9 @@ class App extends Component {
     }
   }
 
+  setMainState = (object) => {
+    this.setState(object);
+  };
 
   render() {
     return (
@@ -160,6 +163,7 @@ class App extends Component {
           emoji: this.state.emoji,
           loggedIn: this.state.loggedIn,
           toggleLoggin: this.toggleLoggedIn,
+          setMainState: this.setMainState,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
           handleDeleteCurse: this.handleDeleteCurse,
@@ -168,7 +172,7 @@ class App extends Component {
       >
         <UserProvider>
           <div className="App">
-            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} name={this.state.user.user?this.state.user.user.name:''} />
+            <NewHeader toggleLoggedIn={this.toggleLoggedIn} loggedIn={this.state.loggedIn} name={this.state.user.user ? this.state.user.user.name : ''} />
             <main className="main">
 
               <PublicOnlyRoute exact path='/register'>

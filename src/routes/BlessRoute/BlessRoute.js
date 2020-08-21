@@ -60,7 +60,9 @@ class Bless extends Component {
       })
       .then(json => {
         this.setState({ blessingMessage: json, blessingSent: true, alertBox: true });
-
+      })
+      .then(() => {
+        this.context.setMainState({ user: { user: { ...this.context.user.user, limiter: this.context.user.user.limiter - 1 }, blessedCurses: this.context.user.blessedCurses } });
       })
       .catch(error => console.log(error)
       );
@@ -95,11 +97,15 @@ class Bless extends Component {
 
   handleBlessAnotherCurse = () => {
     this.setState({ alertBox: false, blessingSent: false });
-    this.handleGetCurse();
+    if (this.context.user.user.limiter > 0) {
+        this.handleGetCurse();
+    } else {
+      this.setState({ blessingMessage: `You're out of blessings` });
+    };
   };
 
   componentDidMount() {
-    this.handleGetCurse();
+    this.context.user.user.limiter > 0 ? this.handleGetCurse() : this.setState({ blessingMessage: `You're out of blessings` });
   }
 
   checkButton = () => {

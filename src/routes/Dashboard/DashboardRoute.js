@@ -24,11 +24,10 @@ class Dashboard extends Component {
         const emojis = this.context.emoji; // array of blessing emojis
 
         let blessedCurse; // the first curse in the array of blessed curses of the user's. 
-        let totalblessings = 0;
+        let totalblessings = this.context.user.user.totalblessings;
         let emoji;
 
         if (this.context.user && this.context.user.user && this.context.user.blessedCurses.length !== 0) { //if the user exists and blessedCursed array isn't empty
-            totalblessings = this.context.user.user.totalblessings;
             blessedCurse = this.context.blessedCurse; // set the blessedCurse to the first curse in the blessedCurse array from the server.
             emoji = emojis.length > 1 ? emojis[this.context.user.blessedCurses[0].blessing - 1].blessing : 'ab11111';
             //supposed to be a UNICODE but comes back as an integer
