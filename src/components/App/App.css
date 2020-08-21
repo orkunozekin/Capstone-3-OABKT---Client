@@ -25,11 +25,6 @@
     transition: opacity 200ms;
 }
 
-.error-page-transitions {
-    position: absolute;
-    width: 100%;
-}
-
 .error-page-transitions-enter {
     opacity: 0;
 }

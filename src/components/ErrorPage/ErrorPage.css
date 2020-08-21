@@ -1,10 +1,39 @@
+.errorWrapper {
+  width: 80%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin: 2rem;
+}
+
 .pic {
-  flex: 1 1 512px;
-  flex: 0 1 512px;
-  margin: 5px;
-  background-size: 10rem 10rem;
+  margin: .5rem;
+  background-size: 5rem 5rem;
   background-repeat: no-repeat;
-  min-height: 200px;
+  background-position: center;
+  border: 3px solid var(--color-background-main);
+  transition: border .3s ease;
+  height: 5rem;
+  width: 5rem;
+}
+
+.ready-to-fire:hover {
+  animation: fire-ready 1.5s infinite;
+ 
+}
+
+@keyframes fire-ready {
+  from {
+    border: 3px solid var(--color-background-main);
+  }
+
+  50% {
+    border: 5px solid red;
+  }
+
+  to {
+    border: 3px solid var(--color-background-main);
+  }
 }
 
 #keith {
@@ -35,10 +64,18 @@
   background-image: url(nowHiring.png)
 }
 
-.errorWrapper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin: 5rem;
-  height: 40vh;
+@media screen and (min-width: 768px) {
+  .pic {
+    background-size: 7rem 7rem;
+    height: 7rem;
+    width: 7rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .pic {
+    background-size: 10rem 10rem;
+    height: 10rem;
+    width: 10rem;
+  }
 }
