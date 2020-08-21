@@ -23,17 +23,13 @@
 @import url('https://fonts.googleapis.com/css?family=IM+Fell+English&display=swap');
 
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-  min-width: 100vw;
   background-color: var(--color-background-main);
   color: var(--color-highlight-text);
-
 }
 
 a {
