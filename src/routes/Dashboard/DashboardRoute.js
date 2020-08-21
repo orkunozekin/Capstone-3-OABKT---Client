@@ -10,8 +10,8 @@ class Dashboard extends Component {
 
     static contextType = AppContext;
 
-    async componentDidMount() {
-        await this.context.handleGetDashboardInfo();
+    componentDidMount() {
+        this.context.handleGetDashboardInfo();
     }
 
     deleteCurse = (curse_id) => {
@@ -19,7 +19,6 @@ class Dashboard extends Component {
     };
 
     render() {
-        console.log(this.context.blessedCurse);
         const { quote, source } = this.context.quotes;
 
         const emojis = this.context.emoji; // array of blessing emojis
@@ -28,7 +27,7 @@ class Dashboard extends Component {
         let totalblessings = 0;
         let emoji;
 
-        if (this.context.user.user && this.context.user.blessedCurses.length !== 0) { //if the user exists and blessedCursed array isn't empty
+        if (this.context.user && this.context.user.user && this.context.user.blessedCurses.length !== 0) { //if the user exists and blessedCursed array isn't empty
             totalblessings = this.context.user.user.totalblessings;
             blessedCurse = this.context.blessedCurse; // set the blessedCurse to the first curse in the blessedCurse array from the server.
             console.log(this.context.user.blessedCurses);
