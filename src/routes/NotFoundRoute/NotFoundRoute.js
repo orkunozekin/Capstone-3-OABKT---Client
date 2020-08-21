@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import ErrorPage from '../../components/ErrorPage/ErrorPage'
-import { Link } from 'react-router-dom'
-import './NotFoundRoute.css'
+import React, { Component } from 'react';
+import ErrorPage from '../../components/ErrorPage/ErrorPage';
+import { Link } from 'react-router-dom';
+import './NotFoundRoute.css';
 
 class NotFoundRoute extends Component {
   render() {
@@ -20,4 +20,4 @@ class NotFoundRoute extends Component {
   }
 }
 
-export default NotFoundRoute
+export default NotFoundRoute;

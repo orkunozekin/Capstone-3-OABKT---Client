@@ -6,72 +6,71 @@ import IdleService from '../services/idle-service';
 const UserContext = React.createContext({
   user: {},
   error: null,
-  setError: () => {},
-  clearError: () => {},
-  setUser: () => {},
-  processLogin: () => {console.log('hi')},
-  processLogout: () => {console.log('bye')},
-})
+  setError: () => { },
+  clearError: () => { },
+  setUser: () => { },
+  processLogin: () => { console.log('hi'); },
+  processLogout: () => { console.log('bye'); },
+});
 
 export default UserContext;
 
 export class UserProvider extends Component {
   constructor(props) {
-    super(props)
-    const state = { user: {}, error: null }
+    super(props);
+    const state = { user: {}, error: null };
 
-    const jwtPayload = TokenService.parseAuthToken()
+    const jwtPayload = TokenService.parseAuthToken();
 
     if (jwtPayload)
       state.user = {
         id: jwtPayload.user_id,
         name: jwtPayload.name,
         username: jwtPayload.sub,
-      }
+      };
 
     this.state = state;
-    IdleService.setIdleCallback(this.logoutBecauseIdle)
+    IdleService.setIdleCallback(this.logoutBecauseIdle);
   }
 
   setError = error => {
-    console.error(error)
-    this.setState({ error })
-  }
+    console.error(error);
+    this.setState({ error });
+  };
 
   clearError = () => {
-    this.setState({ error: null })
-  }
+    this.setState({ error: null });
+  };
 
   setUser = user => {
-    this.setState({ user })
-  }
+    this.setState({ user });
+  };
 
   processLogin = authToken => {
-    console.log(authToken)
-    TokenService.saveAuthToken(authToken)
-    const jwtPayload = TokenService.parseAuthToken()
+    TokenService.saveAuthToken(authToken);
+    const jwtPayload = TokenService.parseAuthToken();
     this.setUser({
       id: jwtPayload.user_id,
       name: jwtPayload.name,
       username: jwtPayload.sub,
-    })
-  }
+    });
+  };
 
   processLogout = () => {
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-    this.setUser({})
-  }
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.setUser({});
+  };
 
   logoutBecauseIdle = () => {
-    TokenService.clearAuthToken()
-    TokenService.clearCallbackBeforeExpiry()
-    IdleService.unRegisterIdleResets()
-    this.setUser({ idle: true })
-  }
+    TokenService.clearAuthToken();
+    TokenService.clearCallbackBeforeExpiry();
+    IdleService.unRegisterIdleResets();
+    this.setUser({ idle: true });
+  };
 
-  
+
   render() {
     const value = {
       user: this.state.user,
@@ -81,11 +80,11 @@ export class UserProvider extends Component {
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-    }
+    };
     return (
       <UserContext.Provider value={value}>
         {this.props.children}
       </UserContext.Provider>
-    )
+    );
   }
 }

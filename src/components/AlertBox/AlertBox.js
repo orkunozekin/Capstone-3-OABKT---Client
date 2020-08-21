@@ -10,15 +10,15 @@ const AlertBox = (props) => {
     return (
         <>
             <div className='alertWrapper'>
-            <div className="alert-box">
-            <div className='alertMessage'>{props.message}</div>
-            {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className='alertButton back-to-dashboard'>Back to Dashboard</Button></Link> : ''}
-            <Button className='alertButton curseAgainButton' onClick={() => props.function()}>{props.link}</Button>
-        </div>
-        </div>
+                <div className="alert-box">
+                    <div className='alertMessage'>{props.message}</div>
+                    {TokenService.hasAuthToken() ? <Link to='/dashboard' ><Button className='alertButton back-to-dashboard'>Back to Dashboard</Button></Link> : ''}
+                    <Button className='alertButton curseAgainButton' onClick={() => props.function()}>{props.link}</Button>
+                </div>
+            </div>
         </>
-    )
-}
+    );
+};
 
 export default AlertBox;
 

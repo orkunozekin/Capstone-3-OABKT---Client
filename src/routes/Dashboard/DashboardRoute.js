@@ -30,8 +30,6 @@ class Dashboard extends Component {
         if (this.context.user && this.context.user.user && this.context.user.blessedCurses.length !== 0) { //if the user exists and blessedCursed array isn't empty
             totalblessings = this.context.user.user.totalblessings;
             blessedCurse = this.context.blessedCurse; // set the blessedCurse to the first curse in the blessedCurse array from the server.
-            console.log(this.context.user.blessedCurses);
-            console.log(emojis);
             emoji = emojis.length > 1 ? emojis[this.context.user.blessedCurses[0].blessing - 1].blessing : 'ab11111';
             //supposed to be a UNICODE but comes back as an integer
             emoji = String.fromCodePoint(parseInt(emoji.slice(2), 16));

@@ -66,7 +66,7 @@ class Bless extends Component {
       );
   };
 
-  
+
 
   handleBlockUser = () => {
     const curseId = this.state.curse.curse_id;
@@ -117,7 +117,6 @@ class Bless extends Component {
 
   render() {
     const curse = this.state.curse.curse;
-    console.log(this.context.emoji)
 
     if (this.state.blessingMessage === `You're out of blessings`) {
       return (
@@ -140,7 +139,7 @@ class Bless extends Component {
     }
 
     else if (this.state.blessingSent && this.state.alertBox) { // if the alert box is being displayed, display nothing else.
-      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `}  flag={'blessy'} />;
+      return <AlertBox function={this.handleBlessAnotherCurse} link={'Bless Another Curse'} message={`You have blessed this curse: ${curse}. `} flag={'blessy'} />;
     }
 
     else {
@@ -154,7 +153,7 @@ class Bless extends Component {
               <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown">
                 <option>Select an Emoji</option>
                 {this.context.emoji.map(blessing =>
-                  <option key={blessing.blessing_id} value={blessing.blessing_id}>{String.fromCodePoint(parseInt(blessing.blessing.slice(2),16))}</option>
+                  <option key={blessing.blessing_id} value={blessing.blessing_id}>{String.fromCodePoint(parseInt(blessing.blessing.slice(2), 16))}</option>
                 )}</select>}
 
             {this.checkButton()}

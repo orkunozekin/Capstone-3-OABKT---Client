@@ -1,31 +1,31 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 // import {Link} from 'react-router-dom'
-import './keith.png'
-import './adam.png'
-import './thomas.png'
-import './brian.png'
-import './mike.png'
-import './orkun.png'
-import './ErrorPage.css'
-import './nowHiring.png'
+import './keith.png';
+import './adam.png';
+import './thomas.png';
+import './brian.png';
+import './mike.png';
+import './orkun.png';
+import './ErrorPage.css';
+import './nowHiring.png';
 
 const staffArray = ['keith', 'thomas', 'brian', 'adam', 'orkun', 'mike', 'fired'];
 export default class ErrorPage extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       complete: false,
-    }
+    };
   }
 
 
 
   handleFire = (e) => {
     if (!this.state.complete) {
-      this.setState({ complete: true })
-      document.getElementById(e.target.id).id = 'fired'
+      this.setState({ complete: true });
+      document.getElementById(e.target.id).id = 'fired';
     }
-  }
+  };
 
 
 
@@ -43,7 +43,7 @@ export default class ErrorPage extends Component {
           <div onClick={this.handleFire} id='mike' className={staffClass}></div>
         </div>
       </>
-    )
+    );
   }
 }
 

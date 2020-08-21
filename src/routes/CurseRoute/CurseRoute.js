@@ -17,7 +17,7 @@ const cursePromptsArray = [
     'Give me a reason to exist, tell me why you are upset.',
     'You deserve to be heard.',
     'I will gladly listen to your angers.'
-]
+];
 
 class CurseRoute extends Component {
 
@@ -30,36 +30,36 @@ class CurseRoute extends Component {
         serverMessage: '',
         cursePrompt: '',
         alertBox: false
-    }
+    };
 
     cursePrompt = () => {
-        return cursePromptsArray[Math.floor(Math.random() * cursePromptsArray.length)]
-    }
+        return cursePromptsArray[Math.floor(Math.random() * cursePromptsArray.length)];
+    };
 
     newCurseMessage = (curseMessage) => {
-        this.setState({ curseSent: false, curseMessage: { value: curseMessage, touched: true } })
-    }
+        this.setState({ curseSent: false, curseMessage: { value: curseMessage, touched: true } });
+    };
 
     validateCurseMessage = () => {
         const curseMessage = this.state.curseMessage.value;
         if (curseMessage.length === 0) {
-            return 'Input a Curse, mortal.'
+            return 'Input a Curse, mortal.';
         }
         if (curseMessage.length < 10) {
-            return 'Curse should contain at least 10 characters'
+            return 'Curse should contain at least 10 characters';
         }
-        let words = curseMessage.trim().split(' ')
+        let words = curseMessage.trim().split(' ');
         if (words.length <= 2) {
-            return 'Curse should contain at least 3 words'
+            return 'Curse should contain at least 3 words';
         }
         return '';
 
-    }
+    };
 
 
 
     handlePostCurses = (ev) => { // send a curse to the void
-        ev.preventDefault()
+        ev.preventDefault();
         const { curseInput } = ev.target;
         let curse = curseInput.value;
         let curseSent = false;
@@ -76,26 +76,26 @@ class CurseRoute extends Component {
             .then(res => {
                 if (res.ok) {
                     curseSent = true;
-                    this.setState({ curseSent: true })
+                    this.setState({ curseSent: true });
                     curseInput.value = '';
                 }
                 return res.json();
             })
             .then(json => {
                 if (!curseSent) {
-                    this.setState({ serverMessage: json })
+                    this.setState({ serverMessage: json });
                 }
                 else {
-                    this.setState({ serverMessage: '' })
+                    this.setState({ serverMessage: '' });
                 }
 
             })
-            .catch(error => console.log(error))
-    }
+            .catch(error => console.log(error));
+    };
 
 
     handlePostCursesNonUser = (ev) => { // curse as a non-user without the authoken 
-        ev.preventDefault()
+        ev.preventDefault();
         const { curseInput } = ev.target;
         let curse = curseInput.value;
         let curseSent = false;
@@ -111,38 +111,38 @@ class CurseRoute extends Component {
             .then(res => {
                 if (res.ok) {
                     curseSent = true;
-                    this.setState({ curseSent: true })
+                    this.setState({ curseSent: true });
                     curseInput.value = '';
                 }
                 return res.json();
             })
             .then(json => {
                 if (!curseSent) {
-                    this.setState({ serverMessage: json })
+                    this.setState({ serverMessage: json });
                 }
                 else {
-                    this.setState({ serverMessage: '' })
+                    this.setState({ serverMessage: '' });
                 }
 
             })
-            .catch(error => console.log(error))
-    }
+            .catch(error => console.log(error));
+    };
 
 
     handleCurseAgain = () => {
-        this.setState({ alertBox: false, curseSent: false })
-    }
+        this.setState({ alertBox: false, curseSent: false });
+    };
 
     componentDidMount = () => {
         let cursePromptMessage = this.cursePrompt();
         this.setState({
             cursePrompt: cursePromptMessage
-        })
-    }
+        });
+    };
 
     render() {
         const { curseSent, serverMessage } = this.state;
-        
+
         if (!curseSent) {
             return (
                 <div className='curse-bless-field'>
@@ -171,11 +171,11 @@ class CurseRoute extends Component {
                             <Link className="link-login" to='/login'>...or login here</Link>
                         </>}
                 </div>
-            )
+            );
         }
         else {
             return <div>
-                <CurseCheck alertBox={this.state.alertBox} serverMessage={this.state.serverMessage} curseSent={this.state.curseSent} handleCurseAgain={this.handleCurseAgain} /></div>
+                <CurseCheck alertBox={this.state.alertBox} serverMessage={this.state.serverMessage} curseSent={this.state.curseSent} handleCurseAgain={this.handleCurseAgain} /></div>;
         }
 
     }

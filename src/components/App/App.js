@@ -48,7 +48,6 @@ class App extends Component {
   //(loggedin ? private : public).includes(URL)
 
   switchCheck = (match) => {
-    console.log(match);
     return !(this.state.loggedIn ? privateRoutes : publicRoutes).includes(match.url);
   };
 
@@ -81,7 +80,6 @@ class App extends Component {
       })
       .then(async json => {
         await this.setState({ user: json });
-        console.log(this.state.user);
         if (this.state.user.blessedCurses.length > 0) {
           this.setState({ blessedCurse: json.blessedCurses[0].curse, curse_id: json.blessedCurses[0].curse_id });
         }
@@ -107,11 +105,9 @@ class App extends Component {
         }
       })
       .then(async json => {
-        console.log(json);
         if (this.state.curseIndex !== this.state.user.blessedCurses.length - 1) {
           this.setState({ curseIndex: this.state.curseIndex + 1 });
           this.setState({ blessedCurse: this.state.user.blessedCurses[this.state.curseIndex].curse, curse_id: this.state.user.blessedCurses[this.state.curseIndex].curse_id });
-          console.log(this.state.user.blessedCurses);
         }
         else {
           this.setState({ user: { user: this.state.user.user, blessedCurses: [] }, curseIndex: 0 });
@@ -133,7 +129,6 @@ class App extends Component {
         }
       })
       .then(json => {
-        console.log(json);
         this.setState({ emoji: json });
       });
   };
@@ -154,9 +149,6 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.blessedCurse);
-    console.log(this.state.user);
-    console.log(this.state.curse_id);
     return (
       <AppContext.Provider
         value={{
