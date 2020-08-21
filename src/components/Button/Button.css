@@ -2,6 +2,7 @@ button {
     width: 40%;
     border-radius: 10px;
     font-size: 1.2em;
+    line-height: 100%;
     padding: 10px 5px;
     margin: 20px auto;
     cursor: pointer;

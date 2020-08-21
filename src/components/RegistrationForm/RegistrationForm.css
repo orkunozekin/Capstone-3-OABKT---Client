@@ -4,9 +4,6 @@
     align-items: center;
 }
 
-
-
-
 .sign-up-form {
     width: 90%;
     margin: 0 auto;
@@ -27,6 +24,16 @@
     margin-top: 15px;
 }
 
+.sign-up-button {
+    background-color: gainsboro;
+    font-family: 'IM Fell English', serif;
+    font-size: 2rem;
+}
+
+.sign-up-button:hover {
+    background-color: var(--color-background-main);
+    color: gainsboro;
+}
 
 @media screen and (min-width: 768px) {
     .Label {

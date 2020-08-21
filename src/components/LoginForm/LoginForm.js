@@ -74,10 +74,10 @@ class LoginForm extends Component {
           required
         />
 
-        {!loading && <Button type='submit'>
+        {!loading && <Button className='sign-up-button' type='submit'>
           Login
         </Button>}
-        {loading && <Button type='submit' disabled>
+        {loading && <Button className='sign-up-button' type='submit' disabled>
           <FaSpinner className='load-icon' />
         </Button>}
       </form>

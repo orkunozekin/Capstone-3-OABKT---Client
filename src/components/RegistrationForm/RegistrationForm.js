@@ -86,11 +86,11 @@ class RegistrationForm extends Component {
         />
 
         <footer className="footer">
-          {!loading && <Button type='submit'>
+          {!loading && <Button className='sign-up-button' type='submit'>
             Sign up
           </Button>}
-          {loading && <Button type='submit' disabled>
-            <FaSpinner />
+          {loading && <Button className='sign-up-button' type='submit' disabled>
+            <FaSpinner className='load-icon'/>
           </Button>}
           {' '}
           <Link to='/login'><h3 className='login-link'>Already have an account?</h3></Link>
