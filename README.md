@@ -31,7 +31,7 @@ As a **Curser**, you do not need to worry about hearing any kind of judgement or
 unicode character.
 
 ### Bless
-*Blessing* can only be done by a logged in user, and only 3 per 3 hour period.  As a *Blesser*, you are 
+*Blessing* can only be done by a logged in user, and only 3 per day.  As a *Blesser*, you are 
 gazing into the abyss to see people's frustrations and who knows what else.  Even though a *Blesser* 
 knows that they are gazing upon **Curses** that are too spicy to see the light of normal social interaction, 
 the *Blesser* does have the option to mute a Curser and will no longer have their **Curses** delivered to 
