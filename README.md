@@ -1,5 +1,5 @@
 # Capstone 3 : Cursr
-Live link:(https://capstone-3-oabkt.vercel.app/)
+Live link:https://capstone-3-oabkt.vercel.app/
 
 Cursr is an online venting service with a focus on anonymity. 
 
@@ -36,3 +36,137 @@ gazing into the abyss to see people's frustrations and who knows what else.  Eve
 knows that they are gazing upon **Curses** that are too spicy to see the light of normal social interaction, 
 the *Blesser* does have the option to mute a Curser and will no longer have their **Curses** delivered to 
 them when they decide to *Bless* again.
+
+## Technologies Used
+Front end:
+  - React
+  - JavaScript
+  - HTML 5
+  - CSS 3
+
+Back end:
+  - JavaScript
+  - Express
+  - Node.js  
+
+# API Documentation:
+# Curse App API
+##### https://warm-garden-23848.herokuapp.com/
+
+## BlessCurse has 5 API endpoints:
+- /api/auth/token
+- /api/user
+- /api/blessings
+- /api/curses
+- /api/quotes
+
+### Authorization - '/api/auth/token'
+---
+#### POST
+  - Parameters
+    - username
+    - password
+  - Returns
+    - If the username and password both match an existing user, an auth token is provided
+---
+---
+### User - '/api/user'
+---
+#### POST
+  - Parameters
+    - name
+    - username 
+      - Must be unique
+    - password
+      - Must be more than 7 characters
+      - Must be less than 72 characters
+      - Must not start or end with a space
+      - Must have an upper case letter
+      - Must have a lower case letter
+      - Must have a number
+      - Must have a special character
+  - Returns
+    - Creates a new account on the database and returns the created user
+
+#### GET - Authorization required
+  - Parameters
+    - none
+  - Returns
+    - The current user's data
+    - All blessed curses that belong to that user
+
+#### PATCH - Authorization required
+  - Parameters
+    - curse_id - the curse_id belonging to the user you wish to block
+  - Returns
+    - Adds the owner of the curse to be added to the current user's blocklist. No curses from that user will be displayed to the current user thereafter
+---
+---
+### Blessings - '/api/blessings' 
+---
+#### GET
+  - Parameters
+    - None
+  - Returns
+    - All blessings and blessing_ids in an array
+---
+---
+### Curses - '/api/curses'
+---
+#### GET - Requires authorization
+  - Parameters
+    - None
+  - Returns
+    - If available curses exist for the user
+      - A random curse from the pool of available curses is provided to the user
+      - Available curses are curses that
+        - Do not belong to the current user
+        - Do not belong to any of the users on the current user's blocklist
+        - Have not being previously pulled or blessed by any user
+    - If no curses exist for the user
+      - 'No available curses'
+#### POST
+  - Parameters
+    - curse
+      - A curse message cannot
+        - Be empty
+        - Be less than 10 characters
+        - Be less than 4 words
+        - Be more than 400 characters
+  - Returns
+    - Adds the curse to the database
+    - Send a message and submitted information to the user as an object
+      - If logged in
+        - user: username
+        - curse: curse sent to the database
+        - message: 'Curse sent as (username)'
+      - If not logged in
+        - user: null
+        - curse: curse sent to the database
+        - message: 'Curse sent anonymously'
+#### PATCH - Requires authorization
+  - Parameters
+    - blessing_id - the blessing to apply to the curse
+    - curse_id - the curse to be blessed
+  - Returns
+    - Blesses the curse within the database and assigns the desired blessing to it
+    - Message: 'Curse blessed with blessing (blessing_id)'
+#### DELETE - Requires authorization
+  - Parameters
+    - curse_id - the curse_id of the curse to be blessed
+  - Returns
+    - The authorized user must be the owner of the curse being deleted
+    - If owner, returns an object
+      - {deletedCurse: (all curse data)}
+    - If not owner
+      - 'User is not the owner of the provided curse'
+---
+---
+### Quotes - '/api/quotes'
+---
+#### GET - Requires authorization
+  - Parameters
+    - None
+  - Returns
+    - A random quote from the database table
+    - The quote will include the quote and the source as an object: {quote, source}
