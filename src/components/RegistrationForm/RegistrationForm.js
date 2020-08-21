@@ -1,47 +1,67 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { Input, Required, Label } from '../Form/Form'
-import AuthApiService from '../../services/auth-api-service'
-import Button from '../Button/Button'
-import { FaSpinner } from 'react-icons/fa'
-import './RegistrationForm.css'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import { Input, Required, Label } from '../Form/Form';
+import AuthApiService from '../../services/auth-api-service';
+import Button from '../Button/Button';
+import { FaSpinner } from 'react-icons/fa';
+import AppContext from '../../contexts/AppContext';
+import TokenService from '../../services/token-service';
+import './RegistrationForm.css';
 
 
 class RegistrationForm extends Component {
   static defaultProps = {
     onRegistrationSuccess: () => { }
-  }
+  };
 
-  state = { error: null, loading: false }
+  static contextType = AppContext;
 
-  firstInput = React.createRef()
+  state = { error: null, loading: false };
+
+  firstInput = React.createRef();
+
+  loginUser = (username, password) => {
+    console.log('1', username);
+    AuthApiService.postLogin({
+      username: username,
+      password: password,
+    })
+      .then(res => {
+        TokenService.saveAuthToken(res.authToken);
+        this.context.toggleLoggedIn()
+      })
+      .catch(res => {
+        this.setState({ error: res.error, loading: false });
+      });
+  };
 
   handleSubmit = ev => {
-    this.setState({ loading: true })
-    ev.preventDefault()
-    const { name, username, password } = ev.target
+    this.setState({ loading: true });
+    ev.preventDefault();
+    const { name, username, password } = ev.target;
     AuthApiService.postUser({
       name: name.value,
       username: username.value,
       password: password.value,
     })
-      .then(user => {
-        name.value = ''
-        username.value = ''
-        password.value = ''
+      .then(async user => {
+        await this.loginUser(username.value, password.value);
+        name.value = '';
+        username.value = '';
+        password.value = '';
         this.props.onRegistrationSuccess()
       })
       .catch(res => {
-        this.setState({ error: res.error, loading: false })
-      })
-  }
+        this.setState({ error: res.error, loading: false });
+      });
+  };
 
   componentDidMount() {
-    this.firstInput.current.focus()
+    this.firstInput.current.focus();
   }
 
   render() {
-    const { error } = this.state
+    const { error } = this.state;
     const loading = this.state.loading;
     return (
       <form
@@ -87,14 +107,14 @@ class RegistrationForm extends Component {
             Sign up
           </Button>}
           {loading && <Button type='submit' disabled>
-          <FaSpinner />
+            <FaSpinner />
           </Button>}
           {' '}
           <Link to='/login'><h3 className='login-link'>Already have an account?</h3></Link>
         </footer>
       </form>
-    )
+    );
   }
 }
 
-export default RegistrationForm
+export default RegistrationForm;

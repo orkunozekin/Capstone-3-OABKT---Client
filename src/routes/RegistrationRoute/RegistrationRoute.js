@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
-import RegistrationForm from '../../components/RegistrationForm/RegistrationForm'
-import './RegistrationRoute.css'
+import React, { Component } from 'react';
+import RegistrationForm from '../../components/RegistrationForm/RegistrationForm';
+import { withRouter } from 'react-router-dom';
+import AppContext from '../../contexts/AppContext';
+
+import './RegistrationRoute.css';
 
 
 
@@ -9,12 +12,15 @@ class RegistrationRoute extends Component {
     history: {
       push: () => { },
     },
-  }
+  };
+  static contextType = AppContext;
 
   handleRegistrationSuccess = () => {
-    const { history } = this.props
-    history.push('/login')
-  }
+    const { location, history } = this.props;
+    const destination = (location.state || {}).from || '/dashboard';
+    history.push(destination);
+    this.context.toggleLoggin();
+  };
 
   render() {
     return (
@@ -30,4 +36,4 @@ class RegistrationRoute extends Component {
   }
 }
 
-export default RegistrationRoute
+export default withRouter(RegistrationRoute);

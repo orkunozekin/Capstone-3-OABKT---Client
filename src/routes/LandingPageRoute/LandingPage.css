@@ -42,7 +42,7 @@
   background-color: var(--color-background-neutral);
   color: gainsboro;
   font-family: 'IM Fell English', serif;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .curse-now-button:hover {

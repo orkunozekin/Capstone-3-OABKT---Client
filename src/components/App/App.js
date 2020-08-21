@@ -79,9 +79,9 @@ class App extends Component {
           return res.json();
         }
       })
-      .then(json => {
-        console.log(json);
-        this.setState({ user: json });
+      .then(async json => {
+        await this.setState({ user: json });
+        console.log(this.state.user);
         if (this.state.user.blessedCurses.length > 0) {
           this.setState({ blessedCurse: json.blessedCurses[0].curse, curse_id: json.blessedCurses[0].curse_id });
         }
@@ -146,9 +146,9 @@ class App extends Component {
     // this.setBlessedCurse();
     await this.handleGetBlessingOptions();
     await this.handleGetQuote();
-    await this.handleGetDashboardInfo();
     if (TokenService.hasAuthToken()) {
       await this.toggleLoggedIn();
+      await this.handleGetDashboardInfo();
     }
   }
 
@@ -167,6 +167,7 @@ class App extends Component {
           curse_id: this.state.curse_id,
           emoji: this.state.emoji,
           loggedIn: this.state.loggedIn,
+          toggleLoggin: this.toggleLoggedIn,
           handleGetQuote: this.handleGetQuote,
           handleGetDashboardInfo: this.handleGetDashboardInfo,
           handleDeleteCurse: this.handleDeleteCurse,
