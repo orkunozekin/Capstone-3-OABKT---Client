@@ -40,7 +40,8 @@ class Bless extends Component {
   handleBlessCurse = (ev) => { //Bless a curse
     ev.preventDefault();
     const { emojiInput } = ev.target;
-    const blessing_id = emojiInput.value;
+    console.log(emojiInput.value);
+    const blessing_id = emojiInput.value === 'Select an Emoji' ? 1 : emojiInput.value;
     const curseId = this.state.curse.curse_id;
     fetch(`${config.API_ENDPOINT}/curses`, {
       method: 'PATCH',
@@ -98,7 +99,7 @@ class Bless extends Component {
   handleBlessAnotherCurse = () => {
     this.setState({ alertBox: false, blessingSent: false });
     if (this.context.user.user.limiter > 0) {
-        this.handleGetCurse();
+      this.handleGetCurse();
     } else {
       this.setState({ blessingMessage: `You're out of blessings` });
     };
@@ -114,7 +115,9 @@ class Bless extends Component {
       return <Button className='bless-a-curse-button bless-button-ready'>Bless This Curse</Button>;
     }
     else if (!this.state.emojiSelected) {
-      return <Button className='bless-a-curse-button bless-button-ready' onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>;
+      // return <Button className='bless-a-curse-button bless-button-ready' onClick={() => this.handleBlessAnotherCurse()}>Different Curse</Button>;
+      return <Button className='bless-a-curse-button bless-button-ready'>Bless This Curse</Button>;
+
     }
     else {
       return <Button className='bless-a-curse-button' disabled>Bless This Curse</Button>;
@@ -156,8 +159,8 @@ class Bless extends Component {
           {this.state.curse === 'No available curses' ? <p className='curse-message'>No available curses</p> : <p className='curse-message'>{curse}</p>}
           <form onSubmit={this.handleBlessCurse} className="bless-form">
             {this.state.curse === 'No available curses' ? <select id="emojiDropdown" name="emojiInput" className="emoji-dropdown" disabled></select> :
-              <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown">
-                <option>Select an Emoji</option>
+              <select id="emojiDropdown" onChange={() => this.setState({ emojiSelected: true })} name="emojiInput" className="emoji-dropdown" defaultValue='Select an Emoji' required>
+                <option disabled>Select an Emoji</option>
                 {this.context.emoji.map(blessing =>
                   <option key={blessing.blessing_id} value={blessing.blessing_id}>{String.fromCodePoint(parseInt(blessing.blessing.slice(2), 16))}</option>
                 )}</select>}

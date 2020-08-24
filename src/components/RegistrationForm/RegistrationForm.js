@@ -87,7 +87,7 @@ class RegistrationForm extends Component {
 
         <footer className="footer">
           {!loading && <Button className='sign-up-button' type='submit'>
-            Sign up
+            Sign Up
           </Button>}
           {loading && <Button className='sign-up-button' type='submit' disabled>
             <FaSpinner className='load-icon'/>

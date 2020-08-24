@@ -54,6 +54,10 @@ class LoginForm extends Component {
           {error && <p>{error}</p>}
         </div>
 
+        <p className='DemoCreds'>Try us out!</p>
+        <p className='DemoCreds'>Username: DemoUser</p>
+        <p className='DemoCreds'>Password: DemoUser*2</p>
+
         <Label htmlFor='login-username-input'>
           Username
           </Label>

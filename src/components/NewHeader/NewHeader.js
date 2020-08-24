@@ -37,7 +37,7 @@ const NewHeader = (props) => {
                         <Link className="header-link" to="/dashboard"><h1>Cursr</h1></Link>
                         <Link to="/" className="header-link" onClick={handleLogoutClick}><h2>Logout</h2></Link>
                     </> : <>
-                            <Link className="header-link" to='/register'><h2>Sign up</h2></Link>
+                            <Link className="header-link" to='/register'><h2>Sign Up</h2></Link>
                             <Link className="header-link" to="/"><h1>Cursr</h1></Link>
                             <Link to="login" className="header-link" ><h2>Login</h2></Link>
                         </>}
