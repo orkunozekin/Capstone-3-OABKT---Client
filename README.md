@@ -1,5 +1,6 @@
 # Capstone 3 : Cursr
-Live link:https://capstone-3-oabkt.vercel.app/
+- Live link: https://capstone-3-oabkt.vercel.app/
+- Server Repo: https://github.com/thinkful-ei-orka/Capstone-3-O-K-A-B-T-Server
 
 Cursr is an online venting service with a focus on anonymity. 
 
@@ -14,6 +15,12 @@ TA Handler:
 [Mike Stowe](https://github.com/mikeStowe)
 
 ![cursr-picture](https://user-images.githubusercontent.com/62114382/91066164-fe563700-e5f6-11ea-827f-6eb13a6555dd.png)
+
+### Demo Credentials
+Username | Password
+------------ | -------------
+DemoUser | DemoUser*2
+demo | Demodemo1!
 
 ## How It Works
 
