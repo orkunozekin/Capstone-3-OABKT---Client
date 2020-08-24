@@ -19,6 +19,8 @@ TA Handler:
 
 On Cursr, you can create an account and log in or you can use some of the functionality as a guest.
 
+![SignUp](./SignUp.PNG)
+
 ### Curse
 The main function is to **Curse**, which can be done anonymously if desired.  When you **Curse**, you can 
 scream out your frustrations or anything desired without regard to social constraints, which can be 
@@ -30,12 +32,16 @@ As a **Curser**, you do not need to worry about hearing any kind of judgement or
 *Blesser*; the only thing you will see is that your **Curse** has been read and emblazoned with a 
 unicode character.
 
+![Curse](./Curse.PNG)
+
 ### Bless
 *Blessing* can only be done by a logged in user, and only 3 per day.  As a *Blesser*, you are 
 gazing into the abyss to see people's frustrations and who knows what else.  Even though a *Blesser* 
 knows that they are gazing upon **Curses** that are too spicy to see the light of normal social interaction, 
 the *Blesser* does have the option to mute a Curser and will no longer have their **Curses** delivered to 
 them when they decide to *Bless* again.
+
+![Bless](./Bless.PNG)
 
 ## Technologies Used
 Front end:
@@ -170,7 +176,3 @@ Back end:
   - Returns
     - A random quote from the database table
     - The quote will include the quote and the source as an object: {quote, source}
-    
-#### DEMO Credentails
--User name:  demo
--Password:  Demodemo1!
