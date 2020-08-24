@@ -3,8 +3,6 @@ Live link:https://capstone-3-oabkt.vercel.app/
 
 Cursr is an online venting service with a focus on anonymity. 
 
-![Screenshot](./cursrSS.PNG)
-
 Developed by: 
 [Adam Brown](https://github.com/ChancellorAceX),
 [Brian Charles](https://github.com/bcharles41078),
@@ -14,6 +12,8 @@ Developed by:
 
 TA Handler:
 [Mike Stowe](https://github.com/mikeStowe)
+
+![cursr-picture](https://user-images.githubusercontent.com/62114382/91066164-fe563700-e5f6-11ea-827f-6eb13a6555dd.png)
 
 ## How It Works
 
@@ -170,3 +170,7 @@ Back end:
   - Returns
     - A random quote from the database table
     - The quote will include the quote and the source as an object: {quote, source}
+    
+#### DEMO Credentails
+-User name:  demo
+-Password:  Demodemo1!
