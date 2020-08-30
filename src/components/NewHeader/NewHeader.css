@@ -6,13 +6,23 @@
     color: transparent;
 }
 
-.arrow {
+.arrow-down {
     position: fixed;
     font-size: 30px;
     cursor: pointer;
     width: 100vw;
     font-size: 3rem;
     color: var(--color-highlight-text);
+}
+
+.arrow-up {
+    position: fixed;
+    font-size: 30px;
+    cursor: pointer;
+    width: 100vw;
+    font-size: 3rem;
+    margin-top: 40px;
+    color: #ffd36b;
 }
 
 .header-links {

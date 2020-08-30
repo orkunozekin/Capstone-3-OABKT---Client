@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { TiArrowSortedDown } from "react-icons/ti";
+import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 import UserContext from "../../contexts/UserContext";
 import { Link } from "react-router-dom";
 import "./NewHeader.css";
@@ -19,19 +19,19 @@ const NewHeader = (props) => {
         props.toggleLoggedIn();
     }
 
-    const nav_class = `header-links ${!show ? "hideMenu" : ""}`;
+    
 
 
     if (!show) {
         return (
-            <div className="arrow-wrapper"><TiArrowSortedDown onMouseOver={() => setShow(true)} className="arrow" /></div>
+            <div className="arrow-wrapper"><TiArrowSortedDown onMouseOver={() => setShow(true)} className="arrow-down" /></div>
         );
     }
 
     else {
         return (
             <div onMouseLeave={() => setShow(false)} className="navbar-wrapper">
-                <nav className={nav_class}>
+                <nav className="header-links">
                     {props.loggedIn ? <>
                         <div className="header-link user-name">{props.name}</div>
                         <Link className="header-link" to="/dashboard"><h1>Cursr</h1></Link>
@@ -42,6 +42,7 @@ const NewHeader = (props) => {
                             <Link to="login" className="header-link" ><h2>Login</h2></Link>
                         </>}
                 </nav>
+                <div className="arrow-wrapper"><TiArrowSortedUp onClick={() => setShow(false)} className="arrow-up" /></div>
                 {/* <div className="transparent-div"></div> */}
             </div>
         );
